@@ -3,7 +3,8 @@ rescue_from ActiveRecord::RecordNotFound, with: :cant_show_voter
 rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
 
     def index
-        voters = Voter.all
+        activity = Voter.all.order(isActive: :desc)
+        voters = activity.order(:last)
         render json: voters
     end
 
@@ -28,18 +29,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
         voter.destroy 
         head :no_content
     end
-
-    # def search
-        # if params[:query].present?
-        #     @voter_search = Voter.search_by_full_name(params[:query])
-        #     render json: @voter_search
-        # end
-
-        # # respond_to do |format|
-        # # format.html
-        # # format.json { render json: { senators: @senators } }
-        # # end
-    # end
 
     private 
 

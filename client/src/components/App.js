@@ -22,7 +22,7 @@ function App() {
   useEffect(() => {
     fetch("/voters")
       .then(res => res.json())
-      .then(voters => setVoters(voters))
+      .then(voters => { setVoters(voters) })
   }, [])
   console.log(voters)
 
@@ -66,7 +66,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route element={<WithNav />}>
           <Route className="hidden" path="/home" element={<Home />} />
-          <Route path="/voters" element={<VoterPage change={change} setChange={setChange} />} />
+          <Route path="/voters" element={<VoterPage voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} />
           {/* <Route path="voters/search" element={<Search /> } /> */}
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}

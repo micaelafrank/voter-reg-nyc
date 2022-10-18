@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-
+import VoterList from "./VoterList";
+import Voter from "./Voter";
+import VoterPage from "./VoterPage";
 
 function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, setLastNameSearch, setZipSearch, handleSearchClear, handleSearchSubmit }) {
-    // const [formData, setFormData] = useState({ firstNameSearch:"", lastNameSearch: "", zipSearch:"" });
     const [fnSearch, setFNSearch] = useState("");
     const [lnSearch, setLNSearch] = useState("");
     const [zcSearch, setZCSearch] = useState("");
+
     function handleSubmit(e) {
         e.preventDefault();
         setFirstNameSearch(fnSearch);
@@ -14,17 +16,18 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
         handleSearchSubmit();
     }
 
-    function handleSearch() {
-        setIsFiltering(true);
-        console.log(`Filter results: ${isFiltering}`);
-    }
-
     function clearSearch() {
         setFNSearch("");
         setLNSearch("");
         setZCSearch("");
         handleSearchClear();
     }
+
+    function handleSearch() {
+        setIsFiltering(true);
+        console.log(`Filter results: ${isFiltering}`);
+    }
+
     function SubmitButton() {
         if (fnSearch && lnSearch && (zcSearch.length === 5)) {
             return <button type="submit">Submit</button>

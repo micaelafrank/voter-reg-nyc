@@ -27,12 +27,6 @@ function Voter({ isActive, handleSearchSubmit, address1, address2, isFiltering, 
         setValidated((validated) => !validated);
     }
 
-    // const [{ data: voter, error, status }, setVoter] = useState({
-    //     data: null,
-    //     error: null,
-    //     status: "pending",
-    // });
-    // const { id } = useParams();
 
     function generate(n) {
         var add = 1, max = 12 - add;   // 12 is the min safe number Math.random() can generate without it starting to pad the end with zeros.   
@@ -47,44 +41,20 @@ function Voter({ isActive, handleSearchSubmit, address1, address2, isFiltering, 
 
         return ("" + number).substring(add);
     }
-    // console.log()
-    // function handleSubmit(e){
-    //     e.preventDefault()
-    //     if(firstName===formName && password===formPassword){
-    //         handleDelete();
-    //     } else{
-    //         e.target.reset();
-    //     }
-    // }
+
     let count = 1;
 
-    // function handleDelete(){
-    //     fetch(`http://localhost:9292/voters/${id}`,{
-    //         method: "DELETE",
-    //     })
-    //     deleteVoter(id);
-    // }
 
     function resetCount() {
         count = 0;
     }
-
-    // const handleSubmit = (event) => {
-    //     const form = event.currentTarget;
-    //     if (form.checkValidity() === false) {
-    //         event.preventDefault();
-    //         event.stopPropagation();
-    //     }
-
-    //     setValidated(true);
-    // };
 
     return (
         <>
             <div className={isFiltering ? `searchItem` : `gridItem`}>
                 <div className={isActive ? (isFiltering ? `searchContainerBlack` : `voterContainerBlack`) : (isFiltering ? `searchContainerRed` : `voterContainerRed`)}>
                     {/* <p style={{ fontSize:"18px", fontWeight:"bold" }}>{firstName}</p> */}
-                    <p id={isFiltering ? "fullNameTitle" : "initialTitle"} style={{ fontSize: "18px", textAlign: "center", alignItems: "center", fontWeight: "bold", lineHeight: ".4" }}>{isFiltering ? fullName : shortName}</p>
+                    <p style={{ fontSize: "18px", fontWeight: "bold" }}>{isFiltering ? fullName : shortName}</p>
                     {isFiltering ? <p style={{ lineHeight: "0" }}>{age} years old</p> : null}
                     {isFiltering ? <p style={{ textAlign: "center", alignItems: "center" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p> : null}
                     <p style={{ alignItems: "left" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>

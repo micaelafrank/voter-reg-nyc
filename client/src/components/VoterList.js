@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import Voter from "./Voter";
-import { useParams } from "react-router-dom";
+import Search from "./Search";
 
-function VoterList({ handleSearchSubmit, firstNameSearch, lastNameSearch, zipSearch, count, handleSearchClear, searchedNames, isFiltering, isSearching, voters, setVoters, deleteVoter }) {
-    // const [isSearching, setIsSearching] = useState(false);
-    // const [isFiltering, setIsFiltering] = useState(false);
-    // const [error, setError] = useState("");
-    // const [{ data: voter, error, status }, setVoter] = useState({
-    //     data: null,
-    //     error: null,
-    //     status: "pending",
-    // });
-    // const { id } = useParams();
+
+// function VoterList({ handleSearchSubmit, setIsFiltering, setIsSearching, isFiltering, firstNameSearch, lastNameSearch, zipSearch, count, handleSearchClear, searchedNames, isSearching, voters, setVoters, deleteVoter }) {
+function VoterList({ handleSearchSubmit, firstNameSearch, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
+    
+    let count = 0;
+
+    const searchedNames = voters.filter((voter) => {
+        // return (voter.first == firstNameSearch) && (voter.last == lastNameSearch) && (voter.postalCode.toString() == zipSearch)
+        if ((voter.first == firstNameSearch) && (voter.last == lastNameSearch) && (voter.postalCode.toString() == zipSearch)) {
+            count = true;
+            return true;
+        } else if (count === 0) {
+            count = false;
+        }
+    })
 
     const listOfVoters = voters.map((voter) => (
         <Voter
@@ -19,24 +24,25 @@ function VoterList({ handleSearchSubmit, firstNameSearch, lastNameSearch, zipSea
             id={voter.id}
             lastName={voter.last}
             firstName={voter.first}
-            voters={voters}
+            address1={voter.address1}
+            address2={voter.address2}
             isActive={voter.isActive}
             setVoters={setVoters}
-            searchedNames={searchedNames}
             count={count}
             party={voter.party}
             password={voter.password}
             postalCode={voter.postalCode}
             // handleSearch={setUserSearch}
             deleteVoter={deleteVoter}
+            setIsFiltering={setIsFiltering}
+            setIsSearching={setIsSearching}
             isSearching={isSearching}
             isFiltering={isFiltering}
-            handleSearchClear={handleSearchClear} 
-            handleDelete={deleteVoter} 
+            handleSearchClear={handleSearchClear}
+            handleDelete={deleteVoter}
             firstNameSearch={firstNameSearch}
             lastNameSearch={lastNameSearch}
             zipSearch={zipSearch}
-
         />
     ))
 
@@ -49,5 +55,6 @@ function VoterList({ handleSearchSubmit, firstNameSearch, lastNameSearch, zipSea
         </React.Fragment>
     );
 }
+
 
 export default VoterList;
