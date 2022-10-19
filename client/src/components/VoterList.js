@@ -4,19 +4,19 @@ import Search from "./Search";
 
 
 // function VoterList({ handleSearchSubmit, setIsFiltering, setIsSearching, isFiltering, firstNameSearch, lastNameSearch, zipSearch, count, handleSearchClear, searchedNames, isSearching, voters, setVoters, deleteVoter }) {
-function VoterList({ handleSearchSubmit, firstNameSearch, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
+function VoterList({ handleSearchSubmit, firstNameSearch, searchedNames, count, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
     
-    let count = 0;
+    // let count = 0;
 
-    const searchedNames = voters.filter((voter) => {
-        // return (voter.first == firstNameSearch) && (voter.last == lastNameSearch) && (voter.postalCode.toString() == zipSearch)
-        if ((voter.first == firstNameSearch) && (voter.last == lastNameSearch) && (voter.postalCode.toString() == zipSearch)) {
-            count = true;
-            return true;
-        } else if (count === 0) {
-            count = false;
-        }
-    })
+    // const searchedNames = voters.filter((voter) => {
+    //     // return (voter.first == firstNameSearch) && (voter.last == lastNameSearch) && (voter.postalCode.toString() == zipSearch)
+    //     if ((voter.first == firstNameSearch) && (voter.last == lastNameSearch) && (voter.postalCode.toString() == zipSearch)) {
+    //         count = true;
+    //         return true;
+    //     } else if (count === 0) {
+    //         count = false;
+    //     }
+    // })
 
     const listOfVoters = voters.map((voter) => (
         <Voter
@@ -29,6 +29,7 @@ function VoterList({ handleSearchSubmit, firstNameSearch, setIsFiltering, setIsS
             isActive={voter.isActive}
             setVoters={setVoters}
             count={count}
+            searchedNames={searchedNames}
             party={voter.party}
             password={voter.password}
             postalCode={voter.postalCode}
@@ -48,10 +49,11 @@ function VoterList({ handleSearchSubmit, firstNameSearch, setIsFiltering, setIsS
 
     return (
         <React.Fragment>
-            <section className="voterGridContainer">
+            <h1 className="formHeading4" style={{ paddingTop: "50px", paddingBottom: "20px", fontFamily: "KGThankYouStamp", textAlign: "center", fontSize: "60px" }}>REGISTERED VOTERS</h1>
+            <section className={isFiltering ? "searchGridContainer" : `voterGridContainer`}>
                 {isSearching ? searchedNames : listOfVoters}
             </section>
-            {count ? null : <p id="error-message"><span style={{ fontWeight: "bold" }}>Not Found:</span> Your search did not match any record on file. Please ensure fields are accurate and try again.</p>}
+            {(isSearching && count === 0) ? <p id="error-message"><span style={{ fontWeight: "bold" }}>Not Found:</span> Your search did not match any record on file. Please ensure fields are accurate and try again.</p> : null}
         </React.Fragment>
     );
 }

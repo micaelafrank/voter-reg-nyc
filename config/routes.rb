@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   # namespace :api do
     resources :parties, only: [:index]
     # resources :users
-    resources :voters 
+    resources :voters, only: [:index, :show, :create, :create, :update, :destroy, :search] 
     # resources :searches, only: [:index, :show]
 
     # post "/signup", to: "users#create"
     # get "/me", to: "users#show" 
-    # get "/search", to: "voters#search"
+    get "voters/search", to: "voters#search"
     post "/login", to: "sessions#create"
     post "/register", to: "voters#create"
     delete "/logout", to: "sessions#destroy" 

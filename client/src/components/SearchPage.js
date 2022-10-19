@@ -1,21 +1,64 @@
 import React, { useState } from "react";
-import VoterList from "./VoterList";
-import Voter from "./Voter";
-import VoterPage from "./VoterPage";
+import SearchedVoter from "./SearchedVoter";
 
-function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, setLastNameSearch, setZipSearch, handleSearchClear, handleSearchSubmit }) {
+
+function SearchPage() {
+    // const [formData, setFormData] = useState({ 
+    //     firstNameSearch: "", 
+    //     lastNameSearch: "", 
+    //     zipSearch: "" 
+    // });
     const [fnSearch, setFNSearch] = useState("");
     const [lnSearch, setLNSearch] = useState("");
     const [zcSearch, setZCSearch] = useState("");
-    const searchedVoter = { fnSearch, lnSearch, zcSearch }
+    const [isFiltering, setIsFiltering] = useState(false);
+    const [errors, setErrors] = useState([]);
+    const [voters, setVoters] = useState([]);
+    // const [q, setQ] = useState("");
+    const [searchParam] = useState(["firstName", "lastName", postalCode]);
+
+
+    useEffect(() => {
+        fetch("/voters/search")
+            .then(res => res.json())
+            .then(voters => setVoters(voters))
+    }, [])
+    console.log(voters)
+
+
+    const formData = new FormData();
+    formData.append('fnSearch', fnSearch);
+    formData.append('lnSearch', lnSearch);
+    formData.append('zcSearch', zcSearch);
+    console.log(formData)
 
     function handleSubmit(e) {
         e.preventDefault();
-        setFirstNameSearch(fnSearch);
-        setLastNameSearch(lnSearch);
-        setZipSearch(zcSearch);
-        handleSearchSubmit();
+        console.log(formData)
+        setIsFiltering(true);
+        setErrors([]);
+        fetch("voters/search",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
+        .then(res => res.json())
+        .then(data => processSearch(data));
     }
+
+    const searchedNames = voters.filter((voter) => {
+            return searchParam.some((searchedVoter) => {
+                return (
+                    voter[searchedVoter]
+                        .toString()
+                        .toLowerCase()
+                        .indexOf(q.toLowerCase()) > -1
+                );
+            })
+        })
+
 
     function clearSearch() {
         setFNSearch("");
@@ -24,10 +67,6 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
         handleSearchClear();
     }
 
-    function handleSearch() {
-        setIsFiltering(true);
-        console.log(`Filter results: ${isFiltering}`);
-    }
 
     function SubmitButton() {
         if (fnSearch && lnSearch && (zcSearch.length === 5)) {
@@ -38,6 +77,7 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
     };
 
     return (
+        <>
         <div className="searchBarContainer">
             <form id="searchForm" style={{ fontFamily: "monospace" }} className="searchbarForm" onSubmit={handleSubmit}>
                 <h4 style={{ lineHeight: "0", fontSize: "30px", textAlign: "center" }}>CHECK YOUR VOTER STATUS</h4>
@@ -89,12 +129,32 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
                         onChange={(e) => setZCSearch(e.target.value)}
                     // onChange={(e) => setPostalCode(e.target.value)}
                     />
-                    <SubmitButton onClick={handleSearch} />
+                    <SubmitButton type="submit" />
                     <button style={{ fontFamily: "monospace" }} onClick={clearSearch}>Clear Search</button>
                 </div>
             </form>
         </div>
+        <div>
+            <h1 className="formHeading4" style={{ paddingTop: "50px", paddingBottom: "20px", fontFamily: "KGThankYouStamp", textAlign: "center", fontSize: "60px" }}>REGISTERED VOTERS</h1>
+            <section className="searchGridContainer">
+                {searchedNames.map((searchedName) => (
+                    <SearchedVoter 
+                    key={searchedName.key}
+                    id={searchedName.id}
+                    firstName={searchedName.firstName}
+                    lastName={searchedName.lastName}
+                    address1={searchedName.address1}
+                    address2={searchedName.address2}
+                    postalCode={searchedName.postalCode}
+                    age={searchedName.age}
+                    party={searchedName.party}
+                    />
+                ))}
+            </section>
+        </div>
+    </>
+
     );
 }
 
-export default Search;
+export default SearchPage;

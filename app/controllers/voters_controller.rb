@@ -30,12 +30,21 @@ rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
         head :no_content
     end
 
+    def search 
+        voter = Voter.search(params)
+        render json: voter
+    end 
+
     private 
 
     #user has to sign up and sign in before they can register to vote 
     def new_voter_params
         params.permit(:id, :first, :last, :password, :isActive, :age, :party, :party_id, :address1, :address2, :postalCode, :voting_party)
     end
+
+    # def search_params
+    #     params.permit(:first, :last, :postalCode)
+    # end
 
     def update_voter_params
         params.permit(:isActive, :party, :address1, :address2, :postalCode)
