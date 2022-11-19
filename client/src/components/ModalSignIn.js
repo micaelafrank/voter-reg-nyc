@@ -123,11 +123,11 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
             errorNum = 3;
             setErrorMessages(error3);
         }
-        if (errorNum === 0 && loginPassword !== loginPasswordConf) {
+        if (errorNum === 0 && (loginPassword !== loginPasswordConf)) {
             errorNum = 4;
             setErrorMessages(error4);
         }
-        else if (errorNum === 0 && loginPassword === loginPasswordConf) {
+        if (errorNum === 0 && loginPassword === loginPasswordConf) {
             handleValidation();
             setErrorMessages("");
             console.log("No errors!");

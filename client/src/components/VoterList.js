@@ -4,7 +4,7 @@ import Search from "./Search";
 
 
 // function VoterList({ handleSearchSubmit, setIsFiltering, setIsSearching, isFiltering, firstNameSearch, lastNameSearch, zipSearch, count, handleSearchClear, searchedNames, isSearching, voters, setVoters, deleteVoter }) {
-function VoterList({ handleSearchSubmit, firstNameSearch, searchedNames, count, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
+function VoterList({ renderMessage, handleSearchSubmit, firstNameSearch, searchedNames, count, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
     
     const listOfVoters = voters.map((voter) => (
         <Voter
@@ -41,7 +41,7 @@ function VoterList({ handleSearchSubmit, firstNameSearch, searchedNames, count, 
             <section className={isFiltering ? "searchGridContainer" : `voterGridContainer`}>
                 {listOfVoters}
             </section>
-            {(isSearching && count === 0) ? <p id="error-message"><span style={{ fontWeight: "bold" }}>Not Found:</span> Your search did not match any record on file. Please ensure fields are accurate and try again.</p> : null}
+            {count=0 ? <p style={{ fontSize: "18px", color: "maroon" }} id="error-message"><span style={{ fontWeight: "bold" }}>Not Found:</span> Your search did not match any record on file. Please ensure fields are accurate and try again.</p> : null}
         </React.Fragment>
     );
 }
