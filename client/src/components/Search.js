@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import VoterList from "./VoterList";
-import Voter from "./Voter";
-import VoterPage from "./VoterPage";
+
 
 function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, setLastNameSearch, setZipSearch, handleSearchClear, handleSearchSubmit }) {
+    // const [formData, setFormData] = useState({ firstNameSearch:"", lastNameSearch: "", zipSearch:"" });
     const [fnSearch, setFNSearch] = useState("");
     const [lnSearch, setLNSearch] = useState("");
     const [zcSearch, setZCSearch] = useState("");
-    const searchedVoter = { fnSearch, lnSearch, zcSearch }
-
     function handleSubmit(e) {
         e.preventDefault();
         setFirstNameSearch(fnSearch);
@@ -17,18 +14,17 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
         handleSearchSubmit();
     }
 
+    function handleSearch() {
+        setIsFiltering(true);
+        console.log(`Filter results: ${isFiltering}`);
+    }
+
     function clearSearch() {
         setFNSearch("");
         setLNSearch("");
         setZCSearch("");
         handleSearchClear();
     }
-
-    function handleSearch() {
-        setIsFiltering(true);
-        console.log(`Filter results: ${isFiltering}`);
-    }
-
     function SubmitButton() {
         if (fnSearch && lnSearch && (zcSearch.length === 5)) {
             return <button type="submit">Submit</button>
@@ -46,7 +42,7 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
                     <input
                         width="20%"
                         required
-                        type="search"
+                        type="text"
                         id="firstNameSearch"
                         name="firstNameSearch"
                         placeholder="First name"
@@ -57,7 +53,7 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
                     <input
                         required
                         width="20%"
-                        type="search"
+                        type="text"
                         id="lastNameSearch"
                         name="lastNameSearch"
                         placeholder="Last name"

@@ -6,18 +6,6 @@ import Search from "./Search";
 // function VoterList({ handleSearchSubmit, setIsFiltering, setIsSearching, isFiltering, firstNameSearch, lastNameSearch, zipSearch, count, handleSearchClear, searchedNames, isSearching, voters, setVoters, deleteVoter }) {
 function VoterList({ handleSearchSubmit, firstNameSearch, searchedNames, count, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
     
-    // let count = 0;
-
-    // const searchedNames = voters.filter((voter) => {
-    //     // return (voter.first == firstNameSearch) && (voter.last == lastNameSearch) && (voter.postalCode.toString() == zipSearch)
-    //     if ((voter.first == firstNameSearch) && (voter.last == lastNameSearch) && (voter.postalCode.toString() == zipSearch)) {
-    //         count = true;
-    //         return true;
-    //     } else if (count === 0) {
-    //         count = false;
-    //     }
-    // })
-
     const listOfVoters = voters.map((voter) => (
         <Voter
             key={voter.id}
@@ -39,10 +27,10 @@ function VoterList({ handleSearchSubmit, firstNameSearch, searchedNames, count, 
             setIsSearching={setIsSearching}
             isSearching={isSearching}
             isFiltering={isFiltering}
-            handleSearchClear={handleSearchClear}
-            handleDelete={deleteVoter}
-            firstNameSearch={firstNameSearch}
-            lastNameSearch={lastNameSearch}
+            // handleSearchClear={handleSearchClear}
+            // handleDelete={deleteVoter}
+            // firstNameSearch={firstNameSearch}
+            // lastNameSearch={lastNameSearch}
             zipSearch={zipSearch}
         />
     ))
@@ -51,7 +39,7 @@ function VoterList({ handleSearchSubmit, firstNameSearch, searchedNames, count, 
         <React.Fragment>
             <h1 className="formHeading4" style={{ paddingTop: "50px", paddingBottom: "20px", fontFamily: "KGThankYouStamp", textAlign: "center", fontSize: "60px" }}>REGISTERED VOTERS</h1>
             <section className={isFiltering ? "searchGridContainer" : `voterGridContainer`}>
-                {isSearching ? searchedNames : listOfVoters}
+                {listOfVoters}
             </section>
             {(isSearching && count === 0) ? <p id="error-message"><span style={{ fontWeight: "bold" }}>Not Found:</span> Your search did not match any record on file. Please ensure fields are accurate and try again.</p> : null}
         </React.Fragment>

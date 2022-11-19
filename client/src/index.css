@@ -25,13 +25,12 @@ body {
 }
 
 .modal-title1 {
-  font-size: 70px;
+  font-size: 77px;
   display: flow-root;
-  line-height: 1.2;
   letter-spacing: 3px;
   text-shadow: 2px 2px rgb(120, 167, 187);
   text-align: center;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   font-family: KGThankYouStamp;
 }
 
@@ -44,12 +43,37 @@ body {
   margin-left: 50px;
 } */
 
+.pwContainer{
+  justify-content: flex-start;
+  /* width: 55%; */
+  align-items: center;
+  text-align: center;
+}
+
+.modalPwCont{
+  align-items: center;
+  width: 90%;
+  justify-content: flex-start;
+}
+
 
 .signInInput {
   font-size: 12px;
   /* align-items: right; */
   width: 55%;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  text-align: left;
+  height: 38px;
+  padding: 7px;
+  font-family: monospace;
+  margin-bottom: 20px;
+  display: table column;
+}
+
+.signInInputPw{
+  font-size: 12px;
+  width: 51%;
+  justify-content: flex-end;
   text-align: left;
   height: 38px;
   padding: 7px;
@@ -65,8 +89,9 @@ body {
   font-family: monospace;
 }
 
+
+
 .modal {
-  margin: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -74,21 +99,21 @@ body {
   position: fixed;
   width: 100%;
   height: auto;
-  max-width: 47rem;
+  max-width: 50rem;
   background-color: white;
   border: 2px solid black;
   border-radius: 1rem;
 }
 
 .modal-header {
-  padding: 0.1rem 1.5rem .3rem 1.5rem;
+  padding: 0.1rem 1.5rem 0rem 1.5rem;
   align-items: center;
 }
 
 .modal-content {
   text-align: left;
   align-items: center;
-  padding: 0 1.5rem 1rem 1.5rem;
+  padding: 2rem;
   align-items: center;
 }
 
@@ -108,10 +133,10 @@ body {
   height: 40px;
   font-family: monospace;
   width: 150px;
-  margin-left: 5px;
   font-weight: bold;
   font-size: 15px;
-  margin-right: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #deleteRegBtn {
@@ -154,9 +179,9 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 100%; */
 }
 
 #modal1:hover,
@@ -208,16 +233,18 @@ body.modal-open {
   overflow: hidden;
 }
 
-.form-label {
-  /* width: 200px; */
-  text-align: left;
+/* .form-label { */
+  /* text-align: left;
   justify-content: center;
   align-items: center;
-}
+} */
 
 label.signInStyle {
   font-size: 14px;
-  width: 30%;
+  text-align: left;
+  width: 40%;
+  justify-content: flex-start;
+  float: left;
 }
 
 input[placeholder] {
@@ -366,7 +393,7 @@ select {
 .inputText {
   font-size: 14px;
   height: 45px;
-  padding: 15px 25px;
+  padding: 18px 25px;
   width: 320px;
   text-align: left;
   padding-left: 10px;
@@ -1047,7 +1074,8 @@ label {
 #togglePassword2Input {
   /* height: 32;
   width: 32; */
-  margin-left: 10px;
+  margin: 10px;
+  float: right;
 }
 
 #checkButton {
@@ -1078,25 +1106,26 @@ textarea.form-controlFN {
   background-repeat: no-repeat;
   background-size: 1rem 1rem;
   font-size: 1.2rem;
+  margin: 5px;
 }
 
 #closeButton {
-  display: inline-block;
+  display: relative;
   content: "";
   vertical-align: -.125em;
   /* background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' clip-rule='evenodd'/></svg>"); */
   background-repeat: no-repeat;
-  background-size: 3rem 3rem;
+  background-size: 2rem 2rem;
   font-size: 1.5rem;
   width: 1.5rem;
-  height: 1.5rem;
+  height: 1rem;
 }
 
 .XIconContainer {
   display: flex;
   cursor: pointer;
   position: relative;
-  padding-top: 1.2rem;
+  padding-top: 0rem;
   flex-direction: row;
   justify-content: right;
   align-items: right;
@@ -1117,15 +1146,17 @@ i#togglePassword2.bi {
   background-repeat: no-repeat;
   background-size: 1rem 1rem;
   font-size: 1.2rem;
+  margin: 5px;
 }
 
-#passwordLabel1,
+/* #passwordLabel1,
 #passwordLabel2 {
-  width: 30%;
-}
+  width: 10%;
+} */
 
-#passwordInput,
+/* #passwordInput,
 #passwordInput2 {
   justify-content: flex-start;
-  width: 50%;
-}
+  width: 90%;
+  margin: 2px;
+} */

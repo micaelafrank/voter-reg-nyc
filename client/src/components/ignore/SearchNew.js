@@ -1,64 +1,65 @@
 import React, { useState } from "react";
-import SearchedVoter from "./SearchedVoter";
+import Voter from "../Voter";
+import VoterList from "../VoterList";
 
 
-function SearchPage() {
-    // const [formData, setFormData] = useState({ 
-    //     firstNameSearch: "", 
-    //     lastNameSearch: "", 
-    //     zipSearch: "" 
-    // });
+function SearchNew({ isFiltering, editSearchParams, listOfVoters, setIsFiltering, isSearching, handleSearchClear, handleSearchSubmit }) {
+    // const [formData, setFormData] = useState({ firstNameSearch:"", lastNameSearch: "", zipSearch:"" });
     const [fnSearch, setFNSearch] = useState("");
     const [lnSearch, setLNSearch] = useState("");
     const [zcSearch, setZCSearch] = useState("");
-    const [isFiltering, setIsFiltering] = useState(false);
-    const [errors, setErrors] = useState([]);
-    const [voters, setVoters] = useState([]);
-    // const [q, setQ] = useState("");
-    const [searchParam] = useState(["firstName", "lastName", postalCode]);
+    const [err, setErrors] = useState("");
+    const searchedVoter = { fnSearch, lnSearch, zcSearch }
 
-
-    useEffect(() => {
-        fetch("/voters/search")
-            .then(res => res.json())
-            .then(voters => setVoters(voters))
-    }, [])
-    console.log(voters)
-
-
-    const formData = new FormData();
-    formData.append('fnSearch', fnSearch);
-    formData.append('lnSearch', lnSearch);
-    formData.append('zcSearch', zcSearch);
-    console.log(formData)
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(formData)
-        setIsFiltering(true);
-        setErrors([]);
-        fetch("voters/search",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-        })
-        .then(res => res.json())
-        .then(data => processSearch(data));
+        setFNSearch(e.target.value.toLowerCase());
+        setLNSearch(e.target.value.toLowerCase());
+        setZCSearch(e.target.value);
+        console.log(searchedVoter)
+
+        fetch(`/search/=?${searchedVoter}`).then((r) => {
+            if (r.ok) {
+                r.json().then(editSearchParams)
+            } else {
+                r.json().then((err) =>
+                    setErrors(err)
+                );
+            }
+        });
+        clearSearch();
     }
 
-    const searchedNames = voters.filter((voter) => {
-            return searchParam.some((searchedVoter) => {
-                return (
-                    voter[searchedVoter]
-                        .toString()
-                        .toLowerCase()
-                        .indexOf(q.toLowerCase()) > -1
-                );
-            })
-        })
+    // const cartItem = item
+    //     fetch("/voters/search", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({searchedVoter}),
+    //     })
+    //         .then(res => res.json())
+    //         .then(handleSearch)
+    // }
 
+    // function handleSearch(e){
+    //     e.preventDefault();
+    //     fetch("/voters/search").then((r) => {
+    //         if (r.ok) {
+    //             r.json().then(editSearchParams)
+    //         } else {
+    //             r.json().then((err) =>
+    //                 setErrors(err)
+    //             );
+    //         }
+    //     });
+    // }
+
+    // function handleSearch() {
+    //     setIsFiltering(true);
+    //     console.log(`Filter results: ${isFiltering}`);
+    // }
 
     function clearSearch() {
         setFNSearch("");
@@ -66,8 +67,6 @@ function SearchPage() {
         setZCSearch("");
         handleSearchClear();
     }
-
-
     function SubmitButton() {
         if (fnSearch && lnSearch && (zcSearch.length === 5)) {
             return <button type="submit">Submit</button>
@@ -77,7 +76,6 @@ function SearchPage() {
     };
 
     return (
-        <>
         <div className="searchBarContainer">
             <form id="searchForm" style={{ fontFamily: "monospace" }} className="searchbarForm" onSubmit={handleSubmit}>
                 <h4 style={{ lineHeight: "0", fontSize: "30px", textAlign: "center" }}>CHECK YOUR VOTER STATUS</h4>
@@ -129,32 +127,13 @@ function SearchPage() {
                         onChange={(e) => setZCSearch(e.target.value)}
                     // onChange={(e) => setPostalCode(e.target.value)}
                     />
-                    <SubmitButton type="submit" />
+                    <SubmitButton value="search" />
+                    {/* onClick={handleSearch}  */}
                     <button style={{ fontFamily: "monospace" }} onClick={clearSearch}>Clear Search</button>
                 </div>
             </form>
         </div>
-        <div>
-            <h1 className="formHeading4" style={{ paddingTop: "50px", paddingBottom: "20px", fontFamily: "KGThankYouStamp", textAlign: "center", fontSize: "60px" }}>REGISTERED VOTERS</h1>
-            <section className="searchGridContainer">
-                {searchedNames.map((searchedName) => (
-                    <SearchedVoter 
-                    key={searchedName.key}
-                    id={searchedName.id}
-                    firstName={searchedName.firstName}
-                    lastName={searchedName.lastName}
-                    address1={searchedName.address1}
-                    address2={searchedName.address2}
-                    postalCode={searchedName.postalCode}
-                    age={searchedName.age}
-                    party={searchedName.party}
-                    />
-                ))}
-            </section>
-        </div>
-    </>
-
     );
 }
 
-export default SearchPage;
+export default SearchNew;

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaExclamationTriangle } from "react-icons/fa";
 
 
+
 function ModalSignIn({ show, validated, handleValidation, setValidated, count, age, address1, handleCount, address2, id, postalCode, party, isActive, setShow, lastName, firstName, password, handleClose, handleShow }) {
     const navigate = useNavigate();
     const [inputColor, setInputColor] = useState(false);
@@ -20,6 +21,8 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
     const [canEdit, setCanEdit] = useState(false);
     const [revealText, setRevealText] = useState(false);
     const [confTextReveal, setConfTextReveal] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword2, setShowPassword2] = useState(false);
 
     // const formData = {loginFirstName, loginLastName, loginPassword, loginPasswordConf}
 
@@ -161,7 +164,7 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
 
 
     return (
-        <>
+        <div style={{margin: "5px"}}>
             <div className='modal-container'>
                 <section className="modal">
                     <Button variant="primary" onClick={handleShow}>Edit Voter Information</Button>
@@ -189,7 +192,7 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
                         </Modal.Header>
                         <Modal.Body className="modal-content">
                             {/* {errorMessages ? <Form.Label className="errorMessage" style={{ color: "red" }}>{errorMessages}</Form.Label> : null} */}
-                            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                            <Form className="modal-form" noValidate validated={validated} onSubmit={handleSubmit}>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label id="signInName" className="signInStyle">FIRST NAME:</Form.Label>
                                     <Form.Control
@@ -230,7 +233,7 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
                                     <Form.Control
                                         type="password"
                                         style={inputColor ? { color: "black" } : { color: "gray" }}
-                                        className="signInInput"
+                                        className="signInInputPw"
                                         value={loginPassword}
                                         name="loginPassword"
                                         placeholder="Enter password"
@@ -247,9 +250,8 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
                                     <Form.Label id="passwordLabel2" className="signInStyle">CONFIRM PASSWORD:</Form.Label>
                                     <Form.Control
-                                        type="password"
+                                        className="signInInputPw"
                                         style={inputColor ? { color: "black" } : { color: "gray" }}
-                                        className="signInInput"
                                         onChange={(e) => {
                                             handleNameInput();
                                             setLoginPasswordConf(e.target.value)
@@ -258,9 +260,11 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
                                         name="loginPasswordConf"
                                         placeholder="Re-enter password"
                                         autoFocus
+                                        type={showPassword ? "text" : "password"} 
                                         id="passwordInput2"
                                     />
-                                    {confTextReveal ? (<i className="bi bi-eye" onClick={handleConfTextReveal} id="togglePassword2"></i>) : (<i className="bi bi-eye-slash" onClick={handleConfTextReveal} id="togglePassword2"></i>)}
+                                    
+                                    {confTextReveal ? (<i className="bi bi-eye" onClick={handleConfTextReveal} id="togglePassword2"></i>) : (<i className="bi bi-eye-slash" onClick={handleConfTextReveal} id="togglePassword2"></i>)}  
                                 </Form.Group>
                                 {/* {errorNum = 4 ? <Form.Label className="errorMessage" style={{ color: "red" }}>{error4}</Form.Label> : null}                             */}
                                 <Modal.Footer>
@@ -280,7 +284,7 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
                     {/* {canEdit ? <EditVoterCard firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
                 </section>
             </div>
-        </>
+        </div>
     );
 }
 

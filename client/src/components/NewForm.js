@@ -246,7 +246,7 @@ function NewForm({ addNewVoter, voters, setVoters }) {
                             <Form.Check style={{ display: "flex", flexDirection: "row", alignItems: "center", textAlign: "center", lineHeight: "1" }} id="formCheck2" required label="I certify that the above information is true and correct." />
                         </Col>
                     </Row>
-                    <Button style={{ marginTop: "35px", marginLeft: "10px", fontFamily: "KGThankYouStamp" }} variant="primary" id="newVoterSubmit" type="submit">SUBMIT</Button>
+                    <Button style={{ marginTop: "35px", marginLeft: "10px", fontFamily: "KGThankYouStamp", borderRadius:"2px" }} variant="primary" id="newVoterSubmit" type="submit">SUBMIT</Button>
                 </Form>
             </div>
         </React.Fragment>

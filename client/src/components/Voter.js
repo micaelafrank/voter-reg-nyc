@@ -43,8 +43,7 @@ function Voter({ isActive, handleSearchSubmit, address1, address2, isFiltering, 
     }
 
     let count = 1;
-
-
+    
     function resetCount() {
         count = 0;
     }
