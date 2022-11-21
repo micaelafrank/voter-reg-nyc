@@ -199,34 +199,6 @@ body {
   font-size: 15px;
 }
 
-/* .fade.modal-backdrop.show {
-  opacity: 0.7;
-  align-items: center;
-  background-color: #555;
-  /* top: 50%;
-  left: 50%; */
-/* transform: translate(-50%, -50%); 
-}
-
-.modal-content {
-  background-color: white;
-  position: absolute;
-  padding: 100px;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  width: 600px;
-  border-radius: 10px;
-  border: 2px solid black;
-} */
-
-/* .modal{
-  position: fixed;
-}
-
-.modal-content{
-  position: relative;
-} */
 
 .btn-close {
   display: hidden;
@@ -310,14 +282,6 @@ input[placeholder] {
   cursor: pointer;
 }
 
-
-/* #button1home {
-  margin-right: 25px;
-}
-
-#button2home {
-  margin-left: 25px;
-} */
 
 .homeNavItem {
   text-decoration: none;
