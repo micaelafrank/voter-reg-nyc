@@ -58,7 +58,7 @@ function Voter({ isActive, handleSearchSubmit, address1, address2, isFiltering, 
                     {isFiltering ? <p style={{ textAlign: "center", alignItems: "center" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p> : null}
                     <p style={{ alignItems: "left" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
                     {/* <div className={isFiltering ? `searchMargins` : null}> */}
-                    <p style={{ fontSize: "13px", color: isActive ? "black" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
+                    <p style={{ fontSize: "14px", color: isActive ? "black" : "rgb(121, 15, 15)" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
                     {isFiltering ? <p>RESIDENTIAL ADDRESS: {address1}, {address2} {postalCode}</p> : null}
                     {/* <p>{postalCode}</p> */}
                     {/* {isFiltering ?  */}

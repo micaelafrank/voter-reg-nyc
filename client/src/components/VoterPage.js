@@ -37,7 +37,6 @@ function VoterPage() {
     // }
 
     const renderMessage = "Not found: Your search did not match any record on file. Please ensure fields are accurate and try again.";
-
     let count = 0;
 
     const searchedNames = voters.filter((voter) => {
@@ -47,8 +46,13 @@ function VoterPage() {
         } else if (count === 0) {
             count = false;
             console.log(renderMessage)
-        }
-    })
+        }})
+    //         count += 1;
+    //     } else {
+    //         count = 0;
+    //     }
+    //     return count;
+    // })
 
     function handleSearchSubmit() {
         setIsSearching(true);
@@ -71,7 +75,7 @@ function VoterPage() {
             {/* <GridColSizesExample /> */}
             <Search setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} handleSearchClear={handleSearchClear} handleSearchSubmit={handleSearchSubmit} setZipSearch={setZipSearch} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} />
             {/* <VoterList voters={searchedNames} voters={voters} setVoters={setVoters} searchVoters={searchVoters} deleteVoter={deleteVoter} /> */}
-            <VoterList count={count} renderMessage={renderMessage} error={error} voters={isSearching ? searchedNames : voters} handleSearchSubmit={handleSearchSubmit} handleSearchClear={handleSearchClear} handleDelete={deleteVoter} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} setZipSearch={setZipSearch} setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} />
+            <VoterList count={count} setVoters={setVoters} renderMessage={renderMessage} error={error} voters={isSearching ? searchedNames : voters} handleSearchSubmit={handleSearchSubmit} handleSearchClear={handleSearchClear} handleDelete={deleteVoter} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} setZipSearch={setZipSearch} setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} />
         </main>
     )
 }

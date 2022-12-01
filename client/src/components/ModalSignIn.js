@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 // import EditVoterCard from './EditVoterCard';
 import { FaExclamationTriangle } from "react-icons/fa";
-
+import SearchedVoter from './SearchedVoter';
 
 
 function ModalSignIn({ show, validated, handleValidation, setValidated, count, age, address1, handleCount, address2, id, postalCode, party, isActive, setShow, lastName, firstName, password, handleClose, handleShow }) {
@@ -16,13 +16,15 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
     const [loginPassword, setLoginPassword] = useState("");
     const [loginPasswordConf, setLoginPasswordConf] = useState("");
     // const [validated, setValidated] = useState(false);
-    const [errorHandling, setErrorHandling] = useState(false);
+    // const [errors, setErrors] = useState("");
     const [errorMessages, setErrorMessages] = useState("");
     const [canEdit, setCanEdit] = useState(false);
     const [revealText, setRevealText] = useState(false);
     const [confTextReveal, setConfTextReveal] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [voter, setVoter] = useState({})
 
     // const formData = {loginFirstName, loginLastName, loginPassword, loginPasswordConf}
 
@@ -38,69 +40,33 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
 
     useEffect(() => console.log("re-render because input changed: ", handleSubmit), [errorMessages])
 
-    function handleSubmit(e) {
-        e.preventDefault();
-    setIsLoading(true);
-    fetch("/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ loginFirstName, loginLastName, loginPassword }),
-    })
-    .then(resp => resp.json()).then(data => console.log(data))
-    .then((r) => {
-    setIsLoading(false);
-    if (r.ok) {
-        r.json().then((user) => onLogin(user));
-        setValidated(true);
-        setErrorMessages("");
-        console.log("No errors!");
-        handleCount();
-        handleClose();
-        setCanEdit(canEdit => (!canEdit));
-        navigate("/voters/editvoter");
-    } else {
-        if (loginFirstName === firstName) {
-            errorNum = 0;
-            // setErrorMessages(errorNum);
-            console.log(errorMessages);
-        } else if (loginFirstName !== firstName) {
-            errorNum = 1;
-            setErrorMessages(error1);
-        }
-        if (errorNum === 0 && (loginLastName === lastName)) {
-            errorNum = 0;
-        }
-        else if (errorNum === 0 && (loginLastName !== lastName)) {
-            errorNum = 2;
-            setErrorMessages(error2);
-        }
-        if (errorNum === 0 && (loginPassword === password)) {
-            errorNum = 0;
-        }
-        else if (errorNum === 0 && (loginPassword !== password)) {
-            errorNum = 3;
-            setErrorMessages(error3);
-        }
-        if (errorNum === 0 && loginPassword !== loginPasswordConf) {
-            errorNum = 4;
-            setErrorMessages(error4);
-        }
-    r.json().then((err) => console.log(err.errors)); 
-    setErrors(err.errors)
-                }
-            });
-    }
-
     // function handleSubmit(e) {
     //     e.preventDefault();
-    //     console.log(firstName);
-    //     console.log(lastName);
-    //     console.log(password);
-    //     console.log(loginFirstName);
-    //     // console.log(formData);
-
+    //     setIsLoading(true);
+    //     const fullname = `${loginFirstName} ${loginLastName}`
+    //     fetch("/login", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({ 
+    //             fullname: fullname, 
+    //             password: loginPassword }),
+    // })
+    // .then(r => r.json()).then(data => console.log(data))
+    // .then((r) => {
+    // setIsLoading(false);
+    // if (r.ok) {
+    //     r.json().then((voter) => setVoter(voter));
+    //     setValidated(true);
+    //     setErrorMessages("");
+    //     console.log("No errors!");
+    //     handleCount();
+    //     handleClose();
+    //     setCanEdit(canEdit => (!canEdit));
+    //     navigate("/voters/editvoter");
+    // } 
+    // else {
     //     if (loginFirstName === firstName) {
     //         errorNum = 0;
     //         // setErrorMessages(errorNum);
@@ -123,22 +89,62 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
     //         errorNum = 3;
     //         setErrorMessages(error3);
     //     }
-    //     if (errorNum === 0 && (loginPassword !== loginPasswordConf)) {
+    //     if (errorNum === 0 && loginPassword !== loginPasswordConf) {
     //         errorNum = 4;
     //         setErrorMessages(error4);
     //     }
-    //     if (errorNum === 0 && loginPassword === loginPasswordConf) {
-    //         handleValidation();
-    //         setErrorMessages("");
-    //         console.log("No errors!");
-    //         handleCount();
-    //         handleClose();
-    //         setCanEdit(canEdit => (!canEdit));
-    //         navigate("/voters/editvoter");
-    //     }
-    //     console.log(errorMessages)
-    //     return (errorMessages)
+    //     r.json().then((err) => setErrorMessages(err.errorMessages));
+    //     console.log("my error: ", errorMessages.message)
+    //             }
+    //         });
     // }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log("first name: ", firstName);
+        console.log("last name: ", lastName);
+        console.log("password: ", password);
+        console.log(loginFirstName);
+        // console.log(formData);
+
+        if (loginFirstName === firstName) {
+            errorNum = 0;
+            // setErrorMessages(errorNum);
+            console.log(errorMessages);
+        } else if (loginFirstName !== firstName) {
+            errorNum = 1;
+            setErrorMessages(error1);
+        }
+        if (errorNum === 0 && (loginLastName === lastName)) {
+            errorNum = 0;
+        }
+        else if (errorNum === 0 && (loginLastName !== lastName)) {
+            errorNum = 2;
+            setErrorMessages(error2);
+        }
+        if (errorNum === 0 && (loginPassword === password)) {
+            errorNum = 0;
+        }
+        else if (errorNum === 0 && (loginPassword !== password)) {
+            errorNum = 3;
+            setErrorMessages(error3);
+        }
+        if (errorNum === 0 && (loginPassword !== loginPasswordConf)) {
+            errorNum = 4;
+            setErrorMessages(error4);
+        }
+        if (errorNum === 0 && loginPassword === loginPasswordConf) {
+            handleValidation();
+            setErrorMessages("");
+            console.log("No errors!");
+            handleCount();
+            handleClose();
+            setCanEdit(canEdit => (!canEdit));
+            navigate("/voters/editvoter");
+        }
+        console.log(errorMessages)
+        return (errorMessages)
+    }
 
     const togglePassword = document.querySelector("#togglePassword");
     const togglePassword2 = document.querySelector("#togglePassword2");
@@ -182,6 +188,7 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
                             <Modal.Title className="modal-title2">
                                 To make any changes to your registration record, sign in using the password connected to your account.
                             </Modal.Title>
+                            {/* <p style={{ marginTop: "25px", marginBottom: "25px", color: "red", textAlign: "center" }}>{errorMessages}</p> */}
                             {errorMessages ?
                                 (<p className="errorMessage" style={{ color: "red" }}>
                                     <div className="errorMessageContainer" style={{ display: "flex", fontFamily: "helvetica", letterSpacing: "2", fontSize: "16px", flexDirection: "row", textAlign: "center", justifyContent: "center" }}>

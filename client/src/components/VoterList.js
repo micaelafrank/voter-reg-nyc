@@ -10,6 +10,7 @@ function VoterList({ renderMessage, handleSearchSubmit, firstNameSearch, searche
         <Voter
             key={voter.id}
             id={voter.id}
+            voters={voters}
             lastName={voter.last}
             firstName={voter.first}
             address1={voter.address1}
@@ -41,7 +42,8 @@ function VoterList({ renderMessage, handleSearchSubmit, firstNameSearch, searche
             <section className={isFiltering ? "searchGridContainer" : `voterGridContainer`}>
                 {listOfVoters}
             </section>
-            {count=0 ? <p style={{ fontSize: "18px", color: "maroon" }} id="error-message"><span style={{ fontWeight: "bold" }}>Not Found:</span> Your search did not match any record on file. Please ensure fields are accurate and try again.</p> : null}
+            {/* {listOfVoters.length > 0 ? null : renderMessage} */}
+            {listOfVoters.length > 0 ? null : <p style={{ lineHeight:"1.8", fontSize: "18px", color: "maroon" }} id="error-message"><span style={{ fontWeight: "bold", fontSize:"22px" }}>VOTER NOT FOUND</span><br></br>Your search did not match any record on file.<br></br>Please ensure all information is accurate and try again.</p> }
         </React.Fragment>
     );
 }

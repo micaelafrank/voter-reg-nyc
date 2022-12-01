@@ -736,7 +736,8 @@ label {
 .voterContainerRed {
   padding: 15px 10px;
   display: inline-grid;
-  border: .8px solid red;
+  border: 1px solid rgb(121, 15, 15);
+  background-color: rgb(253, 240, 240);
   width: 300px;
   align-items: center;
   text-align: center;
@@ -754,7 +755,7 @@ label {
 .searchContainerRed {
   padding: 35px;
   display: inline-grid;
-  border: 2px solid red;
+  border: 2px solid rgb(121, 15, 15);
   width: 70%;
   height: auto;
   text-align: left;

@@ -35,6 +35,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
         render json: voter
     end 
 
+
     private 
 
     #user has to sign up and sign in before they can register to vote 
