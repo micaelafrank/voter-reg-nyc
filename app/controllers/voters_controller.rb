@@ -52,11 +52,11 @@ rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
     end
 
     def find_voter
-        VoterRecord.find(params[:id])
+        Voter.find(params[:id])
     end
 
     def cant_show_voter
-        render json: {error: "This voter record is not available."}, status: :not_available
+        render json: {error: "This voter record is not available."}, status: :no_content
     end
 
     def voter_invalid(invalid)

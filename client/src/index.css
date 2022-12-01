@@ -588,13 +588,13 @@ label {
 }
 
 .searchGridContainer {
-  display: grid;
+  /* display: grid; */
   /* grid-template-columns: 1fr 1fr 1fr; */
-  grid-template-columns: 1fr;
-  grid-gap: 10px;
+  /* grid-template-columns: 1fr;
+  grid-gap: 10px; */
   justify-content: center;
   /* align-content: space-around; */
-  max-width: 100%;
+  max-width: 80%;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
@@ -684,8 +684,6 @@ label {
   justify-self: center;
   align-items: center;
   position: relative;
-  margin-top: 5px;
-  margin-bottom: 5px;
   width: 100%;
   height: auto;
   text-align: left;
@@ -753,10 +751,9 @@ label {
 }
 
 .searchContainerRed {
-  padding: 35px;
-  display: inline-grid;
+  padding: 20px 0px 35px 40px;
   border: 2px solid rgb(121, 15, 15);
-  width: 70%;
+  width: 60%;
   height: auto;
   text-align: left;
   align-content: left;

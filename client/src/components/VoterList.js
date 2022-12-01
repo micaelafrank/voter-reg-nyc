@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Voter from "./Voter";
 import Search from "./Search";
+import SearchedVoter from "./SearchedVoter";
 
 
 // function VoterList({ handleSearchSubmit, setIsFiltering, setIsSearching, isFiltering, firstNameSearch, lastNameSearch, zipSearch, count, handleSearchClear, searchedNames, isSearching, voters, setVoters, deleteVoter }) {
@@ -17,6 +18,7 @@ function VoterList({ renderMessage, handleSearchSubmit, firstNameSearch, searche
             address2={voter.address2}
             isActive={voter.isActive}
             setVoters={setVoters}
+            age={voter.age}
             count={count}
             searchedNames={searchedNames}
             party={voter.party}

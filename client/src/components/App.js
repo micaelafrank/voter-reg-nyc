@@ -9,7 +9,8 @@ import WithNav from './WithNav'
 import NewForm from './NewForm'
 // import ModalSignIn from './ModalSignIn'
 // import EditVoterCard from './EditVoterCard'
-
+import SearchedVoter from './SearchedVoter';
+import EditVoterInfo from './EditVoterInfo';
 
 function App() {
   const [voters, setVoters] = useState({})
@@ -70,6 +71,7 @@ function App() {
           {/* <Route path="voters/search" element={<SearchPage /> } /> */}
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
+          <Route path="/voters/edit" element={<EditVoterInfo />} />
           <Route path="/register" element={<NewForm voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
           {/* <Route path="/modalsignin" element={<ModalSignIn />} /> */}
           {/* <Route path="/voters/editvoter" element={<EditVoterCard />} /> */}

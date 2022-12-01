@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 // import EditVoterCard from './EditVoterCard';
 import { FaExclamationTriangle } from "react-icons/fa";
 import SearchedVoter from './SearchedVoter';
+import EditVoterInfo from './EditVoterInfo';
 
 
 function ModalSignIn({ show, validated, handleValidation, setValidated, count, age, address1, handleCount, address2, id, postalCode, party, isActive, setShow, lastName, firstName, password, handleClose, handleShow }) {
@@ -24,10 +25,9 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [voter, setVoter] = useState({})
-
     // const formData = {loginFirstName, loginLastName, loginPassword, loginPasswordConf}
 
+    console.log("id: ", id);
     function handleNameInput() {
         setInputColor(true);
     }
@@ -39,65 +39,6 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
     const error4 = "Passwords entered do not match. Please try again.";
 
     useEffect(() => console.log("re-render because input changed: ", handleSubmit), [errorMessages])
-
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     setIsLoading(true);
-    //     const fullname = `${loginFirstName} ${loginLastName}`
-    //     fetch("/login", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({ 
-    //             fullname: fullname, 
-    //             password: loginPassword }),
-    // })
-    // .then(r => r.json()).then(data => console.log(data))
-    // .then((r) => {
-    // setIsLoading(false);
-    // if (r.ok) {
-    //     r.json().then((voter) => setVoter(voter));
-    //     setValidated(true);
-    //     setErrorMessages("");
-    //     console.log("No errors!");
-    //     handleCount();
-    //     handleClose();
-    //     setCanEdit(canEdit => (!canEdit));
-    //     navigate("/voters/editvoter");
-    // } 
-    // else {
-    //     if (loginFirstName === firstName) {
-    //         errorNum = 0;
-    //         // setErrorMessages(errorNum);
-    //         console.log(errorMessages);
-    //     } else if (loginFirstName !== firstName) {
-    //         errorNum = 1;
-    //         setErrorMessages(error1);
-    //     }
-    //     if (errorNum === 0 && (loginLastName === lastName)) {
-    //         errorNum = 0;
-    //     }
-    //     else if (errorNum === 0 && (loginLastName !== lastName)) {
-    //         errorNum = 2;
-    //         setErrorMessages(error2);
-    //     }
-    //     if (errorNum === 0 && (loginPassword === password)) {
-    //         errorNum = 0;
-    //     }
-    //     else if (errorNum === 0 && (loginPassword !== password)) {
-    //         errorNum = 3;
-    //         setErrorMessages(error3);
-    //     }
-    //     if (errorNum === 0 && loginPassword !== loginPasswordConf) {
-    //         errorNum = 4;
-    //         setErrorMessages(error4);
-    //     }
-    //     r.json().then((err) => setErrorMessages(err.errorMessages));
-    //     console.log("my error: ", errorMessages.message)
-    //             }
-    //         });
-    // }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -140,7 +81,6 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
             handleCount();
             handleClose();
             setCanEdit(canEdit => (!canEdit));
-            navigate("/voters/editvoter");
         }
         console.log(errorMessages)
         return (errorMessages)
@@ -203,7 +143,7 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label id="signInName" className="signInStyle">FIRST NAME:</Form.Label>
                                     <Form.Control
-                                        id="firstNameInput"
+                                        // id="firstNameInput"
                                         style={inputColor ? { color: "black" } : { color: "gray" }}
                                         className="signInInput"
                                         type="text"
@@ -288,7 +228,10 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
                             </Form>
                         </Modal.Body>
                     </Modal>
-                    {canEdit ? <SearchedVoter firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null}
+                    {/* {canEdit ? <SearchedVoter firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
+                    {/* {canEdit ? handleValidation() : null} 
+                    {canEdit ? <EditVoterInfo id={id} firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} age={age} /> : null} */}
+                    {validated ? <EditVoterInfo firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null}
                 </section>
             </div>
         </div>

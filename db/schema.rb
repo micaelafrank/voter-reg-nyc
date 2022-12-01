@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_190039) do
   create_table "voters", force: :cascade do |t|
     t.string "first"
     t.string "last"
-    t.string "password_digest"
+    t.string "password"
     t.string "address1"
     t.string "address2"
     t.integer "postalCode"
