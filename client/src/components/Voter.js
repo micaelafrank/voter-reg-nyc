@@ -14,6 +14,11 @@ function Voter({ isActive, id, handleSearchSubmit, address1, address2, isFilteri
     const [show, setShow] = useState(false);
     const [editCard, setEditCard] = useState(false);
 
+    const [fnState, setFnState] = useState(firstName);
+    const [editFnState, setEditFnState] = useState(false);
+    const [initialFnValue, setInitialFnValue] = useState(firstName);
+
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
