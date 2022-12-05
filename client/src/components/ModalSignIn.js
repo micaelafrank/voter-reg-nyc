@@ -110,7 +110,7 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
 
 
     return (
-        <div style={{margin: "5px"}}>
+        <div style={{ margin: "5px" }}>
             <div className='modal-container'>
                 <section className="modal">
                     <Button variant="primary" onClick={handleShow}>Edit Voter Information</Button>
@@ -207,11 +207,11 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
                                         name="loginPasswordConf"
                                         placeholder="Re-enter password"
                                         autoFocus
-                                        type={showPassword ? "text" : "password"} 
+                                        type={showPassword ? "text" : "password"}
                                         id="passwordInput2"
                                     />
-                                    
-                                    {confTextReveal ? (<i className="bi bi-eye" onClick={handleConfTextReveal} id="togglePassword2"></i>) : (<i className="bi bi-eye-slash" onClick={handleConfTextReveal} id="togglePassword2"></i>)}  
+
+                                    {confTextReveal ? (<i className="bi bi-eye" onClick={handleConfTextReveal} id="togglePassword2"></i>) : (<i className="bi bi-eye-slash" onClick={handleConfTextReveal} id="togglePassword2"></i>)}
                                 </Form.Group>
                                 {/* {errorNum = 4 ? <Form.Label className="errorMessage" style={{ color: "red" }}>{error4}</Form.Label> : null}                             */}
                                 <Modal.Footer>
