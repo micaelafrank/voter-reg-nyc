@@ -228,10 +228,12 @@ function ModalSignIn({ show, validated, handleValidation, setValidated, count, a
                             </Form>
                         </Modal.Body>
                     </Modal>
+                    {/* {validated ? <SearchedVoter firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
                     {/* {canEdit ? <SearchedVoter firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
                     {/* {canEdit ? handleValidation() : null} 
                     {canEdit ? <EditVoterInfo id={id} firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} age={age} /> : null} */}
-                    {validated ? <EditVoterInfo firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null}
+                    {/* {validated ? navigate("/voters/edit") : null} */}
+                    {/* {validated ? <EditVoterInfo firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
                 </section>
             </div>
         </div>

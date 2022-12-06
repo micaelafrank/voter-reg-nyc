@@ -5,15 +5,17 @@ import { useParams } from "react-router";
 // import Form from 'react-bootstrap/Form';
 // import Modal from 'react-bootstrap/Modal';
 import EditVoterInfo from "./EditVoterInfo";
+import SearchedVoter from "./SearchedVoter";
 // import Popup from 'reactjs-popup';
+import { useNavigate } from 'react-router-dom';
 
-function Voter({ isActive, id, handleSearchSubmit, address1, address2, isFiltering, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
-    const [validated, setValidated] = useState(false);
+
+function Voter({ isActive, validated, handleValidation, id, handleSearchSubmit, address1, address2, isFiltering, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
     //  const [formName, setName] = useState("")
     //  const [formPassword, setPassword] = useState("")
     const [show, setShow] = useState(false);
     const [editCard, setEditCard] = useState(false);
-
+    const navigate = useNavigate();
     // const [fnState, setFnState] = useState(firstName);
     // const [editFnState, setEditFnState] = useState(false);
     // const [initialFnValue, setInitialFnValue] = useState(firstName);
@@ -27,11 +29,6 @@ function Voter({ isActive, id, handleSearchSubmit, address1, address2, isFilteri
     // const initial = firstName.slice(0, 0);
     const shortName = `${initial}. ${lastName}`;
     const fullName = `${firstName} ${lastName}`;
-
-    function handleValidation() {
-        setValidated((validated) => !validated);
-        setEditCard(true);
-    }
 
 
     function generate(n) {
@@ -68,17 +65,22 @@ function Voter({ isActive, id, handleSearchSubmit, address1, address2, isFilteri
                     {isFiltering ? <p style={{ lineHeight: "2" }}>REGISTERED IN: {postalCode}</p> : null}
                     {/* {isFiltering ?  */}
                     {isFiltering ? <p style={{ lineHeight: "2" }}><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p> : null}
-                    <div style={{display:"flex", flexDirection:"row"}}>
-                        <Button style={{ lineHeight: "2", marginRight:"10px", padding:"5px 15px" }} variant="primary" onClick={handleShow}>
+                    {isFiltering ? 
+                    (<div className={isFiltering ? "flexVoterButtonsRow" : "flexVoterButtonsCol" }>
+                        <Button style={{ lineHeight: "2", padding:"3px 10px" }} variant="primary" onClick={handleShow}>
                             View Voter Details
                         </Button>
-                        <Button style={{ lineHeight: "2", marginLeft: "10px", padding: "5px 15px" }} variant="primary" onClick={handleShow}>
+                        <Button style={{ lineHeight: "2", padding: "3px 10px" }} variant="primary" onClick={handleShow}>
                             Edit Voter Information
                         </Button>
-                    </div>
+                    </div>) : null}
                     {/* : null} */}
                     {show ? <ModalSignIn id={id} validated={validated} handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null}
-                    {/* {validated ? <EditVoterInfo firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
+                    {/* {validated ? navigate("/voters/edit") : null} */}
+                    {/* {validated ? 
+                    navigate("/voters/edit") */}
+                    {/* // <SearchedVoter firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> */}
+                     {/* : null} */}
                     {/* {isFiltering ? <button variant="primary" onClick={handleShow} id="moreInfoButton">Edit Voter Details</button> : null} */}
                 </div>
             </div>

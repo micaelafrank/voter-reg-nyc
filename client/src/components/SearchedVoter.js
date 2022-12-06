@@ -45,18 +45,23 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, address1, address2, a
 
     return (
         <>
-            <div className="search-item">
-                <div className="searchContainerBlack">
-                    <p id="fullNameTitle" style={{ fontSize: "18px", textAlign: "center", alignItems: "center", fontWeight: "bold", lineHeight: ".4" }}>{firstName} {lastName}</p>
-                    <p style={{ lineHeight: "0" }}>{age} years old</p>
-                    {/* <p style={{ textAlign: "center", alignItems: "center" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p> */}
-                    <p style={{ alignItems: "left" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
-                    <p style={{ fontSize: "13px", color: isActive ? "black" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
-                    {/* <p text="password">RESIDENTIAL ADDRESS: {address1}, {address2} {postalCode}</p> */}
-                    {/* <p><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p> */}
-                    <Button variant="primary" onClick={handleShow}>
-                        Edit Voter Information
-                    </Button>
+            <div className="search-item" style={{marginLeft:"auto", marginRight:"auto", alignItems:"center", justifyContent:"center"}}>
+                <div className="searchItemInnerDiv" style={{ marginTop:"1rem", fontFamily:"monospace", alignItems: "left", textAlign:"left", justifyContent: "center" }}>
+                    <p id="editFullName" style={{ marginTop:"2rem", fontWeight: "bold", lineHeight: "1" }}>{firstName} {lastName}</p>
+                    <p style={{ lineHeight: "1", fontSize:"15px" }}>{age} years old</p>
+                    <p style={{ alignItems: "center", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p>
+                    <p style={{ alignItems: "left", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
+                    <p style={{ fontSize: "15px", color: isActive ? "black" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
+                    <p text="password" style={{ fontSize: "15px" }}>RESIDENTIAL ADDRESS: {address1}, {address2} {postalCode}</p>
+                    <p style={{ fontSize: "15px" }}><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p>
+                    <div className="flexVoterButtonsRow" style={{ marginTop:"10px", marginBottom:"2rem", alignItems:"center"}}>
+                        <Button style={{ lineHeight: "2", fontFamily:"monospace", fontSize:"13px", padding: "5px 15px" }} variant="primary" onClick={handleShow}>
+                            Edit Voter Information
+                        </Button>
+                        <Button style={{ lineHeight: "2", fontFamily: "monospace", fontSize:"13px", padding: "5px 15px" }} variant="primary" onClick={handleShow}>
+                            Deactivate My Registration
+                        </Button>
+                    </div>
                     {show ? <ModalSignIn handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null}
                 </div>
             </div>
