@@ -66,6 +66,7 @@ function NewForm({ addNewVoter, voters, setVoters }) {
                 last: last,
                 age: age,
                 address1: address1,
+                address2: address2,
                 party_id: party.id,
                 party: party,
                 postalCode: postalCode,

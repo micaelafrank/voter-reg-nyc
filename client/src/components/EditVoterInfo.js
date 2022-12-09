@@ -1,16 +1,23 @@
 
 import React, { useState, useEffect } from "react";
 
-function EditVoterInfo({ handleValidation, voters, setVoters, firstName, lastName, address1, address2, id, age, fullName, party,
-    isActive, password, postalCode, generate }) {
+function EditVoterInfo({ handleValidation, voters, setVoters, firstName, lastName, address1, address2, id, age, fullName, party, isActive, password, postalCode, generate }) {
     
     // const [partyState, setPartyState] = useState(party);
     // const [editPartyState, setEditPartyState] = useState(false);
     // const [initialPartyValue, setInitialPartyValue] = useState(party);
 
-    // const [address1State, setAddress1State] = useState(address1);
-    // const [editAddress1State, setEditAddress1State] = useState(false);
-    // const [initialAddress1Value, setInitialAddress1Value] = useState(address1);
+    const [address1State, setAddress1State] = useState(address1);
+    const [editAddress1State, setEditAddress1State] = useState(false);
+    const [initialAddress1Value, setInitialAddress1Value] = useState(address1);
+
+    const [address2State, setAddress2State] = useState(address2);
+    const [editAddress2State, setEditAddress2State] = useState(false);
+    const [initialAddress2Value, setInitialAddress2Value] = useState(address2);
+
+    const [postalCodeState, setPostalCodeState] = useState(postalCode);
+    const [editPostalCodeState, setEditPostalCodeState] = useState(false);
+    const [initialPostalCodeValue, setInitialPostalCodeValue] = useState(postalCode);
 
 
     function generate(n) {
@@ -36,7 +43,38 @@ function EditVoterInfo({ handleValidation, voters, setVoters, firstName, lastNam
                     <p style={{ textAlign: "center", alignItems: "center" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p>
                     <p style={{ alignItems: "left" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
                     <p style={{ fontSize: "13px", color: isActive ? "black" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
-                    <p text="password">RESIDENTIAL ADDRESS: {address1}, {address2} {postalCode}</p>
+                    {/* <p text="password">RESIDENTIAL ADDRESS: {address1}, {address2}, {postalCode}</p> */}
+                    {editAddress1State ? (
+                        <div>
+                            <label>Edit street address</label>
+                            <input
+                                defaultValue={initialAddress1Value}
+                                // className="editItemInput"
+                                id="my-input"
+                                aria-describedby='my-helper-text'
+                                onChange={(e) => setInitialAddress1Value(e.target.value)}
+                            />
+                            <label>Edit apt/floor/suite number</label>
+                            <input
+                                defaultValue={initialAddress2Value}
+                                // className="editItemInput"
+                                id="my-input"
+                                aria-describedby='my-helper-text'
+                                onChange={(e) => setInitialAddress2Value(e.target.value)}
+                            />
+                            <label>Edit postal code</label>
+                            <input
+                                defaultValue={initialPostalCodeValue}
+                                // className="editItemInput"
+                                id="my-input"
+                                aria-describedby='my-helper-text'
+                                onChange={(e) => setInitialPostalCodeValue(e.target.value)}
+                            />
+                        </div>
+                    ) : (
+                        <p text="password">RESIDENTIAL ADDRESS: {address1}, {address2}, {postalCode}</p>
+                    )}
+                    <button onClick={setEditAddress1State(true)}>EDIT ADDRESS</button>
                     <p><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p>
                 </div>
             </div>

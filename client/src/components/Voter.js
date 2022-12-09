@@ -10,7 +10,7 @@ import SearchedVoter from "./SearchedVoter";
 import { useNavigate } from 'react-router-dom';
 
 
-function Voter({ isActive, validated, handleValidation, id, handleSearchSubmit, address1, address2, isFiltering, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
+function Voter({ isActive, voter, validated, handleValidation, id, handleSearchSubmit, address1, address2, isFiltering, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
     //  const [formName, setName] = useState("")
     //  const [formPassword, setPassword] = useState("")
     const [show, setShow] = useState(false);
@@ -65,17 +65,17 @@ function Voter({ isActive, validated, handleValidation, id, handleSearchSubmit, 
                     {isFiltering ? <p style={{ lineHeight: "2" }}>REGISTERED IN: {postalCode}</p> : null}
                     {/* {isFiltering ?  */}
                     {isFiltering ? <p style={{ lineHeight: "2" }}><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p> : null}
-                    {isFiltering ? 
-                    (<div className={isFiltering ? "flexVoterButtonsRow" : "flexVoterButtonsCol" }>
-                        <Button style={{ lineHeight: "2", padding:"3px 10px" }} variant="primary" onClick={handleShow}>
+                    {/* <div className={isFiltering ? "flexVoterButtonsRow" : "flexVoterButtonsCol" }>
+                        {/* <Button style={{ lineHeight: "2", padding:"3px 10px" }} variant="primary" onClick={() => navigate()}>
                             View Voter Details
-                        </Button>
-                        <Button style={{ lineHeight: "2", padding: "3px 10px" }} variant="primary" onClick={handleShow}>
-                            Edit Voter Information
-                        </Button>
-                    </div>) : null}
+                        </Button> */}
+                    {isFiltering ? 
+                    (<Button style={{ lineHeight: "2", padding: "3px 10px" }} variant="primary" onClick={handleShow}>
+                        View Voter Information
+                    </Button>) 
+                    : null}
                     {/* : null} */}
-                    {show ? <ModalSignIn id={id} validated={validated} handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null}
+                    {show ? <ModalSignIn id={id} voter={voter} validated={validated} handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null}
                     {/* {validated ? navigate("/voters/edit") : null} */}
                     {/* {validated ? 
                     navigate("/voters/edit") */}

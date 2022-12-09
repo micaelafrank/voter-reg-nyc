@@ -17,6 +17,7 @@ function VoterList({ renderMessage, handleSearchSubmit, firstNameSearch, searche
             key = { voter.id }
             id = { voter.id }
             voters = { voters }
+            voter={voter.voter}
             lastName = { voter.last }
             firstName = { voter.first }
             address1 = { voter.address1 }
@@ -46,6 +47,7 @@ function VoterList({ renderMessage, handleSearchSubmit, firstNameSearch, searche
             handleValidation={handleValidation}
             key={voter.id}
             id={voter.id}
+            voter={voter.voter}
             voters={voters}
             lastName={voter.last}
             firstName={voter.first}

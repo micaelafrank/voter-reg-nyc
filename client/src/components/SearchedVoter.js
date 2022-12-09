@@ -3,9 +3,22 @@ import ModalSignIn from "./ModalSignIn";
 import Button from 'react-bootstrap/Button';
 
 
-function SearchedVoter({ isActive, id, handleSearchSubmit, address1, address2, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
+function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, address2, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
     const [validated, setValidated] = useState(false);
     const [show, setShow] = useState(false);
+    const [editVoterAdd, setEditVoterAdd] = useState(false);
+
+    const [address1State, setAddress1State] = useState(address1);
+    const [editAddress1State, setEditAddress1State] = useState(false);
+    const [initialAddress1Value, setInitialAddress1Value] = useState(address1);
+
+    const [address2State, setAddress2State] = useState(address2);
+    const [editAddress2State, setEditAddress2State] = useState(false);
+    const [initialAddress2Value, setInitialAddress2Value] = useState(address2);
+
+    const [postalCodeState, setPostalCodeState] = useState(postalCode);
+    const [editPostalCodeState, setEditPostalCodeState] = useState(false);
+    const [initialPostalCodeValue, setInitialPostalCodeValue] = useState(postalCode);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -19,6 +32,44 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, address1, address2, a
         setValidated((validated) => !validated);
     }
 
+    function allowEditing(){
+        setEditVoterAdd(editVoterAdd => !editVoterAdd)
+    } 
+
+
+    let handleEditAddress = () => {
+        setEditAddress1State(true)
+        setEditAddress2State(true)
+        setEditPostalCodeState(true)
+        if (address1State !== "" && address1State !== "" && postalCodeState !== "") {
+            fetch(`/api/voters/edit/${voter.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    address1: address1State,
+                    address2: address2State, 
+                    postalCode: postalCodeState, 
+                    id: voter.id,
+                }),
+            })
+                .then((resp) => resp.json())
+                .then((data) => {
+                    setInitialAddress1Value(data.address1)
+                    setInitialAddress2Value(data.address2)
+                    setInitialPostalCodeValue(data.postalCode)
+                });
+            // setChange(!change);
+        }
+    };
+
+    // function handleEditAddress() {
+    //     setEditVoterAdd(true)
+    //     setEditAddress1State(true)
+    //     setEditAddress2State(true)
+    //     setEditPostalCodeState(true)
+    // }
 
     function generate(n) {
         var add = 1, max = 12 - add;   // 12 is the min safe number Math.random() can generate without it starting to pad the end with zeros.   
@@ -52,17 +103,64 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, address1, address2, a
                     <p style={{ alignItems: "center", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p>
                     <p style={{ alignItems: "left", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
                     <p style={{ fontSize: "15px", color: isActive ? "black" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
-                    <p text="password" style={{ fontSize: "15px" }}>RESIDENTIAL ADDRESS: {address1}, {address2} {postalCode}</p>
+                    
+                    {editAddress1State ? (
+                        <div style={{
+                            padding: "30px", paddingTop: "15px", marginTop: "40px", marginBottom: "40px", width: "80%", backgroundColor: "rgb(235, 242, 253)", border: "1px solid black" }}>
+                        <p style={{ fontSize: "20px", borderBottom:".7px solid black", justifyContent: "center", alignItems:"center", marginBottom: "30px"}}>UPDATE ADDRESS INFORMATION</p>
+                        <div style={{paddingBottom:"10px"}}>
+                            <label style={{marginRight:"10px", fontSize:"16px", paddingTop:"20px"}}>Street Address:</label>
+                            <input
+                                defaultValue={initialAddress1Value}
+                                // className="editItemInput"
+                                id="my-input"
+                                style={{ padding: "8px" }}
+                                aria-describedby='my-helper-text'
+                                onChange={(e) => setInitialAddress1Value(e.target.value)}
+                            />
+                        </div>
+                        <br></br>
+                        <div style={{ paddingBottom: "10px" }}>
+                            <label style={{ marginRight: "10px", fontSize:"16px", paddingTop:"20px" }}>Suite/Apt/Floor Number:</label>
+                            <input
+                                defaultValue={initialAddress2Value}
+                                // className="editItemInput"
+                                id="my-input"
+                                aria-describedby='my-helper-text'
+                                style={{padding:"8px"}}
+                                onChange={(e) => setInitialAddress2Value(e.target.value)}
+                            />
+                        </div>
+                        <br></br>
+                        <div style={{ paddingBottom: "10px" }}>
+                            <label style={{ marginRight: "10px", fontSize: "16px", paddingTop:"20px" }}>Postal Code:</label>
+                            <input
+                                defaultValue={initialPostalCodeValue}
+                                // className="editItemInput"
+                                id="my-input"
+                                style={{ padding: "8px", marginBottom:"20px" }}
+                                aria-describedby='my-helper-text'
+                                onChange={(e) => setInitialPostalCodeValue(e.target.value)}
+                            />
+                                <br></br>
+                        </div>
+                    </div>
+                    ) : (
+                        <p text="password">RESIDENTIAL ADDRESS: {address1}, {address2}, {postalCode}</p>
+                    )}
+                    <button onClick={setEditVoterAdd ? handleEditAddress : allowEditing}>{setEditVoterAdd ? "SAVE ADDRESS" : "EDIT ADDRESS"}</button>
+
+                    {/* <p text="password" style={{ fontSize: "15px" }}>RESIDENTIAL ADDRESS: {address1}, {address2} {postalCode}</p> */}
                     <p style={{ fontSize: "15px" }}><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p>
-                    <div className="flexVoterButtonsRow" style={{ marginTop:"10px", marginBottom:"2rem", alignItems:"center"}}>
+                    {/* <div className="flexVoterButtonsRow" style={{ marginTop:"10px", marginBottom:"2rem", alignItems:"center"}}>
                         <Button style={{ lineHeight: "2", fontFamily:"monospace", fontSize:"13px", padding: "5px 15px" }} variant="primary" onClick={handleShow}>
                             Edit Voter Information
-                        </Button>
+                        </Button> */}
                         <Button style={{ lineHeight: "2", fontFamily: "monospace", fontSize:"13px", padding: "5px 15px" }} variant="primary" onClick={handleShow}>
                             Deactivate My Registration
                         </Button>
-                    </div>
-                    {show ? <ModalSignIn handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null}
+                    {/* </div> */}
+                    {/* {show ? <ModalSignIn handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null} */}
                 </div>
             </div>
         </>
