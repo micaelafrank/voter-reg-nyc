@@ -77,7 +77,10 @@ function VoterList({ renderMessage, handleSearchSubmit, firstNameSearch, searche
 
     return (
         <React.Fragment>
-            <h1 className="formHeading4" style={{ paddingTop: "50px", paddingBottom: "20px", fontFamily: "KGThankYouStamp", textAlign: "center", fontSize: "60px" }}>REGISTERED VOTERS</h1>
+            {validated ? 
+                <h1 className="formHeading4" style={{ paddingTop: "50px", paddingBottom: "20px", fontFamily: "KGThankYouStamp", textAlign: "center", fontSize: "60px" }}>VOTER INFORMATION</h1>
+            :
+            <h1 className="formHeading4" style={{ paddingTop: "50px", paddingBottom: "20px", fontFamily: "KGThankYouStamp", textAlign: "center", fontSize: "60px" }}>REGISTERED VOTERS</h1>}
             <section className={isFiltering ? "searchGridContainer" : `voterGridContainer`}>
                 {validated ? searchedVoter : listOfVoters}
             </section>

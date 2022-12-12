@@ -7,6 +7,7 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
     const [lnSearch, setLNSearch] = useState("");
     const [zcSearch, setZCSearch] = useState("");
     const [colorChange, setColorChange] = useState(false);
+    // const [searchChange, setSearchChange] = useState(false);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -54,7 +55,10 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
                         name="firstNameSearch"
                         placeholder="First name"
                         value={fnSearch}
-                        onChange={(e) => setFNSearch(e.target.value)}
+                        onChange={(e) => {
+                            setColorChange(true);
+                            setFNSearch(e.target.value)}
+                        }
                     // onChange={(e) => setFirstName(e.target.value)}
                     />
                     <input

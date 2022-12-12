@@ -11,12 +11,13 @@ function VoterPage() {
     const [isFiltering, setIsFiltering] = useState(false);
     const [error, setError] = useState("");
     const [voters, setVoters] = useState([])
+    const [change, setChange] = useState(false);
 
     useEffect(() => {
         fetch("/voters")
             .then(res => res.json())
             .then(voters => { setVoters(voters) })
-    }, [])
+    }, [change])
     console.log(voters)
 
 

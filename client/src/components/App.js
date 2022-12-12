@@ -74,7 +74,7 @@ function App() {
           <Route path="/voters/edit" element={<SearchedVoter />} />
           <Route path="/register" element={<NewForm voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
           {/* <Route path="/modalsignin" element={<ModalSignIn />} /> */}
-          {/* <Route path="/voters/editvoter" element={<EditVoterCard />} /> */}
+          <Route path="/voters/editvoter" element={<SearchedVoter />} />
           {/* <Route path="*">
             <React.Fragment>404 not found</React.Fragment>
           </Route> */}

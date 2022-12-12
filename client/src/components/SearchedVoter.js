@@ -96,17 +96,19 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
 
     return (
         <>
-            <div className="search-item" style={{marginLeft:"auto", marginRight:"auto", alignItems:"center", justifyContent:"center"}}>
-                <div className="searchItemInnerDiv" style={{ marginTop:"1rem", fontFamily:"monospace", alignItems: "left", textAlign:"left", justifyContent: "center" }}>
-                    <p id="editFullName" style={{ marginTop:"2rem", fontWeight: "bold", lineHeight: "1" }}>{firstName} {lastName}</p>
-                    <p style={{ lineHeight: "1", fontSize:"15px" }}>{age} years old</p>
-                    <p style={{ alignItems: "center", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p>
-                    <p style={{ alignItems: "left", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
-                    <p style={{ fontSize: "15px", color: isActive ? "black" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
+            <div className="search-item" style={{ marginLeft: "auto", marginRight: "auto", marginTop: "2rem", marginBottom:"2rem", alignItems:"center", justifyContent:"center"}}>
+                <div className="searchItemInnerDiv" style={{ fontFamily: "monospace", marginTop: "1rem", marginBottom:"2rem", alignItems: "left", textAlign:"left", justifyContent: "center" }}>
+                    <p id="editFullName" style={{ fontWeight: "bold", }}>{firstName} {lastName}</p>
+                    <p style={{ lineHeight: "2", fontSize:"15px" }}>{age} years old</p>
+                    <p style={{ lineHeight: "2", alignItems: "center", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p>
+                    <div style={{display:"flex", alignItems:"center", flexDirection: "row"}}>
+                        <p style={{ lineHeight: "1", alignItems: "left", fontSize: "15px", marginRight:"20px" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
+                        <Button style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 10px" }}>SWITCH PARTY</Button>
+                    </div>
+                    <p style={{ lineHeight: "2", fontSize: "15px", color: isActive ? "black" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
                     
-                    {editAddress1State ? (
-                        <div style={{
-                            padding: "30px", paddingTop: "15px", marginTop: "40px", marginBottom: "40px", width: "80%", backgroundColor: "rgb(235, 242, 253)", border: "1px solid black" }}>
+                    {editVoterAdd ? (
+                    <div style={{padding: "30px", paddingTop: "15px", width: "80%", backgroundColor: "rgb(235, 242, 253)", border: "1px solid black" }}>
                         <p style={{ fontSize: "20px", borderBottom:".7px solid black", justifyContent: "center", alignItems:"center", marginBottom: "30px"}}>UPDATE ADDRESS INFORMATION</p>
                         <div style={{paddingBottom:"10px"}}>
                             <label style={{marginRight:"10px", fontSize:"16px", paddingTop:"20px"}}>Street Address:</label>
@@ -144,21 +146,26 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
                             />
                                 <br></br>
                         </div>
+                        <Button style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 15px" }} onClick={allowEditing}>UPDATE INFO</Button>
+
                     </div>
                     ) : (
-                        <p text="password">RESIDENTIAL ADDRESS: {address1}, {address2}, {postalCode}</p>
+                    <div style={{display:"flex", lineHeight:"1", alignItems:"center", marginTop:"0", paddingTop:"0", flexDirection:"row"}}>
+                        <p style={{ marginRight: "20px", lineHeight: "1", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>RESIDENTIAL ADDRESS:</span> {address1}, {address2}, {postalCode}</p>
+                        <Button style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 10px" }} onClick={allowEditing}>EDIT ADDRESS</Button>
+                    </div>
                     )}
-                    <button onClick={setEditVoterAdd ? handleEditAddress : allowEditing}>{setEditVoterAdd ? "SAVE ADDRESS" : "EDIT ADDRESS"}</button>
+                    {/* {editVoterAdd ? null : <Button style={{ marginTop:"15px", marginBottom:"5px", lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 10px" }} onClick={allowEditing}>EDIT ADDRESS</Button>} */}
 
                     {/* <p text="password" style={{ fontSize: "15px" }}>RESIDENTIAL ADDRESS: {address1}, {address2} {postalCode}</p> */}
-                    <p style={{ fontSize: "15px" }}><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p>
+                    <p style={{ fontSize: "15px", marginTop:"20px"}}><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p>
                     {/* <div className="flexVoterButtonsRow" style={{ marginTop:"10px", marginBottom:"2rem", alignItems:"center"}}>
                         <Button style={{ lineHeight: "2", fontFamily:"monospace", fontSize:"13px", padding: "5px 15px" }} variant="primary" onClick={handleShow}>
                             Edit Voter Information
                         </Button> */}
-                        <Button style={{ lineHeight: "2", fontFamily: "monospace", fontSize:"13px", padding: "5px 15px" }} variant="primary" onClick={handleShow}>
-                            Deactivate My Registration
-                        </Button>
+                    <Button style={{ lineHeight: "2", fontFamily: "monospace", fontSize:"13px", padding: "5px 10px", marginTop:"2rem", marginBottom:"1rem" }} variant="primary" onClick={handleShow}>
+                        DEACTIVATE MY REGISTRATION
+                    </Button>
                     {/* </div> */}
                     {/* {show ? <ModalSignIn handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null} */}
                 </div>

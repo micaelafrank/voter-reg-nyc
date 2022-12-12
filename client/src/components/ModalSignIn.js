@@ -40,6 +40,11 @@ function ModalSignIn({ show, validated, voter, handleValidation, setValidated, c
 
     useEffect(() => console.log("re-render because input changed: ", handleSubmit), [errorMessages])
 
+    function handleLetEdit(){
+        setValidated(true);
+        navigate("/voters/editvoter")
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
         console.log("first name: ", firstName);
@@ -228,7 +233,8 @@ function ModalSignIn({ show, validated, voter, handleValidation, setValidated, c
                             </Form>
                         </Modal.Body>
                     </Modal>
-                    {validated ? <SearchedVoter voter={voter} firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null}
+                    {validated ? handleLetEdit() : null} 
+                    {canEdit ? <SearchedVoter voter={voter} firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null}
                     {/* {canEdit ? <SearchedVoter firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
                     {/* {canEdit ? handleValidation() : null} */}
                     {/* {canEdit ? <EditVoterInfo id={id} firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} age={age} /> : null}  */}

@@ -58,20 +58,20 @@ function Voter({ isActive, voter, validated, handleValidation, id, handleSearchS
                     <p style={{ fontSize: "20px", fontWeight: "bold" }}>{isFiltering ? fullName : shortName}</p>
                     {/* {isFiltering ? <p style={{ lineHeight: "2" }}>{age} years old</p> : null} */}
                     {/* {isFiltering ? <p style={{ lineHeight: "2", alignItems: "center" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p> : null} */}
-                    <p style={{ alignItems: "left", lineHeight: "2" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
+                    <p style={{ alignItems: "left", lineHeight: "2", fontSize: "15px", }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
                     {/* <div className={isFiltering ? `searchMargins` : null}> */}
-                    <p style={{ lineHeight: "2", fontSize: "14px", color: isActive ? "black" : "rgb(121, 15, 15)" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
+                    <p style={{ lineHeight: "2", fontSize: "15px", color: isActive ? "black" : "rgb(121, 15, 15)" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
                     {/* {isFiltering ? <p style={{ lineHeight: "2" }}>RESIDENTIAL ADDRESS: {address1}, {address2} {postalCode}</p> : null} */}
-                    {isFiltering ? <p style={{ lineHeight: "2" }}>REGISTERED IN: {postalCode}</p> : null}
+                    {isFiltering ? <p style={{ lineHeight: "2", fontSize: "15px", }}><span style={{ fontWeight: "bold" }}>REGISTERED IN:</span> {postalCode}</p> : null}
                     {/* {isFiltering ?  */}
-                    {isFiltering ? <p style={{ lineHeight: "2" }}><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p> : null}
+                    {isFiltering ? <p style={{ lineHeight: "2", fontSize: "15px" }}><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p> : null}
                     {/* <div className={isFiltering ? "flexVoterButtonsRow" : "flexVoterButtonsCol" }>
                         {/* <Button style={{ lineHeight: "2", padding:"3px 10px" }} variant="primary" onClick={() => navigate()}>
                             View Voter Details
                         </Button> */}
                     {isFiltering ? 
-                    (<Button style={{ lineHeight: "2", padding: "3px 10px" }} variant="primary" onClick={handleShow}>
-                        View Voter Information
+                    (<Button className="viewVotingInfoBtn" variant="primary" onClick={handleShow}>
+                        VIEW VOTER INFORMATION
                     </Button>) 
                     : null}
                     {/* : null} */}
