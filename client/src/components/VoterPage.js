@@ -12,6 +12,11 @@ function VoterPage() {
     const [error, setError] = useState("");
     const [voters, setVoters] = useState([])
     const [change, setChange] = useState(false);
+    const [validated, setValidated] = useState(false);
+
+    function handleValidation() {
+        setValidated(validated => !validated);
+    }
 
     useEffect(() => {
         fetch("/voters")
@@ -29,6 +34,7 @@ function VoterPage() {
     function handleSearchClear() {
         setIsSearching(false)
         setIsFiltering(false);
+        setValidated(false);
     }
 
     // function editSearchParams() {
@@ -63,6 +69,7 @@ function VoterPage() {
     function handleSearchClear() {
         setIsSearching(false);
         setIsFiltering(false);
+        setValidated(false);
     }
 
 
@@ -76,7 +83,7 @@ function VoterPage() {
             {/* <GridColSizesExample /> */}
             <Search setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} handleSearchClear={handleSearchClear} handleSearchSubmit={handleSearchSubmit} setZipSearch={setZipSearch} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} />
             {/* <VoterList voters={searchedNames} voters={voters} setVoters={setVoters} searchVoters={searchVoters} deleteVoter={deleteVoter} /> */}
-            <VoterList isFiltering={isFiltering} count={count} setVoters={setVoters} renderMessage={renderMessage} error={error} voters={isSearching ? searchedNames : voters} handleSearchSubmit={handleSearchSubmit} handleSearchClear={handleSearchClear} handleDelete={deleteVoter} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} setZipSearch={setZipSearch} setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} />
+            <VoterList handleValidation={handleValidation} setValidated={setValidated} validated={validated} isFiltering={isFiltering} count={count} setVoters={setVoters} renderMessage={renderMessage} error={error} voters={isSearching ? searchedNames : voters} handleSearchSubmit={handleSearchSubmit} handleSearchClear={handleSearchClear} handleDelete={deleteVoter} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} setZipSearch={setZipSearch} setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} />
         </main>
     )
 }

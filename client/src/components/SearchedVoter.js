@@ -103,7 +103,7 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
                     <p style={{ lineHeight: "2", alignItems: "center", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p>
                     <div style={{display:"flex", alignItems:"center", flexDirection: "row"}}>
                         <p style={{ lineHeight: "1", alignItems: "left", fontSize: "15px", marginRight:"20px" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
-                        <Button style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 10px" }}>SWITCH PARTY</Button>
+                        <Button className="viewVotingInfoBtn" style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 10px" }}>SWITCH PARTY</Button>
                     </div>
                     <p style={{ lineHeight: "2", fontSize: "15px", color: isActive ? "black" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
                     
@@ -146,13 +146,16 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
                             />
                                 <br></br>
                         </div>
-                        <Button style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 15px" }} onClick={allowEditing}>UPDATE INFO</Button>
+                        <div style={{ display:"flex", flexDirection:"row"}}>
+                            <Button onClick={handleEditAddress} className="viewVotingInfoBtn" style={{ marginRight:"30px", lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 15px" }}>UPDATE INFO</Button>
+                            <Button onClick={allowEditing} className="viewVotingInfoBtn2" style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 15px" }}>CANCEL</Button>
+                        </div>
 
                     </div>
                     ) : (
                     <div style={{display:"flex", lineHeight:"1", alignItems:"center", marginTop:"0", paddingTop:"0", flexDirection:"row"}}>
                         <p style={{ marginRight: "20px", lineHeight: "1", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>RESIDENTIAL ADDRESS:</span> {address1}, {address2}, {postalCode}</p>
-                        <Button style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 10px" }} onClick={allowEditing}>EDIT ADDRESS</Button>
+                        <Button className="viewVotingInfoBtn" style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 10px" }} onClick={allowEditing}>EDIT ADDRESS</Button>
                     </div>
                     )}
                     {/* {editVoterAdd ? null : <Button style={{ marginTop:"15px", marginBottom:"5px", lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 10px" }} onClick={allowEditing}>EDIT ADDRESS</Button>} */}
@@ -163,7 +166,7 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
                         <Button style={{ lineHeight: "2", fontFamily:"monospace", fontSize:"13px", padding: "5px 15px" }} variant="primary" onClick={handleShow}>
                             Edit Voter Information
                         </Button> */}
-                    <Button style={{ lineHeight: "2", fontFamily: "monospace", fontSize:"13px", padding: "5px 10px", marginTop:"2rem", marginBottom:"1rem" }} variant="primary" onClick={handleShow}>
+                    <Button className="viewVotingInfoBtn" style={{ backgroundColor:"rgb(194, 222, 226)", lineHeight: "2", fontFamily: "monospace", fontSize:"14px", fontWeight:"bold", padding: "5px 10px", marginTop:"1rem", marginBottom:"1rem" }} variant="primary" onClick={handleShow}>
                         DEACTIVATE MY REGISTRATION
                     </Button>
                     {/* </div> */}
@@ -173,23 +176,5 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
         </>
     );
 }
-//         <>
-//             <div className="search-item">
-//                 <div className={isActive ? `searchContainerBlack` : `voterContainerBlack` }>
-//                     <p id="fullNameTitle" style={{ fontSize: "18px", textAlign: "center", alignItems: "center", fontWeight: "bold", lineHeight: ".4" }}>{fullName}</p>
-//                     <p style={{ lineHeight: "0" }}>{age} years old</p> 
-//                     <p style={{ textAlign: "center", alignItems: "center" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p> 
-//                     <p style={{ alignItems: "left" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
-//                     <p style={{ fontSize: "13px", color: isActive ? "black" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
-//                     <p text="password">RESIDENTIAL ADDRESS: {address1}, {address2} {postalCode}</p>
-//                     <p><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p>
-//                     <Button variant="primary" onClick={handleShow}>
-//                         Edit Voter Information
-//                     </Button>
-//                     {show ? <ModalSignIn handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null}
-//                 </div>
-//             </div>
-//         </>
-//     );
-// }
+
 export default SearchedVoter;

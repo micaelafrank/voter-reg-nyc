@@ -5,12 +5,7 @@ import SearchedVoter from "./SearchedVoter";
 
 
 // function VoterList({ handleSearchSubmit, setIsFiltering, setIsSearching, isFiltering, firstNameSearch, lastNameSearch, zipSearch, count, handleSearchClear, searchedNames, isSearching, voters, setVoters, deleteVoter }) {
-function VoterList({ renderMessage, handleSearchSubmit, firstNameSearch, searchedNames, count, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
-    const [validated, setValidated] = useState(false);
-
-    function handleValidation(){
-        setValidated(true);
-    }
+function VoterList({ handleValidation, setValidated, validated, renderMessage, handleSearchSubmit, firstNameSearch, searchedNames, count, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
 
     const searchedVoter = voters.map((voter) => (
         <SearchedVoter

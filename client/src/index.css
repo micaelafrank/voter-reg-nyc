@@ -776,9 +776,25 @@ label {
   font-size: 13px;
 }
 
+.viewVotingInfoBtn2 {
+  background-color: rgb(194, 222, 226);
+  color: black;
+  border: 2px solid black;
+  line-height: 2;
+  letter-spacing: 1.5px;
+  padding: 3px 10px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
 
 .viewVotingInfoBtn:hover{
   background-color: rgb(194, 222, 226);
+  cursor: pointer;
+}
+
+.viewVotingInfoBtn2:hover {
+  background-color: rgb(235, 206, 206);
   cursor: pointer;
 }
 
