@@ -9,7 +9,7 @@ import SearchedVoter from './SearchedVoter';
 import EditVoterInfo from './EditVoterInfo';
 
 
-function ModalSignIn({ show, validated, voter, handleValidation, setValidated, count, age, address1, handleCount, address2, id, postalCode, party, isActive, setShow, lastName, firstName, password, handleClose, handleShow }) {
+function ModalSignIn({ show, validated, setVoters, voter, handleValidation, setValidated, count, age, address1, handleCount, address2, id, postalCode, party, isActive, setShow, lastName, firstName, password, handleClose, handleShow }) {
     const navigate = useNavigate();
     const [inputColor, setInputColor] = useState(false);
     const [loginLastName, setLoginLastName] = useState("");
@@ -40,10 +40,7 @@ function ModalSignIn({ show, validated, voter, handleValidation, setValidated, c
 
     useEffect(() => console.log("re-render because input changed: ", handleSubmit), [errorMessages])
 
-    function handleLetEdit(){
-        setValidated(true);
-        navigate("/voters/editvoter")
-    }
+
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -80,12 +77,12 @@ function ModalSignIn({ show, validated, voter, handleValidation, setValidated, c
             setErrorMessages(error4);
         }
         if (errorNum === 0 && loginPassword === loginPasswordConf) {
-            handleValidation();
             setErrorMessages("");
             console.log("No errors!");
             handleCount();
+            // setCanEdit(canEdit => (!canEdit));
+            handleValidation();
             handleClose();
-            setCanEdit(canEdit => (!canEdit));
         }
         console.log(errorMessages)
         return (errorMessages)
@@ -233,12 +230,13 @@ function ModalSignIn({ show, validated, voter, handleValidation, setValidated, c
                             </Form>
                         </Modal.Body>
                     </Modal>
-                    {validated ? handleLetEdit() : null} 
-                    {canEdit ? <SearchedVoter voter={voter} firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null}
+                    {/* {validated ? handleLetEdit() : null} */}
+                    {validated ? <SearchedVoter voter={voter} firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : handleClose}
+
                     {/* {canEdit ? <SearchedVoter firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
                     {/* {canEdit ? handleValidation() : null} */}
                     {/* {canEdit ? <EditVoterInfo id={id} firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} age={age} /> : null}  */}
-                    {/* {validated ? navigate("/voters/edit") : null} */}
+                    {/* {canEdit ? navigate("/voters/edit/") : null} */}
                     {/* {validated ? <EditVoterInfo firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
                 </section>
             </div>

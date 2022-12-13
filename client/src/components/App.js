@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 // import RegistrationForm from './RegistrationForm'
 import VoterPage from './VoterPage'
+import VoterList from './VoterList';
 // import { Switch, Route } from 'react-router-dom'
 // import CandidateList from './CandidateList'
 import Home from './Home'
@@ -67,14 +68,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route element={<WithNav />}>
           <Route className="hidden" path="/home" element={<Home />} />
-          <Route path="/voters" element={<VoterPage voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} />
-          {/* <Route path="voters/search" element={<SearchPage /> } /> */}
+          {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}
+          <Route path="voters" element={<VoterPage /> } />
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
-          <Route path="/voters/edit" element={<SearchedVoter />} />
+          <Route path="/voters/edit/:id" element={<SearchedVoter voters={voters} setVoters={setVoters} />} />
           <Route path="/register" element={<NewForm voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
           {/* <Route path="/modalsignin" element={<ModalSignIn />} /> */}
-          <Route path="/voters/editvoter" element={<SearchedVoter />} />
           {/* <Route path="*">
             <React.Fragment>404 not found</React.Fragment>
           </Route> */}

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # namespace :api do
     resources :parties, only: [:index]
     # resources :users
-    resources :voters, only: [:index, :show, :create, :create, :update, :destroy, :search] 
+    resources :voters, only: [:index, :show, :create, :update, :destroy, :search] 
     # resources :searches, only: [:index, :show]
 
     # post "/signup", to: "users#create"
@@ -12,9 +12,10 @@ Rails.application.routes.draw do
     post "/register", to: "voters#create"
     delete "/logout", to: "sessions#destroy" 
     get "/voters", to: "voters#index"
+    get "/voters/edit/:id", to: "voters#show"
     # get "/voters/:first:last:postalCode", to: "voters#search"
     # post "/voters/:first:last:postalCode", to: "voters#search"
-    patch "/voters/edit", to: "voters#update"
+    patch "/voters/edit/:id", to: "voters#update"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

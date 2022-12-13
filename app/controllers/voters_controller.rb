@@ -52,7 +52,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
     end
 
     def find_voter
-        Voter.find(params[:id])
+        Voter.find(id: params[:id])
     end
 
     def cant_show_voter

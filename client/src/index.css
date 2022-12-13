@@ -498,6 +498,17 @@ label {
   line-height: 0;
 }
 
+.formHeading6 {
+  text-align: center;
+  font-family: monospace;
+  font-size: 60px;
+  color: black;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px rgb(120, 167, 187);
+  line-height: 0;
+}
+
 #overviewContainer {
   margin-top: 60px;
 }

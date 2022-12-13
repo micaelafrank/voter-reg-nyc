@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import ModalSignIn from "./ModalSignIn";
 import Button from 'react-bootstrap/Button';
 
-
-function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, address2, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
+// function SearchedVoter({ setVoters, voters }){
+function SearchedVoter({ handleValidation, handleModal, isActive, change, setVoters, voters, setChange, id, handleSearchSubmit, voter, address1, address2, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
     const [validated, setValidated] = useState(false);
     const [show, setShow] = useState(false);
     const [editVoterAdd, setEditVoterAdd] = useState(false);
@@ -20,21 +20,32 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
     const [editPostalCodeState, setEditPostalCodeState] = useState(false);
     const [initialPostalCodeValue, setInitialPostalCodeValue] = useState(postalCode);
 
-    const handleClose = () => setShow(false);
+    useEffect(() => {
+        fetch(`/voters/edit/${id}`)
+            .then(res => res.json())
+            .then(voters => {
+                setVoters(voters)
+                setShow(show => !show)
+            })
+    }, [])
+    console.log(voters)
+
+    // function handleModal(){
+    //    setShow(true);
+    // }
     const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
     console.log(firstName)
     // const initial = firstName.substr(0,1);
 
     // const shortName = `${initial}. ${lastName}`;
     // const fullName = `${firstName} ${lastName}`;
 
-    function handleValidation() {
-        setValidated((validated) => !validated);
-    }
-
     function allowEditing(){
         setEditVoterAdd(editVoterAdd => !editVoterAdd)
     } 
+
+
 
 
     let handleEditAddress = () => {
@@ -42,7 +53,7 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
         setEditAddress2State(true)
         setEditPostalCodeState(true)
         if (address1State !== "" && address1State !== "" && postalCodeState !== "") {
-            fetch(`/api/voters/edit/${voter.id}`, {
+            fetch(`/voters/edit/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -60,7 +71,7 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
                     setInitialAddress2Value(data.address2)
                     setInitialPostalCodeValue(data.postalCode)
                 });
-            // setChange(!change);
+            setChange(!change);
         }
     };
 
@@ -96,6 +107,7 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
 
     return (
         <>
+            {show ? <ModalSignIn id={id} voter={voter} validated={validated} handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleModal={handleModal} /> : null}
             <div className="search-item" style={{ marginLeft: "auto", marginRight: "auto", marginTop: "2rem", marginBottom:"2rem", alignItems:"center", justifyContent:"center"}}>
                 <div className="searchItemInnerDiv" style={{ fontFamily: "monospace", marginTop: "1rem", marginBottom:"2rem", alignItems: "left", textAlign:"left", justifyContent: "center" }}>
                     <p id="editFullName" style={{ fontWeight: "bold", }}>{firstName} {lastName}</p>
@@ -108,7 +120,7 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
                     <p style={{ lineHeight: "2", fontSize: "15px", color: isActive ? "black" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
                     
                     {editVoterAdd ? (
-                    <div style={{padding: "30px", paddingTop: "15px", width: "80%", backgroundColor: "rgb(235, 242, 253)", border: "1px solid black" }}>
+                        <div style={{ padding: "30px", marginTop: "50px", marginBottom: "60px", paddingTop: "15px", width: "80%", backgroundColor: "white", border: "5px solid navy" }}>
                         <p style={{ fontSize: "20px", borderBottom:".7px solid black", justifyContent: "center", alignItems:"center", marginBottom: "30px"}}>UPDATE ADDRESS INFORMATION</p>
                         <div style={{paddingBottom:"10px"}}>
                             <label style={{marginRight:"10px", fontSize:"16px", paddingTop:"20px"}}>Street Address:</label>
@@ -147,8 +159,8 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
                                 <br></br>
                         </div>
                         <div style={{ display:"flex", flexDirection:"row"}}>
-                            <Button onClick={handleEditAddress} className="viewVotingInfoBtn" style={{ marginRight:"30px", lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 15px" }}>UPDATE INFO</Button>
-                            <Button onClick={allowEditing} className="viewVotingInfoBtn2" style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 15px" }}>CANCEL</Button>
+                            <Button onClick={handleEditAddress} className="viewVotingInfoBtn2" style={{ marginRight:"30px", lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 15px" }}>UPDATE INFO</Button>
+                            <Button onClick={allowEditing} className="viewVotingInfoBtn" style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 15px" }}>CANCEL</Button>
                         </div>
 
                     </div>
@@ -166,7 +178,9 @@ function SearchedVoter({ isActive, id, handleSearchSubmit, voter, address1, addr
                         <Button style={{ lineHeight: "2", fontFamily:"monospace", fontSize:"13px", padding: "5px 15px" }} variant="primary" onClick={handleShow}>
                             Edit Voter Information
                         </Button> */}
-                    <Button className="viewVotingInfoBtn" style={{ backgroundColor:"rgb(194, 222, 226)", lineHeight: "2", fontFamily: "monospace", fontSize:"14px", fontWeight:"bold", padding: "5px 10px", marginTop:"1rem", marginBottom:"1rem" }} variant="primary" onClick={handleShow}>
+                    <Button className="viewVotingInfoBtn" style={{ backgroundColor:"rgb(194, 222, 226)", lineHeight: "2", fontFamily: "monospace", fontSize:"14px", fontWeight:"bold", padding: "5px 10px", marginTop:"1rem", marginBottom:"1rem" }} variant="primary" 
+                    // onClick={handleDelete}
+                    >
                         DEACTIVATE MY REGISTRATION
                     </Button>
                     {/* </div> */}

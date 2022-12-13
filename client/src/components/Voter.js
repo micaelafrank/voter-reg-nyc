@@ -10,40 +10,39 @@ import SearchedVoter from "./SearchedVoter";
 import { useNavigate } from 'react-router-dom';
 
 
-function Voter({ isActive, voter, validated, handleValidation, id, handleSearchSubmit, address1, address2, isFiltering, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
+function Voter({ isActive, handleModal, change, setChange, setVoters, voter, validated, handleValidation, id, handleSearchSubmit, address1, address2, isFiltering, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
     //  const [formName, setName] = useState("")
     //  const [formPassword, setPassword] = useState("")
-    const [show, setShow] = useState(false);
     const [editCard, setEditCard] = useState(false);
     const navigate = useNavigate();
     // const [fnState, setFnState] = useState(firstName);
     // const [editFnState, setEditFnState] = useState(false);
     // const [initialFnValue, setInitialFnValue] = useState(firstName);
-
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [show, setShow] = useState(false);
 
     const initial = firstName.charAt(0);
 
+    const voter_id = `${id}`;
     // const initial = firstName.slice(0, 0);
     const shortName = `${initial}. ${lastName}`;
     const fullName = `${firstName} ${lastName}`;
 
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
 
-    function generate(n) {
-        var add = 1, max = 12 - add;   // 12 is the min safe number Math.random() can generate without it starting to pad the end with zeros.   
+    // function generate(n) {
+    //     var add = 1, max = 12 - add;   // 12 is the min safe number Math.random() can generate without it starting to pad the end with zeros.   
 
-        if (n > max) {
-            return generate(max) + generate(n - max);
-        }
+    //     if (n > max) {
+    //         return generate(max) + generate(n - max);
+    //     }
 
-        max = Math.pow(10, n + add);
-        var min = max / 10; // Math.pow(10, n) basically
-        var number = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     max = Math.pow(10, n + add);
+    //     var min = max / 10; // Math.pow(10, n) basically
+    //     var number = Math.floor(Math.random() * (max - min + 1)) + min;
 
-        return ("" + number).substring(add);
-    }
+    //     return ("" + number).substring(add);
+    // }
 
     let count = 1;
 
@@ -70,13 +69,22 @@ function Voter({ isActive, voter, validated, handleValidation, id, handleSearchS
                             View Voter Details
                         </Button> */}
                     {isFiltering ? 
-                    (<Button className="viewVotingInfoBtn" variant="primary" onClick={handleShow}>
+                    (<Button className="viewVotingInfoBtn" variant="primary" onClick={()=> {
+                        <ModalSignIn id={id} voter={voter} validated={validated} handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> 
+                        // handleModal();
+                        }}
+                    >
                         VIEW VOTER INFORMATION
-                    </Button>) 
+                    </Button>)
                     : null}
                     {/* : null} */}
-                    {show ? <ModalSignIn id={id} voter={voter} validated={validated} handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null}
-                    {/* {validated ? navigate("/voters/edit") : null} */}
+                    {/* {show ? 
+                        <ModalSignIn id={id} voter={voter} validated={validated} handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> 
+                        : null} */}
+                    {/* {validated ? <SearchedVoter handleValidation={handleValidation} setVoters={setVoters}
+                        voter={voter} firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age}
+                    /> : null} */}
+                    {/* {validated ? navigate(`/voters/edit/${voter_id}`) : null} */}
                     {/* {validated ? 
                     navigate("/voters/edit") */}
                     {/* // <SearchedVoter firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> */}
