@@ -235,9 +235,7 @@ function ModalSignIn({ show, validated, setVoters, voter, handleValidation, setV
 
                     {/* {canEdit ? <SearchedVoter firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
                     {/* {canEdit ? handleValidation() : null} */}
-                    {/* {canEdit ? <EditVoterInfo id={id} firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} age={age} /> : null}  */}
                     {/* {canEdit ? navigate("/voters/edit/") : null} */}
-                    {/* {validated ? <EditVoterInfo firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
                 </section>
             </div>
         </div>
