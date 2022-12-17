@@ -20,9 +20,31 @@ rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
 
     def update
         voter = find_voter
-        voter.update!(update_voter_params)
+
+        if params.has_key?(:party) then
+            voter.update!(party: params[:party])
+        end
+
+        if params.has_key?(:address1) then
+            voter.update(address1: params[:address1])
+        end
+
+        if params.has_key?(:address2) then
+            voter.update(address2: params[:address2])
+        end
+
+        if params.has_key?(:postalCode) then
+            voter.update(postalCode: params[:postalCode])
+        end
+
         render json: voter, status: :ok
     end
+
+    # def update
+    #     voter = find_voter
+    #     voter.update!(update_voter_params)
+    #     render json: voter, status: :ok
+    # end
 
     def destroy
         voter = find_voter

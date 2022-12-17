@@ -12,6 +12,7 @@ import NewForm from './NewForm'
 // import EditVoterCard from './EditVoterCard'
 import SearchedVoter from './SearchedVoter';
 import EditVoterInfo from './EditVoterInfo';
+import ModalSignIn from './ModalSignIn';
 
 function App() {
   const [voters, setVoters] = useState({})
@@ -72,7 +73,7 @@ function App() {
           <Route path="voters" element={<VoterPage /> } />
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
-          <Route path="/voters/edit/:id" element={<SearchedVoter voters={voters} setVoters={setVoters} />} />
+          <Route path="/voters/:id" element={<SearchedVoter voters={voters} setVoters={setVoters} />} />
           <Route path="/register" element={<NewForm voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
           {/* <Route path="/modalsignin" element={<ModalSignIn />} /> */}
           {/* <Route path="*">

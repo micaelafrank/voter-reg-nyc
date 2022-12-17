@@ -3,7 +3,7 @@ import ModalSignIn from "./ModalSignIn";
 import Button from 'react-bootstrap/Button';
 
 // function SearchedVoter({ setVoters, voters }){
-function SearchedVoter({ handleValidation, handleModal, isActive, change, setVoters, voters, setChange, id, handleSearchSubmit, voter, address1, address2, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
+function SearchedVoter({ handleValidation, handleModal, voters, setVoters, isActive, change,  setChange, id, handleSearchSubmit, voter, address1, address2, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
     const [validated, setValidated] = useState(false);
     const [show, setShow] = useState(false);
     const [editVoterAdd, setEditVoterAdd] = useState(false);
@@ -20,15 +20,13 @@ function SearchedVoter({ handleValidation, handleModal, isActive, change, setVot
     const [editPostalCodeState, setEditPostalCodeState] = useState(false);
     const [initialPostalCodeValue, setInitialPostalCodeValue] = useState(postalCode);
 
+    console.log("new id: ", id)
     useEffect(() => {
-        fetch(`/voters/edit/${id}`)
+        fetch(`/voters/${voter.id}`)
             .then(res => res.json())
-            .then(voters => {
-                setVoters(voters)
-                setShow(show => !show)
-            })
-    }, [])
-    console.log(voters)
+            .then(data => setVoters(data))
+    },[])
+    console.log("voters: ", voters)
 
     // function handleModal(){
     //    setShow(true);
@@ -46,14 +44,12 @@ function SearchedVoter({ handleValidation, handleModal, isActive, change, setVot
     } 
 
 
-
-
     let handleEditAddress = () => {
         setEditAddress1State(true)
         setEditAddress2State(true)
         setEditPostalCodeState(true)
-        if (address1State !== "" && address1State !== "" && postalCodeState !== "") {
-            fetch(`/voters/edit/${id}`, {
+        if (editVoterAdd && address1State !== "" && address1State !== "" && postalCodeState !== "") {
+            fetch(`/voters/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -62,7 +58,7 @@ function SearchedVoter({ handleValidation, handleModal, isActive, change, setVot
                     address1: address1State,
                     address2: address2State, 
                     postalCode: postalCodeState, 
-                    id: voter.id,
+                    id: id,
                 }),
             })
                 .then((resp) => resp.json())

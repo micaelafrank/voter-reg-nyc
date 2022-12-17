@@ -4,7 +4,7 @@ import VoterList from "./VoterList";
 import Search from "./Search";
 import SearchedVoter from "./SearchedVoter";
 
-function VoterPage() {
+function VoterPage({handleValidation}) {
     const [firstNameSearch, setFirstNameSearch] = useState(" ")
     const [lastNameSearch, setLastNameSearch] = useState(" ")
     const [zipSearch, setZipSearch] = useState(" ")
@@ -14,9 +14,11 @@ function VoterPage() {
     const [voters, setVoters] = useState([])
     const [change, setChange] = useState(false);
     const [validated, setValidated] = useState(false);
+    const [canEdit, setCanEdit] = useState(false);
 
     function handleValidation() {
         setValidated(validated => !validated);
+        setCanEdit(canEdit => !canEdit)
     }
 
     useEffect(() => {
@@ -112,7 +114,7 @@ function VoterPage() {
         <main className="voterPageContainer" style={{ paddingTop: "35px", paddingBottom: "30px" }}>
             {/* <GridColSizesExample /> */}
             <Search setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} handleSearchClear={handleSearchClear} handleSearchSubmit={handleSearchSubmit} setZipSearch={setZipSearch} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} />
-            <VoterList handleValidation={handleValidation} setValidated={setValidated} validated={validated} isFiltering={isFiltering} count={count} setVoters={setVoters} renderMessage={renderMessage} error={error} voters={isSearching ? searchedNames : voters} handleSearchSubmit={handleSearchSubmit} handleSearchClear={handleSearchClear} handleDelete={deleteVoter} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} setZipSearch={setZipSearch} setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} />
+            <VoterList canEdit={canEdit} setCanEdit={setCanEdit} handleValidation={handleValidation} setValidated={setValidated} validated={validated} isFiltering={isFiltering} count={count} setVoters={setVoters} renderMessage={renderMessage} error={error} voters={isSearching ? searchedNames : voters} handleSearchSubmit={handleSearchSubmit} handleSearchClear={handleSearchClear} handleDelete={deleteVoter} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} setZipSearch={setZipSearch} setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} />
         </main>
     )
 }

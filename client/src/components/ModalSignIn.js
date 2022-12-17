@@ -230,8 +230,8 @@ function ModalSignIn({ show, validated, setVoters, voter, handleValidation, setV
                             </Form>
                         </Modal.Body>
                     </Modal>
-                    {/* {validated ? handleLetEdit() : null} */}
-                    {validated ? <SearchedVoter voter={voter} firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : handleClose}
+                    {validated ? navigate(`/voters/${id}`) : null}
+                    {/* {validated ? handleEditVoter : handleClose} */}
 
                     {/* {canEdit ? <SearchedVoter firstName={firstName} count={count} lastName={lastName} postalCode={postalCode} address1={address1} address2={address2} isActive={isActive} party={party} id={id} age={age} /> : null} */}
                     {/* {canEdit ? handleValidation() : null} */}

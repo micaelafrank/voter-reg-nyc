@@ -5,7 +5,7 @@ import SearchedVoter from "./SearchedVoter";
 
 
 // function VoterList({ handleSearchSubmit, setIsFiltering, setIsSearching, isFiltering, firstNameSearch, lastNameSearch, zipSearch, count, handleSearchClear, searchedNames, isSearching, voters, setVoters, deleteVoter }) {
-function VoterList({ handleModal, change, setChange, handleValidation, setValidated, validated, renderMessage, handleSearchSubmit, firstNameSearch, searchedNames, count, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
+function VoterList({ canEdit, setCanEdit, handleModal, change, setChange, handleValidation, setValidated, validated, renderMessage, handleSearchSubmit, firstNameSearch, searchedNames, count, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
    
     // useEffect(() => {
     //     fetch("/voters")
@@ -48,6 +48,8 @@ function VoterList({ handleModal, change, setChange, handleValidation, setValida
 
     const listOfVoters = voters.map((voter) => (
         <Voter
+            canEdit={canEdit}
+            setCanEdit={setCanEdit}
             // validated={validated}
             handleValidation={handleValidation}
             key={voter.id}
@@ -89,7 +91,7 @@ function VoterList({ handleModal, change, setChange, handleValidation, setValida
             {/* {validated ? 
                 <h1 className="formHeading4" style={{ paddingTop: "50px", paddingBottom: "20px", fontFamily: "KGThankYouStamp", textAlign: "center", fontSize: "60px" }}>VOTER INFORMATION</h1>
             : */}
-            <h1 className="formHeading6" style={{ paddingTop: "60px", paddingBottom: "20px",  textAlign: "center" }}>REGISTERED VOTERS</h1>
+            <h1 className="formHeading4" style={{ fontSize: "65px", paddingTop: "60px", paddingBottom: "20px",  textAlign: "center" }}>REGISTERED VOTERS</h1>
             <section className={isFiltering ? "searchGridContainer" : `voterGridContainer`}>
             {validated ? searchedVoter : listOfVoters}
             {/* {listOfVoters} */}
