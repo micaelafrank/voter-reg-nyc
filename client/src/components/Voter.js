@@ -10,7 +10,7 @@ import SearchedVoter from "./SearchedVoter";
 import { useNavigate } from 'react-router-dom';
 
 
-function Voter({ canEdit, setCanEdit, isActive, handleModal, change, setChange, setVoters, voter, validated, handleValidation, id, handleSearchSubmit, address1, address2, isFiltering, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
+function Voter({ canEdit, handleShowVoterInfo, setCanEdit, isActive, handleModal, change, setChange, setVoters, voter, validated, handleValidation, id, handleSearchSubmit, address1, address2, isFiltering, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
     //  const [formName, setName] = useState("")
     //  const [formPassword, setPassword] = useState("")
     const [editCard, setEditCard] = useState(false);
@@ -27,6 +27,7 @@ function Voter({ canEdit, setCanEdit, isActive, handleModal, change, setChange, 
     // const initial = firstName.slice(0, 0);
     const shortName = `${initial}. ${lastName}`;
     const fullName = `${firstName} ${lastName}`;
+    const voterID = `${voter.id}`;
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
@@ -70,11 +71,12 @@ function Voter({ canEdit, setCanEdit, isActive, handleModal, change, setChange, 
                             View Voter Details
                         </Button> */}
                     {isFiltering ? 
-                    <Button className="viewVotingInfoBtn" variant="primary" onClick={handleShow}> 
+                        <Button className="viewVotingInfoBtn" variant="primary" onClick={handleShowVoterInfo}>
+                    {/* onClick={handleShow} */}
                         VIEW VOTER INFORMATION
                     </Button> : null}
-                    {show ? <ModalSignIn id={id} voter={voter} validated={validated} handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null}
-                    {canEdit ? navigate(`/voters/${id}`) : null}
+                    {/* {show ? <ModalSignIn id={id} voter={voter} validated={validated} handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null}
+                    {validated ? navigate(`/voters/${firstName}${lastName}`) : null} */}
                     {/* : null} */}
                     {/* {show ? 
                         <ModalSignIn id={id} voter={voter} validated={validated} handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> 

@@ -224,7 +224,19 @@ function NewForm({ addNewVoter, voters, setVoters }) {
                                 <option value="working_families">Working Families Party</option>
                             </Form.Select>
                         </Form.Group>
+                    </Row>
+                    <Row>
                         <Col>
+                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                                <label style={{ paddingRight: "10px"}}>CREATE A USERNAME:</label>
+                                <Form.Control
+                                    style={inputColor ? { color: "black" } : { color: "gray" }}
+                                    required className="inputText" type="text" id="username" name="username" value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                />
+                            </div>
+                        </Col>
+                        <Col sm={{ span: 10, offset: 2 }}>
                             <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                                 <label style={{ paddingRight: "10px", paddingLeft: "16px", marginLeft: "20px" }}>CREATE A PASSWORD:</label>
                                 <Form.Control

@@ -13,13 +13,17 @@ import NewForm from './NewForm'
 import SearchedVoter from './SearchedVoter';
 import EditVoterInfo from './EditVoterInfo';
 import ModalSignIn from './ModalSignIn';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
-  const [voters, setVoters] = useState({})
+  const [voters, setVoters] = useState({});
+  const [user, setUser] = useState({});
   const [parties, setParties] = useState([]);
   const [change, setChange] = useState(false);
+  const [showVoterInfo, setShowVoterInfo] = useState(false);
   // const [candidates, setCandidates] = useState([])
   // const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -29,6 +33,13 @@ function App() {
   }, [])
   console.log(voters)
 
+  useEffect(() => {
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user))
+      }
+    })
+  }, [])
 
   useEffect(() => {
     fetch("/parties")
@@ -57,6 +68,10 @@ function App() {
     setVoters(...voters, newVoter);
   }
 
+  function handleShowVoterInfo(id){
+    setShowVoterInfo(showVoterInfo => !showVoterInfo)
+    navigate(`/voters/${id}`)
+  }
 
   // function deleteVoter(id){
   //   const updatedList = voters.filter((voter) => voter.id !== id);
@@ -69,11 +84,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route element={<WithNav />}>
           <Route className="hidden" path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}
-          <Route path="voters" element={<VoterPage /> } />
+          <Route path="voters" element={<VoterPage handleShowVoterInfo={handleShowVoterInfo} /> } />
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
-          <Route path="/voters/:id" element={<SearchedVoter voters={voters} setVoters={setVoters} />} />
+          <Route path="/voters/:id" element={<SearchedVoter showVoterInfo={showVoterInfo} setShowVoterInfo={setShowVoterInfo} voters={voters} setVoters={setVoters} />} />
           <Route path="/register" element={<NewForm voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
           {/* <Route path="/modalsignin" element={<ModalSignIn />} /> */}
           {/* <Route path="*">

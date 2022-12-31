@@ -22,7 +22,7 @@ function SearchedVoter({ handleValidation, handleModal, voters, setVoters, isAct
 
     console.log("new id: ", id)
     useEffect(() => {
-        fetch(`/voters/${voter.id}`)
+        fetch(`/voters/${voters.id}`)
             .then(res => res.json())
             .then(data => setVoters(data))
     },[])
