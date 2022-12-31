@@ -5,7 +5,7 @@ import SearchedVoter from "./SearchedVoter";
 
 
 // function VoterList({ handleSearchSubmit, setIsFiltering, setIsSearching, isFiltering, firstNameSearch, lastNameSearch, zipSearch, count, handleSearchClear, searchedNames, isSearching, voters, setVoters, deleteVoter }) {
-function VoterList({ handleShowVoterInfo, canEdit, setCanEdit, handleModal, change, setChange, handleValidation, setValidated, validated, renderMessage, handleSearchSubmit, firstNameSearch, searchedNames, count, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
+function VoterList({ canEdit, setCanEdit, handleModal, change, setChange, handleValidation, setValidated, validated, renderMessage, handleSearchSubmit, firstNameSearch, searchedNames, count, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
    
     // useEffect(() => {
     //     fetch("/voters")
@@ -43,7 +43,6 @@ function VoterList({ handleShowVoterInfo, canEdit, setCanEdit, handleModal, chan
         handleModal={handleModal}
         setValidated={setValidated}
         handleValidation={handleValidation}
-        handleShowVoterInfo={handleShowVoterInfo}
         />
     ))
 
@@ -79,7 +78,6 @@ function VoterList({ handleShowVoterInfo, canEdit, setCanEdit, handleModal, chan
             setIsSearching={setIsSearching}
             isSearching={isSearching}
             isFiltering={isFiltering}
-            handleShowVoterInfo={handleShowVoterInfo}
             // handleSearchClear={handleSearchClear}
             // handleDelete={deleteVoter}
             // firstNameSearch={firstNameSearch}

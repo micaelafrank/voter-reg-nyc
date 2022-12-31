@@ -70,10 +70,6 @@ function App() {
     setVoters(...voters, newVoter);
   }
 
-  function handleShowVoterInfo(id){
-    setShowVoterInfo(showVoterInfo => !showVoterInfo)
-    navigate(`/voters/${id}`)
-  }
 
   // function deleteVoter(id){
   //   const updatedList = voters.filter((voter) => voter.id !== id);
@@ -88,7 +84,7 @@ function App() {
           <Route className="hidden" path="/home" element={<Home />} />
           <Route path="/login" element={<LogIn />} />
           {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}
-          <Route path="/voters" element={<VoterPage handleShowVoterInfo={handleShowVoterInfo} /> } />
+          <Route path="/voters" element={<VoterPage /> } />
           <Route path="/signup" element={<UserSignUp user={user} setUser={setUser} />} />
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
