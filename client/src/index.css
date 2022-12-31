@@ -34,6 +34,18 @@ body {
   font-family: KGThankYouStamp;
 }
 
+.modal-title3 {
+  font-size: 72px;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px rgb(120, 167, 187);
+  text-align: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  /* padding-bottom: 20px; */
+  font-family: KGThankYouStamp;
+}
+
 .formHeading2 {
   text-shadow: 2px 2px rgb(120, 167, 187);
   /* font-weight: bold; */
@@ -346,10 +358,11 @@ select {
   color: gray;
 }
 
+
 #selectedParty.form-select {
   font-size: 14px;
   width: 240px;
-  padding: 8px 10px;
+  padding: 4px 10px;
 }
 
 #submit {
@@ -377,6 +390,21 @@ select {
 
 
 #registerForm .row {
+  padding-top: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: auto;
+  justify-content: space-between;
+}
+
+#signUpForm input,
+#signUpForm label {
+  font-family: monospace;
+  height: 30px;
+}
+
+
+#signUpForm .row {
   padding-top: 30px;
   margin-left: 5px;
   margin-right: 5px;
@@ -412,16 +440,26 @@ select {
   padding: 15px;
 }
 
+
+h4{
+  text-align: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+}
+
 h3,
 h2 {
   font-size: 90px;
   /* font-weight: bold; */
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
+  align-items: center;
   vertical-align: center;
   text-shadow: 2px 2px rgb(9, 11, 96);
   color: rgb(81, 114, 202);
-  margin: auto;
+  margin: 0 auto;
   padding: 10px 0;
 }
 
@@ -534,6 +572,14 @@ label {
 }
 
 #registerForm {
+  align-items: center;
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+#signUpForm {
   align-items: center;
   text-align: left;
   margin-left: 20px;

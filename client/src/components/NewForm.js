@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
 
-function NewForm({ addNewVoter, voters, setVoters }) {
+function NewForm({ user, addNewVoter, voters, setVoters }) {
     const [revealText, setRevealText] = useState(false);
     const [party, setParty] = useState("default")
     const [first, setFirst] = useState("");
@@ -36,10 +36,13 @@ function NewForm({ addNewVoter, voters, setVoters }) {
     //     }
     // )
     // const history = useHistory();
-
-
-    function handleColor() {
+    function handleColor(){
         setInputColor(true);
+    }
+
+    function handleParty(e) {
+        setInputColor(true);
+        setParty(e.target.value);
     }
 
     // function handleParty(e){
@@ -68,9 +71,9 @@ function NewForm({ addNewVoter, voters, setVoters }) {
                 address1: address1,
                 address2: address2,
                 party_id: party.id,
+                user_id: user.id,
                 party: party,
                 postalCode: postalCode,
-                password: password
             }),
         })
             .then(res => res.json())
@@ -202,30 +205,30 @@ function NewForm({ addNewVoter, voters, setVoters }) {
                             />
                         </Col>
                     </Row>
-                    <Row style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Row style={{ marginBottom:"20px", display: "flex", alignItems: "center"}}>
                         <Form.Group as={Col} id="formGridState" style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
                             <Form.Label id="party-options-label" style={{ paddingRight: "10px" }}>CHOOSE A PARTY:</Form.Label>
                             <Form.Select
-                                style={{ height: "35px", justifyContent: "center", alignItems: "center", fontSize: "14px", fontFamily: "monospace" }}
+                                style={inputColor ? { color: "black", height: "40px", justifyContent: "center", alignItems: "center", fontSize: "14px", fontFamily: "monospace" } : { color: "gray", height: "40px", justifyContent: "center", alignItems: "center", fontSize: "14px", fontFamily: "monospace" }}
                                 id="selectedParty"
                                 required
                                 name="party"
                                 value={party}
                                 label="Choose One"
                                 defaultValue={'DEFAULT'}
-                                // onChange={handleChange}
-                                onChange={(e) => setParty(e.target.value)}
+                                onChange={handleParty}
+                                // onChange={(e) => setParty(e.target.value)}
                             >
-                                <option id="colorChange" value="DEFAULT">Choose One</option>
-                                <option value="democrat">Democratic Party</option>
-                                <option value="green">Green Party</option>
-                                <option value="independent">Independent Party</option>
-                                <option value="republican">Republican Party</option>
-                                <option value="working_families">Working Families Party</option>
+                                <option style={{color:"gray"}} value="DEFAULT">Choose One</option>
+                                <option style={{ color: "black" }} value="democrat">Democratic Party</option>
+                                <option style={{ color: "black" }} value="green">Green Party</option>
+                                <option style={{ color: "black" }} value="independent">Independent Party</option>
+                                <option style={{ color: "black" }} value="republican">Republican Party</option>
+                                <option style={{ color: "black" }} value="working_families">Working Families Party</option>
                             </Form.Select>
                         </Form.Group>
                     </Row>
-                    <Row>
+                    {/* <Row>
                         <Col>
                             <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                                 <label style={{ paddingRight: "10px"}}>CREATE A USERNAME:</label>
@@ -244,11 +247,11 @@ function NewForm({ addNewVoter, voters, setVoters }) {
                                     required className="inputText" placeholder="Minimum 8 characters" type={revealText ? "text" : "passwordInput"} id="password" name="password" value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
-                                {revealText ? (<i className="bi bi-eye-slash" onClick={handleTextReveal} id="togglePasswordInput"></i>) : (<i className="bi bi-eye" onClick={handleTextReveal} id="togglePasswordInput"></i>)}
+                                {revealText ? (<i className="bi bi-eye-slash" onClick={handleTextReveal} id="togglePasswordInput"></i>) : (<i className="bi bi-eye" onClick={handleTextReveal} id="togglePasswordInput"></i>)} */}
                                 {/* <PassOpenEye id="togglePassword" onClick={handleTextReveal} /> */}
-                            </div>
+                            {/* </div>
                         </Col>
-                    </Row>
+                    </Row> */}
                     <Row>
                         <Col sm={{ span: 10, offset: 2 }}>
                             <Form.Check style={{ display: "flex", flexDirection: "row", alignItems: "center", textAlign: "center", lineHeight: "1" }} required label="I agree that I am 18 years old or will be on the date of the election." />

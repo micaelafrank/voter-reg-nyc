@@ -13,11 +13,6 @@ class UsersController < ApplicationController
         end
     end
 
-    # def create
-    #     user = User.create!(newuser_params)
-    #     session[:user_id] = user.id 
-    #     render json: user, status: :created 
-    # end
 
     #GET method for '/profile'
     #This method finds the user data from the session (the logged-in user) and 
@@ -30,6 +25,6 @@ class UsersController < ApplicationController
     private 
 
     def newuser_params
-        params.permit(:fullname, :email, :password, :username)
+        params.permit(:password, :username)
     end
 end

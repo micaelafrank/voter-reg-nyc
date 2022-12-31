@@ -62,7 +62,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
 
     #user has to sign up and sign in before they can register to vote 
     def new_voter_params
-        params.permit(:id, :first, :last, :password, :isActive, :age, :party, :party_id, :address1, :address2, :postalCode, :voting_party)
+        params.permit(:id, :first, :last, :user_id, :isActive, :age, :party, :party_id, :address1, :address2, :postalCode, :voting_party)
     end
 
     # def search_params

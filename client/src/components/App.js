@@ -14,6 +14,8 @@ import SearchedVoter from './SearchedVoter';
 import EditVoterInfo from './EditVoterInfo';
 import ModalSignIn from './ModalSignIn';
 import { useNavigate } from 'react-router-dom';
+import LogIn from './LogIn';
+import UserSignUp from './UserSignUp';
 
 function App() {
   const [voters, setVoters] = useState({});
@@ -84,13 +86,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route element={<WithNav />}>
           <Route className="hidden" path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LogIn />} />
           {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}
-          <Route path="voters" element={<VoterPage handleShowVoterInfo={handleShowVoterInfo} /> } />
+          <Route path="/voters" element={<VoterPage handleShowVoterInfo={handleShowVoterInfo} /> } />
+          <Route path="/signup" element={<UserSignUp user={user} setUser={setUser} />} />
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
-          <Route path="/voters/:id" element={<SearchedVoter showVoterInfo={showVoterInfo} setShowVoterInfo={setShowVoterInfo} voters={voters} setVoters={setVoters} />} />
-          <Route path="/register" element={<NewForm voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
+          <Route path="/myinfo" element={<SearchedVoter user={user} 
+          // showVoterInfo={showVoterInfo} setShowVoterInfo={setShowVoterInfo} voters={voters} setVoters={setVoters} 
+          />} />
+          <Route path="/register" element={<NewForm user={user} voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
           {/* <Route path="/modalsignin" element={<ModalSignIn />} /> */}
           {/* <Route path="*">
             <React.Fragment>404 not found</React.Fragment>

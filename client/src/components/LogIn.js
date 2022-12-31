@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
 // import { NavLink } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
+import { FaExclamationTriangle } from "react-icons/fa";
+
 
 function LogIn({ setUser, user }) {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [revealText, setRevealText] = useState(false);
+    const [errorMessages, setErrorMessages] = useState([]);
+    const [inputColor, setInputColor] = useState(false);
+
+    const togglePasswordInput = document.querySelector("#togglePasswordInput");
+    const passwordInput = document.querySelector("#passwordInput");
 
 
     function handleTextReveal() {
@@ -57,7 +67,7 @@ function LogIn({ setUser, user }) {
                     {/* <Col> */}
                     <div>
                     {/* style={{ display: "flex", flexDirection: "row", alignItems: "center" }}> */}
-                        <label style={{ paddingRight: "10px"}}>CREATE A USERNAME:</label>
+                        <label style={{ paddingRight: "10px"}}>USERNAME:</label>
                         <Form.Control
                         style={inputColor ? { color: "black" } : { color: "gray" }}
                         required className="inputText" type="text" id="username" name="username" value={username}
@@ -69,7 +79,7 @@ function LogIn({ setUser, user }) {
                 <Row>
                     <div>
                     {/* style={{ display: "flex", flexDirection: "row", alignItems: "center" }}> */}
-                        <label style={{ paddingRight: "10px", paddingLeft: "16px", marginLeft: "20px" }}>CREATE A PASSWORD:</label>
+                        <label style={{ paddingRight: "10px", paddingLeft: "16px", marginLeft: "20px" }}>PASSWORD:</label>
                         <Form.Control
                             style={inputColor ? { color: "black" } : { color: "gray" }}
                             required className="inputText" placeholder="Minimum 8 characters" type={revealText ? "text" : "passwordInput"} id="password" name="password" value={password}
@@ -81,6 +91,7 @@ function LogIn({ setUser, user }) {
                     {/* </Col> */}
                 </Row>
             </Form>
+            <p>Don't have an account? <a href="/signup">Sign up to get started!</a></p>
         </>
         //     {user.username ? null :
         //         (<div id="loginCard" style={{ width: "23rem", padding: "30px", border: "1px solid black", borderRadius: "6px", margin: "auto" }}>

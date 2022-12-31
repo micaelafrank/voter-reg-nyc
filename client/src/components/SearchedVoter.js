@@ -3,7 +3,7 @@ import ModalSignIn from "./ModalSignIn";
 import Button from 'react-bootstrap/Button';
 
 // function SearchedVoter({ setVoters, voters }){
-function SearchedVoter({ handleValidation, handleModal, voters, setVoters, isActive, change,  setChange, id, handleSearchSubmit, voter, address1, address2, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
+function SearchedVoter({ user, handleValidation, handleModal, voters, setVoters, isActive, change,  setChange, id, handleSearchSubmit, voter, address1, address2, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
     const [validated, setValidated] = useState(false);
     const [show, setShow] = useState(false);
     const [editVoterAdd, setEditVoterAdd] = useState(false);
@@ -20,13 +20,13 @@ function SearchedVoter({ handleValidation, handleModal, voters, setVoters, isAct
     const [editPostalCodeState, setEditPostalCodeState] = useState(false);
     const [initialPostalCodeValue, setInitialPostalCodeValue] = useState(postalCode);
 
-    console.log("new id: ", id)
-    useEffect(() => {
-        fetch(`/voters/${voters.id}`)
-            .then(res => res.json())
-            .then(data => setVoters(data))
-    },[])
-    console.log("voters: ", voters)
+    // console.log("new id: ", id)
+    // useEffect(() => {
+    //     fetch(`/voters/profile/${id}`)
+    //         .then(res => res.json())
+    //         .then(data => setVoters(data))
+    // },[])
+    // console.log("voters: ", voters)
 
     // function handleModal(){
     //    setShow(true);
@@ -106,7 +106,7 @@ function SearchedVoter({ handleValidation, handleModal, voters, setVoters, isAct
             {show ? <ModalSignIn id={id} voter={voter} validated={validated} handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleModal={handleModal} /> : null}
             <div className="search-item" style={{ marginLeft: "auto", marginRight: "auto", marginTop: "2rem", marginBottom:"2rem", alignItems:"center", justifyContent:"center"}}>
                 <div className="searchItemInnerDiv" style={{ fontFamily: "monospace", marginTop: "1rem", marginBottom:"2rem", alignItems: "left", textAlign:"left", justifyContent: "center" }}>
-                    <p id="editFullName" style={{ fontWeight: "bold", }}>{firstName} {lastName}</p>
+                    <p id="editFullName" style={{ fontWeight: "bold", }}>{user.firstname} {user.lastname}</p>
                     <p style={{ lineHeight: "2", fontSize:"15px" }}>{age} years old</p>
                     <p style={{ lineHeight: "2", alignItems: "center", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p>
                     <div style={{display:"flex", alignItems:"center", flexDirection: "row"}}>

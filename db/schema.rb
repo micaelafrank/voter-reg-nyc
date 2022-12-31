@@ -21,6 +21,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_002419) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
     t.string "username"
     t.string "password"
   end
@@ -32,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_002419) do
     t.string "address2"
     t.integer "postalCode"
     t.integer "age"
+    t.integer "user_id"
     t.string "voting_party"
     t.integer "party_id"
     t.boolean "isActive", default: true
