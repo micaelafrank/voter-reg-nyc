@@ -15,14 +15,21 @@ function Home() {
                     </div>
                     <div className="buttonContainerHome">
                         <Link className="homeNavItem" to="/register">
-                            <button id="button1home" className="homeButton">REGISTER</button>
+                            <button id="button1home" className="homeButton">CHECK VOTER STATUS</button>
                         </Link>
                         <Link className="homeNavItem" to="/voters">
-                            <button id="button2home" className="homeButton">CHECK REGISTRATION</button>
+                            <button id="button2home" className="homeButton">REGISTER TO VOTE</button>
                         </Link>
                         <Link className="homeNavItem" to="/candidates">
-                            <button id="button3home" className="homeButton">ON THE BALLOT</button>
+                            <button id="button2home" className="homeButton">ON THE BALLOT</button>
                         </Link>
+                        <Link className="homeNavItem" to="/login">
+                            <button id="button2home" className="homeButton">LOG IN</button>
+                        </Link>
+                        <Link className="homeNavItem" to="/signup">
+                            <button id="button3home" className="homeButton">SIGN UP</button>
+                        </Link>
+
                     </div>
                 </div>
             </section>

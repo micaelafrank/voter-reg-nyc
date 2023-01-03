@@ -102,7 +102,16 @@ function NewForm({ user, addNewVoter, voters, setVoters }) {
 
     return (
         <React.Fragment>
-            <div id="overviewContainer" style={{ marginLeft: "auto", marginRight: "auto", width: "65%", alignItems: "center", justifyContent: "center", border: "1px solid black", padding: "5px 20px 20px 20px" }}>
+            {user.username ? null :
+                <div style={{marginTop:"0", paddingTop:"0", width:"100%", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center"}}>
+                    <p style={{ fontSize: "20px", paddingBottom: "13px", fontWeight: "bold", color: "navy", textShadow: "1px 1px lightblue", fontFamily: "monospace" }}>TO REGISTER, YOU MUST HAVE AN ACCOUNT WITH BIG APPLE BALLOTS.</p>
+                    <div style={{display:"flex", flexDirection:"row"}}>
+                        <Button style={{ fontFamily: "monospace", fontSize: "18px", fontWeight: "bold", padding: "10px 15px", backgroundColor: "white", border: "3px solid navy", color: "navy", marginRight:"10px" }}>LOG IN</Button>
+                        <Button style={{ marginLeft:"10px", fontFamily: "monospace", fontSize: "18px", fontWeight: "bold", padding: "10px 15px", backgroundColor: "white", border: "3px solid navy", color: "navy" }}>SIGN UP</Button>
+                    </div>
+                </div>
+            }
+            <div id="overviewContainer" style={{ marginLeft: "auto", marginRight: "auto", width: "65%", alignItems: "center", justifyContent: "center", border: "1px solid black", padding: "5px 20px 20px 20px", marginBottom:"70px" }}>
                 <p id="overviewTitle" className="formHeading2">OVERVIEW</p>
                 <div style={{ margin: "15px", alignItems: "center" }}>
                     <p style={{ fontSize: "17px", paddingBottom: "13px", fontWeight: "bold", fontFamily: "monospace" }}>TO REGISTER IN NEW YORK STATE YOU MUST:</p>
@@ -120,6 +129,7 @@ function NewForm({ user, addNewVoter, voters, setVoters }) {
                     </ul>
                 </div>
             </div>
+            {user.username ? 
             <div id="form-container-new">
                 <h1 className="formHeading4">REGISTER</h1>
                 <Form id="registerForm" onSubmit={handleSubmit}>
@@ -264,7 +274,8 @@ function NewForm({ user, addNewVoter, voters, setVoters }) {
                     </Row>
                     <Button style={{ marginTop: "35px", marginLeft: "10px", fontFamily: "KGThankYouStamp", borderRadius:"2px" }} variant="primary" id="newVoterSubmit" type="submit">SUBMIT</Button>
                 </Form>
-            </div>
+            </div> : 
+            null}
         </React.Fragment>
     );
 }

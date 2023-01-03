@@ -51,15 +51,6 @@ function App() {
   console.log(parties)
 
   // useEffect(() => {
-  //   fetch("/me").then((r) => {
-  // fetch("https://menoushbackend.netlify.app/me").then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
-  //     }
-  //   });
-  // }, []);
-
-  // useEffect(() => {
   //   fetch("http://localhost:9292/candidates")
   //   .then(res => res.json())
   //   .then(candidates=> setCandidates(candidates))
@@ -80,7 +71,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route element={<WithNav />}>
+        <Route element={<WithNav user={user} />}>
           <Route className="hidden" path="/home" element={<Home />} />
           <Route path="/login" element={<LogIn />} />
           {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}
@@ -88,9 +79,8 @@ function App() {
           <Route path="/signup" element={<UserSignUp user={user} setUser={setUser} />} />
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
-          <Route path="/myinfo" element={<SearchedVoter user={user} 
-          // showVoterInfo={showVoterInfo} setShowVoterInfo={setShowVoterInfo} voters={voters} setVoters={setVoters} 
-          />} />
+          <Route path="/myinfo" element={<SearchedVoter user={user} />} />
+          {/* showVoterInfo={showVoterInfo} setShowVoterInfo={setShowVoterInfo} voters={voters} setVoters={setVoters}  */}
           <Route path="/register" element={<NewForm user={user} voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
           {/* <Route path="/modalsignin" element={<ModalSignIn />} /> */}
           {/* <Route path="*">

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-function NavBar() {
+function NavBar({ user }) {
     return (
         <div className="navBarContainer">
             <h2 className="navHeading" style={{
@@ -9,9 +9,13 @@ function NavBar() {
                 textAlign: "center", fontFamily: "monospace", color: "black"
             }}><a id="navTitleGoHome" href="/">BIG APPLE BALLOTS</a></h2>
             <nav className="navBarList">
-                <NavLink id="nav2" to="voters">View Registered Voters</NavLink>
-                <NavLink id="nav3" to="register">Register Now</NavLink>
-                <NavLink id="nav4" to="candidates">On The Ballot</NavLink>
+                <NavLink id="nav2" to="voters">VOTER LIST</NavLink>
+                <NavLink id="nav3" to="register">REGISTER TO VOTE</NavLink>
+                <NavLink id="nav4" to="candidates">ON THE BALLOT</NavLink>
+                {/* <NavLink id="nav2" to="voters">SIGN UP</NavLink>
+                <NavLink id="nav2" to="voters">LOG IN</NavLink> */}
+                {user.username ? <NavLink id="nav2" to="voters">LOG OUT</NavLink> : null}
+                <NavLink id="nav2" to="voters">ABOUT</NavLink>
             </nav>
         </div>
     )
