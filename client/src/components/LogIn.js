@@ -51,11 +51,11 @@ function LogIn({ setUser, user }) {
         })
     }
     return (
-        <>
-            <h2 style={{ textAlign: "center" }} className="modal-title1">Log In</h2>
-            <br></br>
+    <div style={{ backgroundColor:"white", display: "flex", flexDirection: "column", width: "100%", justifyContent: "center", alignItems: "center" }}>
+        <div style={{ alignContent: "center", justifyContent: "center" }}>
             <Form id="registerForm" onSubmit={handleSubmit}>
-                <h5 className="modal-title2">You must create a Big Apple Ballots accounts and log in in order to register to vote and/or view your voter information.</h5>
+                <h3 id="loginHeader" style={{ textAlign: "center", fontFamily: "KGThankYouStamp", fontSize: "65px" }}>Log In</h3>
+                {/* <h5 className="modal-title2">You must create a Big Apple Ballots accounts and log in in order to register to vote and/or view your voter information.</h5> */}
                 {errorMessages ? errorMessages.map((errorMessage) => {
                     (<p className="errorMessage" style={{ color: "red" }}>
                         <div className="errorMessageContainer" style={{ display: "flex", fontFamily: "helvetica", letterSpacing: "2", fontSize: "16px", flexDirection: "row", textAlign: "center", justifyContent: "center" }}>
@@ -65,24 +65,22 @@ function LogIn({ setUser, user }) {
                     </p>)}) : null}
                 <Row>
                     {/* <Col> */}
-                    <div>
-                    {/* style={{ display: "flex", flexDirection: "row", alignItems: "center" }}> */}
+                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                         <label style={{ paddingRight: "10px"}}>USERNAME:</label>
                         <Form.Control
                         style={inputColor ? { color: "black" } : { color: "gray" }}
-                        required className="inputText" type="text" id="username" name="username" value={username}
+                        required className="inputText" placeholder="Enter username" type="text" id="username" name="username" value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
                 </Row>
                     {/* </Col> */}
                 <Row>
-                    <div>
-                    {/* style={{ display: "flex", flexDirection: "row", alignItems: "center" }}> */}
-                        <label style={{ paddingRight: "10px", paddingLeft: "16px", marginLeft: "20px" }}>PASSWORD:</label>
+                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                        <label style={{ paddingRight: "10px" }}>PASSWORD:</label>
                         <Form.Control
                             style={inputColor ? { color: "black" } : { color: "gray" }}
-                            required className="inputText" placeholder="Minimum 8 characters" type={revealText ? "text" : "passwordInput"} id="password" name="password" value={password}
+                            required className="inputText" placeholder="Enter password" type={revealText ? "text" : "passwordInput"} id="password" name="password" value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         {revealText ? (<i className="bi bi-eye-slash" onClick={handleTextReveal} id="togglePasswordInput"></i>) : (<i className="bi bi-eye" onClick={handleTextReveal} id="togglePasswordInput"></i>)}
@@ -91,8 +89,11 @@ function LogIn({ setUser, user }) {
                     {/* </Col> */}
                 </Row>
             </Form>
-            <p>Don't have an account? <a href="/signup">Sign up to get started!</a></p>
-        </>
+        </div>
+        <div style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center"}}>
+            <p style={{ marginTop:"50px", marginBottom:"50px", fontFamily:"monospace", fontSize:"16px", fontWeight:"bold", textShadow:"0.5px 0.5px rgb(81, 114, 210)"}}>DON'T HAVE AN ACCOUNT? <a href="/signup">SIGN UP TO GET STARTED!</a></p>
+        </div>
+    </div>
         //     {user.username ? null :
         //         (<div id="loginCard" style={{ width: "23rem", padding: "30px", border: "1px solid black", borderRadius: "6px", margin: "auto" }}>
         //             <h2 style={{ textAlign: "center" }}>Log In</h2>

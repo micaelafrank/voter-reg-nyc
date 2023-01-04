@@ -12,6 +12,15 @@ body {
   src: url(KgThankYouStamp-M9Wn.ttf);
 }
 
+#loginHeader{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: black;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px rgb(126, 171, 211);
+}
+
 .modal-container {
   position: fixed;
   top: 0;
@@ -268,6 +277,11 @@ input[placeholder] {
   display: none;
 }
 
+#loginBackground{
+    background-image: url("images/tiedye.jpg");
+
+}
+
 .homePageContainer {
   background-image: url("images/tiedye.jpg");
   background-size: cover;
@@ -279,7 +293,7 @@ input[placeholder] {
 
 .homeButton {
   width: 440px;
-  height: 100px;
+  height: 110px;
   font-size: 20px;
   font-weight: bold;
   font-family: monospace;
@@ -298,7 +312,7 @@ input[placeholder] {
 .homeNavItem {
   text-decoration: none;
   color: black;
-  padding-top: 20px;
+  padding-bottom: 30px;
   font-weight: bold;
 }
 
@@ -336,7 +350,7 @@ input[placeholder] {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  /* margin-top: 40px; */
 }
 
 * {
@@ -391,9 +405,9 @@ select {
 
 #registerForm .row {
   padding-top: 30px;
-  margin-left: 5px;
-  margin-right: 5px;
-  width: auto;
+  /* margin-left: 5px;
+  margin-right: 5px; */
+  /* width: auto; */
   justify-content: space-between;
 }
 
@@ -575,8 +589,8 @@ label {
   align-items: center;
   text-align: left;
   margin-left: 20px;
-  margin-right: 20px;
-  display: inline-block;
+  /* margin-right: 20px; */
+  /* display: inline-block;  */
 }
 
 #signUpForm {
@@ -701,16 +715,17 @@ label {
 } */
 
 .navBarList {
-  width: 85%;
+  /* width: 90%; */
   height: 100%;
   position: relative;
   float: right;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
+  justify-content: flex-end;
+  justify-items: flex-end;
+  align-items: right;
   text-align: center;
   padding: 20px;
-  font-size: 18px;
+  font-size: 20px;
+  text-shadow: 1px 1px rgb(48, 96, 179);;
 }
 
 .hidden {

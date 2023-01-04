@@ -70,7 +70,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home user={user} />} />
         <Route element={<WithNav user={user} />}>
           <Route className="hidden" path="/home" element={<Home />} />
           <Route path="/login" element={<LogIn />} />

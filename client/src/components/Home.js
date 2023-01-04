@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom";
 
-function Home() {
+function Home({ user }) {
     return (
         <React.Fragment>
             <section className="homePageContainer">
@@ -14,23 +14,24 @@ function Home() {
                         </div>
                     </div>
                     <div className="buttonContainerHome">
-                        <Link className="homeNavItem" to="/register">
+                        <Link className="homeNavItem" to="/voters">
                             <button id="button1home" className="homeButton">CHECK VOTER STATUS</button>
                         </Link>
-                        <Link className="homeNavItem" to="/voters">
+                        <Link className="homeNavItem" to="/register">
                             <button id="button2home" className="homeButton">REGISTER TO VOTE</button>
                         </Link>
                         <Link className="homeNavItem" to="/candidates">
                             <button id="button2home" className="homeButton">ON THE BALLOT</button>
                         </Link>
+                        {user.username ? 
+                        <Link className="homeNavItem" to="/logout">
+                            <button id="button3home" className="homeButton">LOG OUT</button>
+                        </Link>
+                        : 
                         <Link className="homeNavItem" to="/login">
-                            <button id="button2home" className="homeButton">LOG IN</button>
-                        </Link>
-                        <Link className="homeNavItem" to="/signup">
-                            <button id="button3home" className="homeButton">SIGN UP</button>
-                        </Link>
-
-                    </div>
+                            <button id="button2home" className="homeButton">LOG IN / SIGN UP</button>
+                        </Link>}
+                     </div>
                 </div>
             </section>
         </React.Fragment>
