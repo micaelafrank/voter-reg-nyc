@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
 
-function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, setLastNameSearch, setZipSearch, handleSearchClear, handleSearchSubmit }) {
+function Search({ date, setFirstNameSearch, isFiltering, setIsFiltering, isSearching, setLastNameSearch, setZipSearch, handleSearchClear, handleSearchSubmit }) {
     // const [formData, setFormData] = useState({ firstNameSearch:"", lastNameSearch: "", zipSearch:"" });
     const [fnSearch, setFNSearch] = useState("");
     const [lnSearch, setLNSearch] = useState("");
     const [zcSearch, setZCSearch] = useState("");
     const [colorChange, setColorChange] = useState(false);
+    const [birthday, setBirthday] = useState("");
     // const [searchChange, setSearchChange] = useState(false);
 
     function handleSubmit(e) {
@@ -17,8 +18,9 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
         handleSearchSubmit();
     }
 
-    function handleBday(){
+    function handleBirthday(e){
         setColorChange(true);
+        setBirthday(e.target.value);
     }
 
     function handleSearch() {
@@ -30,6 +32,8 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
         setFNSearch("");
         setLNSearch("");
         setZCSearch("");
+        setBirthday("")
+        setColorChange(false);
         handleSearchClear();
     }
     function SubmitButton() {
@@ -43,11 +47,11 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
     return (
         <div className="searchBarContainer">
             <form id="searchForm" style={{ fontFamily: "monospace" }} className="searchbarForm" onSubmit={handleSubmit}>
-                <h4 style={{ lineHeight: "0", fontSize: "30px", textAlign: "center" }}>CHECK YOUR VOTER STATUS</h4>
+                <h4 style={{ lineHeight: "0", fontSize: "30px", textAlign: "center" }}>CHECK VOTER STATUS</h4>
                 <p style={{ fontSize: "15px", lineHeight: "1.2" }}><span style={{ fontSize: "18px", fontWeight: "bold" }}>Instructions:</span> Fill out the following information to view a voter's record. All fields are required.</p>
                 <div id="row1" style={{ display: "flex", fontFamily: "monospace", flexDirection: "row" }}>
                     <input
-                        style={{border: "1px solid black", borderRadius: "2px"}}
+                        style={setColorChange ? { color: "black", border: "1px solid black", borderRadius: "2px" } : { color: "gray", border: "1px solid black", borderRadius: "2px" }}
                         width="20%"
                         required
                         type="text"
@@ -56,13 +60,13 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
                         placeholder="First name"
                         value={fnSearch}
                         onChange={(e) => {
-                            setColorChange(true);
+                            // setColorChange(true);
                             setFNSearch(e.target.value)}
                         }
                     // onChange={(e) => setFirstName(e.target.value)}
                     />
                     <input
-                        style={{ border: "1px solid black", borderRadius: "2px" }}
+                        style={setColorChange ? { color: "black", border: "1px solid black", borderRadius: "2px" } : { color: "gray", border: "1px solid black", borderRadius: "2px" }}
                         required
                         width="20%"
                         type="text"
@@ -80,13 +84,13 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
                         style={ colorChange ? { color: "black", border: "1px solid black", borderRadius: "2px" } : { color: "gray", border: "1px solid black", borderRadius: "2px" } }
                         required
                         type="date"
+                        value={birthday}
                         name="birthdaySearch"
-                        id="birthdaySearch"
-                        placeholder="Birthday (MM/DD/YYYY)"
-                        onChange={handleBday}
+                        placeholder="mm/yy/dddd"
+                        onChange={handleBirthday}
                     />
                     <input
-                        style={{ border: "1px solid black", borderRadius: "2px" }}
+                        style={setColorChange ? { color: "black", border: "1px solid black", borderRadius: "2px" } : { color: "gray", border: "1px solid black", borderRadius: "2px" }}
                         width="20%"
                         required
                         type="text"
@@ -94,7 +98,7 @@ function Search({ setFirstNameSearch, isFiltering, setIsFiltering, isSearching, 
                         minLength="5"
                         id="zipSearch"
                         name="zipSearch"
-                        placeholder="Postal Code"
+                        placeholder="ex: 11215"
                         value={zcSearch}
                         onChange={(e) => setZCSearch(e.target.value)}
                     // onChange={(e) => setPostalCode(e.target.value)}

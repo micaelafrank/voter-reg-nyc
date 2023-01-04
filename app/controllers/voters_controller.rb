@@ -1,6 +1,7 @@
 class VotersController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :cant_show_voter
 rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
+    skip_before_action :authorize
 
     def index
         activity = Voter.all.order(isActive: :desc)

@@ -61,6 +61,13 @@ function App() {
     setVoters(...voters, newVoter);
   }
 
+  const current = new Date();
+  const dayDate = ('0' + current.getDate()).slice(-2);
+  const monthDate = ('0' + current.getMonth() + 1).slice(-2);
+  const yearDate = `${current.getFullYear()}`
+  const date = `${dayDate}/${monthDate}/${yearDate}`
+
+
 
   // function deleteVoter(id){
   //   const updatedList = voters.filter((voter) => voter.id !== id);
@@ -75,7 +82,7 @@ function App() {
           <Route className="hidden" path="/home" element={<Home />} />
           <Route path="/login" element={<LogIn />} />
           {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}
-          <Route path="/voters" element={<VoterPage /> } />
+          <Route path="/voters" element={<VoterPage date={date} /> } />
           <Route path="/signup" element={<UserSignUp user={user} setUser={setUser} />} />
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}

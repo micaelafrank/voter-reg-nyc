@@ -4,7 +4,7 @@ import VoterList from "./VoterList";
 import Search from "./Search";
 import SearchedVoter from "./SearchedVoter";
 
-function VoterPage({ handleValidation }) {
+function VoterPage({ handleValidation, date }) {
     const [firstNameSearch, setFirstNameSearch] = useState(" ")
     const [lastNameSearch, setLastNameSearch] = useState(" ")
     const [zipSearch, setZipSearch] = useState(" ")
@@ -46,34 +46,6 @@ function VoterPage({ handleValidation }) {
     //     console.log(`Filter results: ${isFiltering}`);
     // }
 
-    //     const searchedVoter = voters.map((voter) => (
-    //     <SearchedVoter
-    //     change={change}
-    //     setChange={setChange}
-    //     key = { voter.id }
-    //     id = { voter.id }
-    //     voters = { voters }
-    //     voter={voter.voter}
-    //     lastName = { voter.last }
-    //     firstName = { voter.first }
-    //     address1 = { voter.address1 }
-    //     address2 = { voter.address2 }
-    //     isActive = { voter.isActive }
-    //     setVoters = { setVoters }
-    //     age = { voter.age }
-    //     party = { voter.party }
-    //     password = { voter.password }
-    //     postalCode = { voter.postalCode }
-    //     deleteVoter = { deleteVoter }
-    //     setIsFiltering = { setIsFiltering }
-    //     setIsSearching = { setIsSearching }
-    //     isSearching = { isSearching }
-    //     isFiltering = { isFiltering }
-    //     validated={validated}
-    //     setValidated={setValidated}
-    //     handleValidation={handleValidation}
-    //         />
-    // ))
 
     const renderMessage = "Not found: Your search did not match any record on file. Please ensure fields are accurate and try again.";
     let count = 0;
@@ -113,7 +85,7 @@ function VoterPage({ handleValidation }) {
     return (
         <main className="voterPageContainer" style={{ paddingTop: "35px", paddingBottom: "30px" }}>
             {/* <GridColSizesExample /> */}
-            <Search setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} handleSearchClear={handleSearchClear} handleSearchSubmit={handleSearchSubmit} setZipSearch={setZipSearch} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} />
+            <Search date={date} setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} handleSearchClear={handleSearchClear} handleSearchSubmit={handleSearchSubmit} setZipSearch={setZipSearch} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} />
             <VoterList canEdit={canEdit} setCanEdit={setCanEdit} handleValidation={handleValidation} setValidated={setValidated} validated={validated} isFiltering={isFiltering} count={count} setVoters={setVoters} renderMessage={renderMessage} error={error} voters={isSearching ? searchedNames : voters} handleSearchSubmit={handleSearchSubmit} handleSearchClear={handleSearchClear} handleDelete={deleteVoter} firstNameSearch={firstNameSearch} lastNameSearch={lastNameSearch} zipSearch={zipSearch} setZipSearch={setZipSearch} setFirstNameSearch={setFirstNameSearch} setLastNameSearch={setLastNameSearch} />
         </main>
     )

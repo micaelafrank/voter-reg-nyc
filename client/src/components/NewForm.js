@@ -104,10 +104,22 @@ function NewForm({ user, addNewVoter, voters, setVoters }) {
         <React.Fragment>
             {user.username ? null :
                 <div style={{marginTop:"0", paddingTop:"0", width:"100%", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center"}}>
-                    <p style={{ fontSize: "20px", paddingBottom: "13px", fontWeight: "bold", color: "navy", textShadow: "1px 1px lightblue", fontFamily: "monospace" }}>TO REGISTER, YOU MUST HAVE AN ACCOUNT WITH BIG APPLE BALLOTS.</p>
+                    <p style={{ fontSize: "20px", paddingBottom: "3px", fontWeight: "bold", color: "navy", textShadow: "1px 1px lightblue", fontFamily: "monospace" }}>TO REGISTER, YOU MUST HAVE AN ACCOUNT WITH BIG APPLE BALLOTS.</p>
                     <div style={{display:"flex", flexDirection:"row"}}>
-                        <Button style={{ fontFamily: "monospace", fontSize: "18px", fontWeight: "bold", padding: "10px 15px", backgroundColor: "white", border: "3px solid navy", color: "navy", marginRight:"10px" }}>LOG IN</Button>
-                        <Button style={{ marginLeft:"10px", fontFamily: "monospace", fontSize: "18px", fontWeight: "bold", padding: "10px 15px", backgroundColor: "white", border: "3px solid navy", color: "navy" }}>SIGN UP</Button>
+                        <Button 
+                        className='regFormLoginBtn'
+                        // style={{ cursor:"pointer", fontFamily: "monospace", fontSize: "18px", fontWeight: "bold", padding: "10px 15px", backgroundColor: "white", border: "3px solid navy", color: "navy", marginRight:"10px" }}
+                        onClick={() => navigate("/login")}
+                        >
+                            LOG IN
+                        </Button>
+                        <Button 
+                        className='regFormLoginBtn'
+                        // style={{ marginLeft:"10px", fontFamily: "monospace", fontSize: "18px", fontWeight: "bold", padding: "10px 15px", backgroundColor: "white", border: "3px solid navy", color: "navy" }}
+                        onClick={() => navigate("/signup")}
+                        >
+                            SIGN UP
+                        </Button>
                     </div>
                 </div>
             }

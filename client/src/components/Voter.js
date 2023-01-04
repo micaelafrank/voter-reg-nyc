@@ -27,7 +27,7 @@ function Voter({ canEdit, setCanEdit, isActive, handleModal, change, setChange, 
     // const initial = firstName.slice(0, 0);
     const shortName = `${initial}. ${lastName}`;
     const fullName = `${firstName} ${lastName}`;
-    const voterID = `${voter.id}`;
+    // const voterID = `${voter.id}`;
 
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);

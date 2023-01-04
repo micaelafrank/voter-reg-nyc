@@ -87,18 +87,21 @@ function VoterList({ canEdit, setCanEdit, handleModal, change, setChange, handle
     ))
 
     return (
-        <React.Fragment>
+        <div style={{justifyContent:"center"}}>
             {/* {validated ? 
                 <h1 className="formHeading4" style={{ paddingTop: "50px", paddingBottom: "20px", fontFamily: "KGThankYouStamp", textAlign: "center", fontSize: "60px" }}>VOTER INFORMATION</h1>
             : */}
-            <h1 className="formHeading4" style={{ fontSize: "65px", paddingTop: "60px", paddingBottom: "20px",  textAlign: "center" }}>REGISTERED VOTERS</h1>
-            <section className={isFiltering ? "searchGridContainer" : `voterGridContainer`}>
+            <h2 className="voterListHeader" style={{ fontSize: "40px", fontFamily: "monospace", alignItems: "center", paddingTop: "20px", textAlign: "center" }}>{listOfVoters.length > 0 ? "REGISTERED VOTERS" : null}</h2>
+            {isFiltering && listOfVoters.length > 0 ? 
+            <p style={{fontFamily:"monospace", fontSize:"14px", textAlign:"center"}}>{listOfVoters.length} RECORDS FOUND</p> : 
+            null}
+            <section style={{paddingTop:"30px"}} className={isFiltering ? "searchGridContainer" : `voterGridContainer`}>
             {validated ? searchedVoter : listOfVoters}
             {/* {listOfVoters} */}
             </section>
             {/* {listOfVoters.length > 0 ? null : renderMessage} */}
             {listOfVoters.length > 0 ? null : <p style={{ lineHeight:"1.8", fontSize: "18px", color: "maroon" }} id="error-message"><span style={{ fontWeight: "bold", fontSize:"22px" }}>VOTER NOT FOUND</span><br></br>Your search did not match any record on file.<br></br>Please ensure all information is accurate and try again.</p> }
-        </React.Fragment>
+        </div>
     );
 }
 
