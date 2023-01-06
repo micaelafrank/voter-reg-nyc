@@ -49,13 +49,18 @@ function UserSignUp({ setUser, user }) {
                 }
             })
     }
-    
+
     return (
-        <>
-        <div>
-            <h4 className="modal-title3" style={{ justifyContent:"center", color:"black", textAlign:"center", alignItems: "center"}}>Sign Up</h4>
+        // <>
+        // <div>
+        <div style={{ backgroundColor: "white", display: "flex", flexDirection: "column", width: "100%", justifyContent: "center", alignItems: "center" }}>
+            <div style={{ alignContent: "center", justifyContent: "center" }}>
+
+            {/* <h4 className="modal-title3" style={{ justifyContent:"center", color:"black", textAlign:"center", alignItems: "center"}}>Sign Up</h4> */}
             {/* <br></br> */}
             <Form id="signUpForm" onSubmit={handleSubmit}>
+                <h3 id="loginHeader" style={{ textAlign: "center", fontFamily: "KGThankYouStamp", fontSize: "65px" }}>Log In</h3>
+                {/* <h4 className="modal-title3" style={{ justifyContent: "center", color: "black", textAlign: "center", alignItems: "center" }}>Sign Up</h4> */}
                 <h5 className="modal-title2" style={{marginLeft:"340px", marginRight:"340px"}}>You must create a Big Apple Ballots accounts and log in in order to register to vote and/or view your voter information.</h5>
                 {errorMessages ? errorMessages.map((errorMessage) => {
                     (<p className="errorMessage" style={{ color: "red" }}>
@@ -67,9 +72,9 @@ function UserSignUp({ setUser, user }) {
                 }) : null}
                 <Row>
                     {/* <Col> */}
-                    <div>
+                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                         {/* style={{ display: "flex", flexDirection: "row", alignItems: "center" }}> */}
-                        <label>CREATE A USERNAME:</label>
+                        <label style={{paddingRight:"10px"}}>CREATE A USERNAME:</label>
                         <Form.Control
                             style={inputColor ? { color: "black", marginLeft: "20px" } : { color: "gray", marginLeft: "20px" }}
                             required className="inputText" type="text" id="username" name="username" value={username}
@@ -80,7 +85,9 @@ function UserSignUp({ setUser, user }) {
                 {/* </Col> */}
                 <Row>
                     <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                        <label>CREATE A PASSWORD:</label>
+                        <label style={{ paddingRight: "10px" }}>CREATE A PASSWORD:</label>
+                    {/* <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                        <label>CREATE A PASSWORD:</label> */}
                         <Form.Control
                             style={inputColor ? { color: "black", marginLeft: "20px" } : { color: "gray", marginLeft: "20px" }}
                             required className="inputText" placeholder="Minimum 8 characters" type={revealText ? "text" : "passwordInput"} id="password" name="password" value={password}
@@ -93,7 +100,10 @@ function UserSignUp({ setUser, user }) {
                 </Row>
             </Form>
         </div>
-        </>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+            <p style={{ marginTop: "50px", marginBottom: "50px", fontFamily: "monospace", fontSize: "16px", fontWeight: "bold", textShadow: "0.5px 0.5px rgb(81, 114, 210)" }}>ALREADY HAVE AN ACCOUNT? <a href="/login">LOG IN!</a></p>
+        </div>
+    </div>
     )
 }
 
