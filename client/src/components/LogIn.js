@@ -28,15 +28,16 @@ function LogIn({ setUser, user }) {
     }
 
 
-
     function handleSubmit(e) {
         e.preventDefault();
         console.log(e.target)
         // console.log(formData)
         fetch('/login', {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({username, password}),
+            headers: { 
+                "Content-Type": "application/json" 
+            },
+            body: JSON.stringify({ username, password }),
         }).then(res => {
             if (res.ok) {
                 res.json().then((user) => setUser(user))
@@ -80,7 +81,7 @@ function LogIn({ setUser, user }) {
                         <label style={{ paddingRight: "10px" }}>PASSWORD:</label>
                         <Form.Control
                             style={inputColor ? { color: "black" } : { color: "gray" }}
-                            required className="inputText" placeholder="Enter password" type={revealText ? "text" : "passwordInput"} id="password" name="password" value={password}
+                            required className="inputText" placeholder="Enter password" type={revealText ? "text" : "password"} id="password" name="password" value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         {revealText ? (<i className="bi bi-eye-slash" onClick={handleTextReveal} id="togglePasswordInput"></i>) : (<i className="bi bi-eye" onClick={handleTextReveal} id="togglePasswordInput"></i>)}
@@ -88,6 +89,9 @@ function LogIn({ setUser, user }) {
                     </div>
                     {/* </Col> */}
                 </Row>
+                <div className="login-btn-container">
+                    <button className="login100-form-btn" style={{ fontFamily: "monospace", textAlign: "center", borderRadius: "3px", margin: "auto", marginTop: "15px", textAlign: "center", justifyContent: "center" }} type="submit">LOG IN</button>
+                </div>
             </Form>
         </div>
         <div style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center"}}>

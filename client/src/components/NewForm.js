@@ -123,7 +123,12 @@ function NewForm({ user, addNewVoter, voters, setVoters }) {
                     </div>
                 </div>
             }
-            <div id="overviewContainer" style={{ marginLeft: "auto", marginRight: "auto", width: "65%", alignItems: "center", justifyContent: "center", border: "1px solid black", padding: "5px 20px 20px 20px", marginBottom:"70px" }}>
+            {user.username ? 
+                <div style={{ display: "flex", marginLeft: "auto", marginRight: "auto", height: "20px", width: "50%", justifyContent: "center", alignItems: "center", textAlign: "center", backgroundColor: "rgba(228, 229, 255, 0.823)" }}>
+                <p style={{ justifyContent: "center", alignItems: "center", textAlign: "center", fontFamily: "monospace", fontSize: "16px", fontWeight:"bold" }}>Good news, {user.username}! You are already registered.</p> 
+            </div>
+                : null} 
+            <div id="overviewContainer" style={{ marginLeft: "auto", marginRight: "auto", width: "65%", alignItems: "center", justifyContent: "center", border: "1px solid black", padding: "5px 20px 20px 20px", marginBottom:"50px" }}>
                 <p id="overviewTitle" className="formHeading2">OVERVIEW</p>
                 <div style={{ margin: "15px", alignItems: "center" }}>
                     <p style={{ fontSize: "17px", paddingBottom: "13px", fontWeight: "bold", fontFamily: "monospace" }}>TO REGISTER IN NEW YORK STATE YOU MUST:</p>

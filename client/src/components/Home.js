@@ -7,7 +7,7 @@ function Home({ user }) {
             <section className="homePageContainer">
                 <h2 className="title" style={{textShadow:"1px 1px white"}}>BIG APPLE BALLOTS</h2>
                 <h3 style={{ color: "black", textShadow: "none", fontSize: "40px", fontFamily: "KGThankYouStamp", textShadow:"1px 1px white" }}>FOR THE CITY THAT NEVER SLEEPS ON VOTING</h3>
-                <h3 style={{ color: "black", textShadow: "none", paddingTop: "30px", fontSize: "30px", letterSpacing:"1.5px", textShadow: "1px 1px white", fontFamily: "monospace" }}>VOTER INFORMATION & ELECTION RESOURCES<br></br>TO GET YOU RIPE FOR THE POLLS</h3>
+                <h3 style={{ color: "black", textShadow: "none", paddingTop: "30px", marginBottom:"40px", fontSize: "30px", letterSpacing:"1.5px", textShadow: "1px 1px white", fontFamily: "monospace" }}>VOTER INFORMATION & ELECTION RESOURCES<br></br>TO GET YOU RIPE FOR THE POLLS</h3>
                 <div id="homeImagesAndButtons">
                     <div style={{ display: "inline-block" }}>
                         <div id="stickerimage">

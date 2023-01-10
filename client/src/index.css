@@ -282,9 +282,33 @@ input[placeholder] {
 
 }
 
+.login-btn-container{
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  display: flex;
+}
+
+button.login100-form-btn:hover{
+  cursor: pointer;
+  font-weight: bold;
+   border: 2px solid black;
+   background-color: rgb(253, 239, 239);
+}
+
+button.login100-form-btn{
+  font-size: 14px;
+  padding: 9px 18px;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
 .homePageContainer {
   background-image: url("images/tiedye.jpg");
   background-size: cover;
+  padding-bottom: 4em;
   background-repeat: repeat;
   min-height: 100%;
   align-items: center;
@@ -294,6 +318,7 @@ input[placeholder] {
 .homeButton {
   width: 440px;
   height: 110px;
+  /* height: auto; */
   font-size: 20px;
   font-weight: bold;
   font-family: monospace;
@@ -312,32 +337,39 @@ input[placeholder] {
 .homeNavItem {
   text-decoration: none;
   color: black;
-  padding-bottom: 30px;
+  /* align-items: center;
+  align-content: center;
+  align-self: center;
+  justify-content: center; */
+  /* justify-items: center; */
+  /* padding-bottom: 30px; */
   font-weight: bold;
 }
 
 #button3home {
   /* margin-top: 50px; */
-  margin-bottom: 90px;
+  /* margin-bottom: 90px; */
 }
 
 #homeImagesAndButtons {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  justify-items: center;
+  align-self: center;
   align-items: center;
-  padding-bottom: 3em;
-  margin-top: 20px;
+  /* height: 700px; */
 }
 
 #stickerimage {
   /* background-image: url("images/sticker.png"); */
   /* background-size: contain; */
-  display: inline-block;
-  height: 650px;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
   width: 530px;
-  margin-right: 50px;
-  padding: 0;
+  margin-right: 30px;
+  /* padding: 0; */
   flex: 0 0 auto;
   background: #ccc url("images/newsticker.png") no-repeat center center;
   background-size: cover;
@@ -345,11 +377,16 @@ input[placeholder] {
 }
 
 .buttonContainerHome {
-  margin-left: 50px;
-  justify-content: space-around;
+  margin-left: 30px;
+  /* height: auto; */
+  justify-content: space-evenly;
+  justify-items: center;
+  /* justify-content: space-around; */
   align-items: center;
-  display: flex;
-  flex-direction: column;
+  align-content: center;
+  display: inline-grid;
+  grid-gap: 25px;
+  /* flex-direction: grid; */
   /* margin-top: 40px; */
 }
 
@@ -559,12 +596,16 @@ label {
 .formHeading4 {
   text-align: center;
   font-family: KGThankYouStamp;
-  font-size: 70px;
+  font-size: 60px;
   line-height: 1.2;
-  letter-spacing: 3px;
+  letter-spacing: 2.2px;
   text-shadow: 2px 2px rgb(120, 167, 187);
   line-height: 0;
 }
+
+  .mic{
+    text-shadow: 2px 2px rgba(228, 229, 255, 0.823);
+  }
 
 .formHeading6 {
   text-align: center;
@@ -578,7 +619,7 @@ label {
 }
 
 #overviewContainer {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 #overviewTitle {

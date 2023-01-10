@@ -80,7 +80,7 @@ function App() {
         <Route path="/" element={<Home user={user} />} />
         <Route element={<WithNav user={user} />}>
           <Route className="hidden" path="/home" element={<Home />} />
-          <Route path="/login" element={<LogIn />} />
+          <Route path="/login" element={<LogIn setUser={setUser} user={user} />} />
           {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}
           <Route path="/voters" element={<VoterPage date={date} /> } />
           <Route path="/signup" element={<UserSignUp user={user} setUser={setUser} />} />
