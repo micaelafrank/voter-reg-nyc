@@ -16,10 +16,11 @@ Rails.application.routes.draw do
     post "/register", to: "voters#create"
     delete "/logout", to: "sessions#destroy" 
     get "/voters", to: "voters#index"
-    get "/voters/profile/:id", to: "voters#show"
+    # get "/voters/profile/:id", to: "voters#show"
+    get "/myvote", to: "voters#show" 
     # get "/voters/:first:last:postalCode", to: "voters#search"
     # post "/voters/:first:last:postalCode", to: "voters#search"
-    patch "/voters/:id", to: "voters#update"
+    patch "/myvote", to: "voters#update"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

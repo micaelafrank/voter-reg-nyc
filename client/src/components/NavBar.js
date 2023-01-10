@@ -2,6 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 function NavBar({ user }) {
+
+    const capName = `${user.username}`.toUpperCase();
     return (
         <div className="navBarContainer">
             <h2 className="navHeading" style={{
@@ -13,7 +15,7 @@ function NavBar({ user }) {
                 <NavLink id="nav2" to="voters">VOTER LIST</NavLink>
                 <NavLink id="nav3" to="register">REGISTER</NavLink>
                 <NavLink id="nav4" to="candidates">CANDIDATES</NavLink>
-                <NavLink id="nav4" to="candidates">MY VOTING INFO</NavLink>
+                {user.username ? <NavLink to="myvote" id="nav7">{capName}'S VOTING INFO</NavLink> : null}
                 {/* <NavLink id="nav2" to="voters">SIGN UP</NavLink>
                 <NavLink id="nav2" to="voters">LOG IN</NavLink> */}
                 {user.username ? <NavLink id="nav5" to="voters">LOG OUT</NavLink> : 

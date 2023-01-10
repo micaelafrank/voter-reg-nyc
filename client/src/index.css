@@ -346,10 +346,6 @@ button.login100-form-btn{
   font-weight: bold;
 }
 
-#button3home {
-  /* margin-top: 50px; */
-  /* margin-bottom: 90px; */
-}
 
 #homeImagesAndButtons {
   display: flex;
@@ -742,9 +738,10 @@ label {
 #nav1,
 #nav2,
 #nav3,
-#nav4, 
+#nav4, #nav7,
 #nav5, #nav6 {
-  padding: 0 2rem;
+  padding: 0 1.5rem;
+  border: none;
   color: black;
   font-family: monospace;
   font-size: 1em;
@@ -755,7 +752,7 @@ label {
   text-align: center;
 }
 
-a#nav1:hover, a#nav1:active, a#nav3:active, a#nav2:active, 
+a#nav1:hover, a#nav7:active, a#nav7:hover, a#nav1:active, a#nav3:active, a#nav2:active, 
 a#nav4:active,
 a#nav5:active,
 a#nav6:active,
@@ -897,13 +894,14 @@ a#nav4:hover, a#nav5:hover, a#nav6:hover{
 .viewVotingInfoBtn{
   background-color: white;
   color: black;
-  border: 2px solid black;
+  border-bottom: 2px solid black;
   line-height: 2;
   letter-spacing: 1.5px;
   padding: 3px 10px;
   font-family: monospace;
   font-size: 13px;
 }
+
 
 .viewVotingInfoBtn2 {
   background-color: rgb(194, 222, 226);
@@ -927,22 +925,11 @@ a#nav4:hover, a#nav5:hover, a#nav6:hover{
   cursor: pointer;
 }
 
-.search-item{
-    /* padding: 15px 10px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 800px; */
-    /* display: inline-grid; */
-    /* align-items: left;
-    text-align: center; */
-    border: 2px solid rgb(66, 127, 132);
-}
-
 .searchItemInnerDiv{
     padding: 15px 10px;
     margin-left: auto;
     margin-right: auto;
-    width: 800px;
+    width: 60%;
     height:auto;
     align-items: left;
     text-align: center;
@@ -970,8 +957,8 @@ margin-bottom: 10px;
 }
 
 #editFullName{
-    font-size: 22px;
-    line-height: 1;
+    font-size: 25px;
+    line-height: 2;
     margin-left: 0;
     margin-right: 0;
     font-family: monospace;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 // import RegistrationForm from './RegistrationForm'
 import VoterPage from './VoterPage'
-import VoterList from './VoterList';
 // import { Switch, Route } from 'react-router-dom'
 // import CandidateList from './CandidateList'
 import Home from './Home'
@@ -11,11 +10,13 @@ import NewForm from './NewForm'
 // import ModalSignIn from './ModalSignIn'
 // import EditVoterCard from './EditVoterCard'
 import SearchedVoter from './SearchedVoter';
+import SearchVoterList from './SearchVoterList';
 import EditVoterInfo from './EditVoterInfo';
 import ModalSignIn from './ModalSignIn';
 import { useNavigate } from 'react-router-dom';
 import LogIn from './LogIn';
 import UserSignUp from './UserSignUp';
+import VoterList2 from './VoterList2';
 
 function App() {
   const [voters, setVoters] = useState({});
@@ -38,10 +39,11 @@ function App() {
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user))
+        r.json().then((user) => setUser(user));
       }
     })
   }, [])
+  console.log(user);
 
   useEffect(() => {
     fetch("/parties")
@@ -50,6 +52,7 @@ function App() {
   }, [])
   console.log(parties)
 
+  console.log(user)
   // useEffect(() => {
   //   fetch("http://localhost:9292/candidates")
   //   .then(res => res.json())
@@ -86,7 +89,7 @@ function App() {
           <Route path="/signup" element={<UserSignUp user={user} setUser={setUser} />} />
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
-          <Route path="/myinfo" element={<SearchedVoter user={user} />} />
+          <Route path="/myvote" element={<SearchVoterList user={user} setUser={setUser} voters={voters} setVoters={setVoters} />} />
           {/* showVoterInfo={showVoterInfo} setShowVoterInfo={setShowVoterInfo} voters={voters} setVoters={setVoters}  */}
           <Route path="/register" element={<NewForm user={user} voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
           {/* <Route path="/modalsignin" element={<ModalSignIn />} /> */}
