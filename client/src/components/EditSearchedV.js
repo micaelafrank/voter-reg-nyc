@@ -4,11 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Voter from './Voter';
 
-function EditSearchedV({ voters, setVoters, handleClose, setChange, change, handleShow, user, address1, show}){
-    const [address1State, setAddress1State] = useState(address1);
-    const [editAddress1State, setEditAddress1State] = useState(false);
-    const [initialAddress1Value, setInitialAddress1Value] = useState(address1);
-
+function EditSearchedV({ postalCodeState, setPostalCodeState, editPostalCodeState, setEditPostalCodeState, initialPostalCodeValue, setInitialPostalCodeValue, voter, upperFN, upperLN, address1State, editInfo, setEditInfo, setAddress1State, user, handleClose, setChange, change, handleShow, show, editAddress1State, editAddress2State, setAddress2State, setEditAddress2State, address2State, initialAddress2Value, setInitialAddress2Value, setEditAddress1State, initialAddress1Value, setInitialAddress1Value }){
     // const [address2State, setAddress2State] = useState(myVoter.address2);
     // const [editAddress2State, setEditAddress2State] = useState(false);
     // const [initialAddress2Value, setInitialAddress2Value] = useState(myVoter.address2);
@@ -39,8 +35,8 @@ function EditSearchedV({ voters, setVoters, handleClose, setChange, change, hand
     <div style={{ margin: "5px" }}>
         <div className='modal-container'>
             <section className="modal">
-                <Button variant="primary" onClick={handleShow}>Edit Voter Information</Button>
-                <Modal show={show} onHide={handleClose}>
+                {/* <Button variant="primary" onClick={handleShow}>Edit Voter Information</Button> */}
+                <Modal show={editInfo} onClose={handleClose}>
                     <Modal.Header className="modal-header">
                         {/* closeButton> */}
                         <Form.Group className="XIconContainer" onClick={handleClose}>
@@ -51,7 +47,8 @@ function EditSearchedV({ voters, setVoters, handleClose, setChange, change, hand
                     </Modal.Header>
                     <Modal.Body className="modal-content">
                         <div className='modal-item-description-box'>
-                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                            <p style={{fontWeight:"bold", paddingBottom:"10px", fontFamily:"monospace", fontSize:"15px"}}>{upperFN} {upperLN}</p>
+                            <div style={{ display: "flex", flexDirection: "row", justifyContent:"center", alignItems: "center" }}>
                                 {editAddress1State ? (
                                     <div className='field1' style={{ justifyContent: "center", marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}>
                                         <input
@@ -61,15 +58,55 @@ function EditSearchedV({ voters, setVoters, handleClose, setChange, change, hand
                                             aria-describedby='my-helper-text'
                                             onChange={(e) => setAddress1State(e.target.value)}
                                         />
-                                        <p sx={{ mb: 2 }} id='my-helper-text'>
-                                            Edit your item name
+                                        <p style={{marginBottom:"10px", fontFamily:"monospace", fontSize:"13px"}} id='my-helper-text'>
+                                            EDIT STREET ADDRESS
                                         </p>
                                     </div>
                                 ) : (
                                     <div
                                         style={{ marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}
                                     >
-                                        <span><span style={{ fontFamily: "monospace", fontSize: "14px" }}>ITEM NAME:</span> {initialAddress1Value}</span>
+                                        <span><span style={{ fontFamily: "monospace", fontSize: "14px" }}>STREET ADDRESS:</span> {initialAddress1Value}</span>
+                                    </div>
+                                )}
+                                {editAddress2State ? (
+                                    <div className='field1' style={{ justifyContent: "center", marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}>
+                                        <input
+                                            defaultValue={initialAddress2Value}
+                                            className="editItemInput"
+                                            id="my-input"
+                                            aria-describedby='my-helper-text'
+                                            onChange={(e) => setAddress2State(e.target.value)}
+                                        />
+                                        <p style={{ marginBottom: "10px", fontFamily: "monospace", fontSize: "13px" }} id='my-helper-text'>
+                                        EDIT APT/SUITE/FLOOR NUMBER
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div
+                                        style={{ marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}
+                                    >
+                                        <span><span style={{ fontFamily: "monospace", fontSize: "14px" }}>APT/SUITE/FLOOR NUMBER:</span> {initialAddress2Value}</span>
+                                    </div>
+                                )}
+                                {editPostalCodeState ? (
+                                    <div className='field1' style={{ justifyContent: "center", marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}>
+                                        <input
+                                            defaultValue={initialPostalCodeValue}
+                                            className="editItemInput"
+                                            id="my-input"
+                                            aria-describedby='my-helper-text'
+                                            onChange={(e) => setPostalCodeState(e.target.value)}
+                                        />
+                                        <p style={{ marginBottom: "10px", fontFamily: "monospace", fontSize: "13px" }} id='my-helper-text'>
+                                            EDIT POSTAL CODE
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div
+                                        style={{ marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}
+                                    >
+                                        <span><span style={{ fontFamily: "monospace", fontSize: "14px" }}>POSTAL CODE:</span> {initialPostalCodeValue}</span>
                                     </div>
                                 )}
                             </div>
