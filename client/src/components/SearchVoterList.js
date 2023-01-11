@@ -91,47 +91,48 @@ function SearchVoterList({ setUser, voters, setVoters, user }) {
         <div className="search-item" style={{ marginLeft: "auto", marginRight: "auto", marginTop: "2rem", marginBottom: "2rem", alignItems: "center", justifyContent: "center" }}>
             <div className="searchItemInnerDiv" style={{ fontFamily: "monospace", marginTop: "1rem", marginBottom: "2rem", alignItems: "left", textAlign: "left", justifyContent: "center" }}>
                 {/* <p id="editFullName" style={{ fontWeight: "bold", fontWeight: "bold" }}>{upperFN} {upperLN}</p> */}
-                <div style={{display:"flex", lineHeight:"2", justifyContent:"start" ,fontSize:"16px"}}>
-                    <p id="editFullName" style={{ width: "760px"}}>{upperFN} {upperLN}</p>
-                    <div style={{display:"flex", flexDirection:"column", justifyContent:"right", alignItems:"right"}}>
-                        <p style={{ marginLeft:"20px", marginRight: "20px", color: "black", letterSpacing: "1.5px"}}><a style={{ borderBottom: "2px solid black", textDecoration: "none", color: "black" }} href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">FIND MY POLLSITE</a></p>
+                <div style={{display:"flex", flexDirection:"row", lineHeight:"2", alignItems:"center", justifyContent:"center" ,fontSize:"13px"}}>
+                    <div style={{ width: "1090px", flexDirection:"column"}}>
+                        <p id="editFullName">{upperFN} {upperLN}</p>
+                        <p style={{ alignItems: "center", fontSize: "16px", lineHeight: "1.6", color: user.isActive ? "green" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{user.isActive ? "ACTIVE" : "INACTIVE"}</p>
+                    </div>
+                    <div style={{width:"500px", display:"flex", flexDirection:"column", justifyContent:"right", alignItems:"center"}}>
+                        <p style={{ color: "navy", letterSpacing: "1.5px" }}><a style={{ borderBottom: "2px solid navy", paddingLeft: "15px", justifyContent: "center", paddingRight:"15px", textDecoration: "none", }} href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">FIND MY POLLSITE</a></p>
                         <p 
                         // onClick={deleteVotingInfo} 
-                        style={{ color: "black", letterSpacing: "1.5px"}}>
-                        <a style={{ borderBottom: "2px solid black", textDecoration: "none", color: "black" }}>DEACTIVATE MY REGISTRATION</a></p>
+                        style={{ color: "navy", letterSpacing: "1.5px"}}>
+                        <a style={{ borderBottom: "2px solid navy", textDecoration: "none", paddingLeft: "15px", paddingRight: "15px", }}>DEACTIVATE REGISTRATION</a></p>
                     </div>
                 </div>
-                <p style={{ alignItems: "center", fontSize: "16px", lineHeight:"1.6", color: user.isActive ? "green" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{user.isActive ? "ACTIVE" : "INACTIVE"}</p>
-                <div style={{display:"flex", fontSize:"16px", alignItems:"center", lineHeight:"1.6", alignItems:"center", flexDirection: "row"}}>
-                    <p style={{ width: "290px", fontWeight:"bold" }}>FIRST NAME:</p>
+                <div style={{ marginTop:"0", borderBottom:"2px solid black", width:"350px"}}>&nbsp;</div>
+                {/* <p style={{ alignItems: "center", fontSize: "16px", lineHeight:"1.6", color: user.isActive ? "green" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{user.isActive ? "ACTIVE" : "INACTIVE"}</p> */}
+                <div style={{marginTop:"30px", display:"flex", fontSize:"16px", alignItems:"center", lineHeight:"1.6", alignItems:"center", flexDirection: "row"}}>
+                    <p style={{ width: "390px", fontWeight:"bold" }}>FIRST NAME:</p>
                     <p>{firstname}</p>
                 </div>
                 <div style={{ alignItems: "center", display: "flex", fontSize: "16px", lineHeight: "1.6", alignItems: "center", flexDirection: "row" }}>
-                    <p style={{ width:"290px", fontWeight: "bold" }}>LAST NAME:</p>
+                    <p style={{ width:"390px", fontWeight: "bold" }}>LAST NAME:</p>
                     <p>{lastname}</p>
                 </div>
                 <div style={{ display: "flex", fontSize: "16px", alignItems: "center", lineHeight: "1.6", alignItems: "center", flexDirection: "row" }}>
-                    <p style={{ width: "290px", fontWeight: "bold" }}>AGE:</p>
+                    <p style={{ width: "390px", fontWeight: "bold" }}>AGE:</p>
                     <p>{voter.age} years old</p>
                 </div>
                     {/* <p style={{ lineHeight: "1.6", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>AGE: </span>{voter.age} YEARS OLD</p> */}
                 <div style={{ alignItems: "center", display: "flex", fontSize: "16px", lineHeight: "1.6", alignItems: "center", flexDirection: "row" }}>
-                    <p style={{ width: "290px", fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN):</p>
+                    <p style={{ width: "390px", fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN):</p>
                     <p>11349{voter.user_id}</p>
                 </div>
                 <div style={{ alignItems: "center", display: "flex", fontSize: "16px", lineHeight: "1.6", alignItems: "center", flexDirection: "row" }}>
-                    <p style={{ width: "290px", fontWeight: "bold" }}>PARTY:</p>
-                    <p style={{ width: "310px", }}>{voter.party ? voter.party.party_name : 'Neutral'}</p>
+                    <p style={{ width: "390px", fontWeight: "bold" }}>PARTY:</p>
+                    <p style={{ width: "350px", }}>{voter.party ? voter.party.party_name : 'Neutral'}</p>
                     <p className="viewVotingInfoBtn" style={{ lineHeight: "2", fontFamily: "monospace", borderBottom:"2px solid black", fontSize: "13px", padding: "5px 10px" }}>SWITCH PARTY</p>
                 </div>
-
-
-                {/* <p style={{ lineHeight: "1.6", alignItems: "center", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>11349{voter.user_id}</p> */}
-                {/* <div style={{ display: "flex", alignItems: "center", flexDirection: "row" }}>
-                    <p style={{ lineHeight: "1", alignItems: "left", fontSize: "15px", marginRight: "20px" }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{user.party ? user.party.party_name : 'Neutral'}</p>
-                    <Button className="viewVotingInfoBtn" style={{ lineHeight: "2", fontFamily: "monospace", fontSize: "13px", padding: "5px 10px" }}>SWITCH PARTY</Button>
-                </div> */}
-
+                <div style={{ alignItems: "center", display: "flex", fontSize: "16px", lineHeight: "1.6", alignItems: "center", flexDirection: "row" }}>
+                    <p style={{ width: "390px", fontWeight: "bold" }}>RESIDENTIAL ADDRESS:</p>
+                    <p style={{ width: "350px", }}>{voter.address1}, {voter.address2}, {voter.postalCode} </p>
+                    <p className="viewVotingInfoBtn" style={{ lineHeight: "2", fontFamily: "monospace", borderBottom: "2px solid black", fontSize: "13px", padding: "5px 10px" }}>EDIT ADDRESS</p>
+                </div>
                 {/* {editVoterAdd ? (
                     <div style={{ padding: "30px", marginTop: "50px", marginBottom: "60px", paddingTop: "15px", width: "80%", backgroundColor: "white", border: "5px solid navy" }}>
                         <p style={{ fontSize: "20px", borderBottom: ".7px solid black", justifyContent: "center", alignItems: "center", marginBottom: "30px" }}>UPDATE ADDRESS INFORMATION</p>
@@ -177,11 +178,6 @@ function SearchVoterList({ setUser, voters, setVoters, user }) {
                         </div>
 
                     </div> */}
-                <div style={{ alignItems: "center", display: "flex", fontSize: "16px", lineHeight: "1.6", alignItems: "center", flexDirection: "row" }}>
-                    <p style={{ width: "290px", fontWeight: "bold" }}>RESIDENTIAL ADDRESS:</p>
-                    <p style={{ width: "310px", }}>{voter.address1}, {voter.address2}, {voter.postalCode} </p>
-                    <p className="viewVotingInfoBtn" style={{ lineHeight: "2", fontFamily: "monospace", borderBottom: "2px solid black", fontSize: "13px", padding: "5px 10px" }}>EDIT ADDRESS</p>
-                </div>
 
                     {/* <div style={{ display: "flex", lineHeight: "1", alignItems: "center", marginTop: "0", paddingTop: "0", flexDirection: "row" }}>
                         <p style={{ marginRight: "20px", lineHeight: "1", fontSize: "15px" }}><span style={{ fontWeight: "bold" }}>RESIDENTIAL ADDRESS:</span> {voter.address1}, {voter.address2}, {voter.postalCode}</p>

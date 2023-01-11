@@ -102,7 +102,7 @@ function NewForm({ user, addNewVoter, voters, setVoters }) {
 
     return (
         <React.Fragment>
-            {user.username ? null :
+            {user.voter.party ? null :
                 <div style={{marginTop:"0", paddingTop:"0", width:"100%", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center"}}>
                     <p style={{ fontSize: "20px", paddingBottom: "3px", fontWeight: "bold", color: "navy", textShadow: "1px 1px lightblue", fontFamily: "monospace" }}>TO REGISTER, YOU MUST HAVE AN ACCOUNT WITH BIG APPLE BALLOTS.</p>
                     <div style={{display:"flex", flexDirection:"row"}}>
@@ -124,8 +124,8 @@ function NewForm({ user, addNewVoter, voters, setVoters }) {
                 </div>
             }
             {user.username ? 
-                <div style={{ display: "flex", marginLeft: "auto", marginRight: "auto", height: "20px", width: "50%", justifyContent: "center", alignItems: "center", textAlign: "center", backgroundColor: "rgba(228, 229, 255, 0.823)" }}>
-                <p style={{ justifyContent: "center", alignItems: "center", textAlign: "center", fontFamily: "monospace", fontSize: "16px", fontWeight:"bold" }}>Good news, {user.username}! You are already registered.</p> 
+            <div style={{ display: "flex", marginLeft: "auto", marginRight: "auto", height: "35px", width: "50%", justifyContent: "center", alignItems: "center", textAlign: "center", backgroundColor: "rgba(228, 229, 255, 0.823)" }}>
+                <p style={{ justifyContent: "center", alignItems: "center", textAlign: "center", fontFamily: "monospace", fontSize: "16px", fontWeight: "bold" }}>Good news, {user.username}, you are already registered to vote!<br></br>Users may only register once. You may edit your voter info here.</p> 
             </div>
                 : null} 
             <div id="overviewContainer" style={{ marginLeft: "auto", marginRight: "auto", width: "65%", alignItems: "center", justifyContent: "center", border: "1px solid black", padding: "5px 20px 20px 20px", marginBottom:"50px" }}>

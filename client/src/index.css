@@ -270,7 +270,7 @@ input[placeholder] {
   color: black;
   font-size: 5rem;
   letter-spacing: .3rem;
-  padding-top: 60px;
+  padding-top: 40px;
 }
 
 .hiddenVotersContainer {
@@ -331,7 +331,7 @@ button.login100-form-btn{
   background-color: rgba(59, 158, 216, 0.5);
   font-weight: bold;
   cursor: pointer;
-}
+} 
 
 
 .homeNavItem {
@@ -662,6 +662,7 @@ label {
   padding-top: 30px;
   margin-bottom: 90px;
   display: block;
+  width: 66%;
   overflow: hidden;
 }
 

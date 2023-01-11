@@ -5,9 +5,13 @@ function Home({ user }) {
     return (
         <React.Fragment>
             <section className="homePageContainer">
+                {user.username ? 
+                <div className="userHomeNav" style={{ height: "40px", display: "flex", justifyContent: "right", alignItems:"center"}}>
+                    <p style={{ justifyContent: "right", color: "black", alignItems: "center", fontSize: "15px", textAlign: "right", marginRight: "30px", borderBottom:"2px solid black", fontFamily: "monospace" }}>LOGGED IN AS: <span style={{fontWeight:"bold"}}>{user.username}</span></p>
+                </div> : null}
                 <h2 className="title" style={{textShadow:"1px 1px white"}}>BIG APPLE BALLOTS</h2>
-                <h3 style={{ color: "black", textShadow: "none", fontSize: "40px", fontFamily: "KGThankYouStamp", textShadow:"1px 1px white" }}>FOR THE CITY THAT NEVER SLEEPS ON VOTING</h3>
-                <h3 style={{ color: "black", textShadow: "none", paddingTop: "30px", marginBottom:"40px", fontSize: "30px", letterSpacing:"1.5px", textShadow: "1px 1px white", fontFamily: "monospace" }}>VOTER INFORMATION & ELECTION RESOURCES<br></br>TO GET YOU RIPE FOR THE POLLS</h3>
+                <h3 style={{ color: "black", textShadow: "none", fontSize: "40px", fontFamily: "KGThankYouStamp", textShadow:"1px 1px white" }}>GETTING YOU RIPE FOR THE POLLS</h3>
+                <h3 style={{ color: "black", textShadow: "none", paddingTop: "28px", marginBottom:"40px", fontSize: "28px", letterSpacing:"1.5px", fontFamily: "monospace" }}>VOTER INFORMATION & ELECTION RESOURCES<br></br>FOR THE CITY THAT NEVER SLEEPS ON VOTING</h3>
                 <div id="homeImagesAndButtons">
                     <div style={{ display: "inline-block" }}>
                         <div id="stickerimage">
