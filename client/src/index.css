@@ -121,7 +121,9 @@ body {
   width: 100%;
   opacity: 1;
   height: auto;
-  max-width: 49rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  max-width: 52rem;
   background-color: white;
   /* border: 4px solid black; */
   border-radius: 1rem;
@@ -1300,7 +1302,7 @@ textarea.form-controlFN {
 }
 
 .XIconContainer {
-  display: flex;
+  /* display: flex; */
   cursor: pointer;
   position: relative;
   padding-top: 0rem;
@@ -1309,7 +1311,7 @@ textarea.form-controlFN {
   align-items: right;
   margin-left: 10px;
   margin-right: 10px;
-  width: 100%;
+  /* width: 20%; */
 }
 
 #registerForm #checkboxRow {
