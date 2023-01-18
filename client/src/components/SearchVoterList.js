@@ -12,9 +12,9 @@ function SearchVoterList({ setUser, voters, setVoters, user }) {
     const [editInfo, setEditInfo] = useState(false);
     const [editPartyInfo, setEditPartyInfo] = useState(false);
     const [show, setShow] = useState(false);
-    const [editVoterAdd, setEditVoterAdd] = useState(false);
+    // const [editVoterAdd, setEditVoterAdd] = useState(false);
     const [change, setChange] = useState(false);
-
+    const [findVoter, setFindVoter] = useState({})
     // const [partyNameState, setPartyNameState] = useState(voter.party.party_name);
     // const [editPartyNameState, setEditPartyNameState] = useState(false);
     // const [initialPartyNameValue, setInitialPartyNameValue] = useState(voter.party.party_name);
@@ -31,11 +31,22 @@ function SearchVoterList({ setUser, voters, setVoters, user }) {
     const [editPostalCodeState, setEditPostalCodeState] = useState(false);
     const [initialPostalCodeValue, setInitialPostalCodeValue] = useState(voter.postalCode);
 
+    useEffect(() => {
+        fetch(`/myvote/${voter.user_id}`)
+            .then(res => res.json())
+            .then(findVoter => setFindVoter(findVoter))
+    }, [change])
+    console.log("found voter: ", findVoter)
+    
+
     const handleCloseEdit = () => {
         // (setChange(!change))
         setEditInfo(false);
     }
 
+    const address1 = voter.address1;
+    const address2 = voter.address2;
+    const postalCode = voter.postalCode;
     let myVoter = user.voter;
     let myVoterFN = user.firstname;
     const upperFN = `${myVoterFN}`.toUpperCase(); 
@@ -45,9 +56,9 @@ function SearchVoterList({ setUser, voters, setVoters, user }) {
 
     function handleOpenEdit(){
         setEditInfo(true)
-        setEditAddress1State(true)
-        setEditAddress2State(true)
-        setEditPostalCodeState(true)
+        // setEditAddress1State(true)
+        // setEditAddress2State(true)
+        // setEditPostalCodeState(true)
     }
 
     function handlePartyEdit() {
@@ -157,12 +168,12 @@ function SearchVoterList({ setUser, voters, setVoters, user }) {
                     <p style={{ width: "auto", }}>{voter.party ? voter.party.party_name : 'Neutral'}</p>
                     {/* <p onClick={handlePartyEdit} className="viewVotingInfoBtn" style={{ lineHeight: "2", fontFamily: "monospace", borderBottom:"2px solid black", fontSize: "13px", padding: "5px 10px" }}>SWITCH PARTY</p> */}
                 </div>
-                {editInfo ? <EditSearchedV editInfo={editInfo} setEditInfo={setEditInfo} show={show} upperFN={upperFN} upperLN={upperLN} editAddress1State={editAddress1State} setEditAddress1State={setEditAddress1State} postalCodeState={postalCodeState} setPostalCodeState={setPostalCodeState} initialPostalCodeValue={initialPostalCodeValue} setInitialPostalCodeValue={setInitialPostalCodeValue}
+                {editInfo ? <EditSearchedV findVoter={findVoter} setFindVoter={setFindVoter} address1={address1} address2={address2} postalCode={postalCode} editInfo={editInfo} setEditInfo={setEditInfo} show={show} upperFN={upperFN} upperLN={upperLN} editAddress1State={editAddress1State} setEditAddress1State={setEditAddress1State} postalCodeState={postalCodeState} setPostalCodeState={setPostalCodeState} initialPostalCodeValue={initialPostalCodeValue} setInitialPostalCodeValue={setInitialPostalCodeValue}
                 editPostalCodeState={editPostalCodeState} setEditPostalCodeState={setEditPostalCodeState}
                 setEditAddress2State={setEditAddress2State} editAddress2State={editAddress2State} initialAddress2Value={initialAddress2Value} setInitialAddress2Value={setInitialAddress2Value} address2State={address2State} setAddress2State={setAddress2State} change={change} setChange={setChange} handleCloseEdit={handleCloseEdit} user={user} voter={voter} address1State={address1State} setAddress1State={setAddress1State} initialAddress1Value={initialAddress1Value} setInitialAddress1Value={setInitialAddress1Value} /> : null}
                 <div style={{ alignItems: "center", display: "flex", fontSize: "16px", lineHeight: "1.6", alignItems: "center", flexDirection: "row" }}>
                     <p style={{ width: "370px", fontWeight: "bold" }}>RESIDENTIAL ADDRESS:</p>
-                    <p>{voter.address1}, {voter.address2}, {voter.postalCode}</p>
+                    <p>{address1State}, {address2State}, {postalCodeState}</p>
                         <p onClick={handleOpenEdit} className="viewVotingInfoBtn" style={{ lineHeight: "2", fontFamily: "monospace", borderBottom: "2px solid black", fontSize: "13px", padding: "5px 10px", width: "auto", textAlign:"right", marginLeft:"150px", float:"right"}}>EDIT ADDRESS</p>
                 </div>
             </div>

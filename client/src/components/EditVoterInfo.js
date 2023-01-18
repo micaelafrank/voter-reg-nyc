@@ -72,7 +72,7 @@ function EditVoterInfo({ handleValidation, voters, setVoters, firstName, lastNam
                             />
                         </div>
                     ) : (
-                        <p>RESIDENTIAL ADDRESS: {address1}, {address2}, {postalCode}</p>
+                        <p>RESIDENTIAL ADDRESS: {address1State}, {address2State}, {postalCodeState}</p>
                     )}
                     <button onClick={setEditAddress1State(true)}>EDIT ADDRESS</button>
                     <p><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p>
