@@ -20,6 +20,7 @@ function SearchedVoter({ user, handleValidation, handleModal, voters, setVoters,
     const [editPostalCodeState, setEditPostalCodeState] = useState(false);
     const [initialPostalCodeValue, setInitialPostalCodeValue] = useState(postalCode);
 
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
     // console.log("new id: ", id)
     // useEffect(() => {
     //     fetch(`/voters/profile/${id}`)
@@ -42,6 +43,10 @@ function SearchedVoter({ user, handleValidation, handleModal, voters, setVoters,
     function allowEditing(){
         setEditVoterAdd(editVoterAdd => !editVoterAdd)
     } 
+
+    function handleDelete(){
+        setOpenDeleteModal(true);
+    }
 
 
     let handleEditAddress = () => {
@@ -175,10 +180,12 @@ function SearchedVoter({ user, handleValidation, handleModal, voters, setVoters,
                             Edit Voter Information
                         </Button> */}
                     <Button className="viewVotingInfoBtn" style={{ backgroundColor:"rgb(194, 222, 226)", lineHeight: "2", fontFamily: "monospace", fontSize:"14px", fontWeight:"bold", padding: "5px 10px", marginTop:"1rem", marginBottom:"1rem" }} variant="primary" 
-                    // onClick={handleDelete}
+                    onClick={handleDelete}
                     >
                         DEACTIVATE MY REGISTRATION
                     </Button>
+                    {setOpenDeleteModal ? 
+                    <DeleteModal setOpenDeleteModal={setOpenDeleteModal} openDeleteModal={openDeleteModal} /> : null}
                     {/* </div> */}
                     {/* {show ? <ModalSignIn handleValidation={handleValidation} firstName={firstName} handleCount={resetCount} count={count} address1={address1} address2={address2} party={party} isActive={isActive} postalCode={postalCode} age={age} password={password} lastName={lastName} show={show} setShow={setShow} handleClose={handleClose} handleShow={handleShow} /> : null} */}
                 </div>
