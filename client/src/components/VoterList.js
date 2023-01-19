@@ -6,7 +6,8 @@ import SearchedVoter from "./SearchedVoter";
 
 // function VoterList({ handleSearchSubmit, setIsFiltering, setIsSearching, isFiltering, firstNameSearch, lastNameSearch, zipSearch, count, handleSearchClear, searchedNames, isSearching, voters, setVoters, deleteVoter }) {
 function VoterList({ canEdit, setCanEdit, handleModal, change, setChange, handleValidation, setValidated, validated, renderMessage, handleSearchSubmit, firstNameSearch, searchedNames, count, setIsFiltering, setIsSearching, isFiltering, lastNameSearch, zipSearch, handleSearchClear, isSearching, voters, setVoters, deleteVoter }){
-   
+    console.log(voters)
+
     // useEffect(() => {
     //     fetch("/voters")
     //         .then(res => res.json())

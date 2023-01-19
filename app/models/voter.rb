@@ -1,8 +1,8 @@
 class Voter < ApplicationRecord    
     # has_secure_password 
-    belongs_to :party 
+    belongs_to :party, dependent: :destroy
     belongs_to :user
-    has_many :searches 
+    # has_many :searches 
     validates :age, numericality: { greater_than_or_equal_to: 18 }
     # validates_confirmation_of :password
 

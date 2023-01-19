@@ -22,6 +22,7 @@ function App() {
   const [voters, setVoters] = useState({});
   const [user, setUser] = useState({});
   const [parties, setParties] = useState([]);
+  const [users, setUsers] = useState([])
   const [change, setChange] = useState(false);
   const [showVoterInfo, setShowVoterInfo] = useState(false);
   // const [candidates, setCandidates] = useState([])
@@ -34,7 +35,14 @@ function App() {
       .then(res => res.json())
       .then(voters => {setVoters(voters)} )
   }, [])
-  console.log(voters)
+  console.log("voters: ", voters)
+
+  useEffect(() => {
+    fetch("/users")
+      .then(res => res.json())
+      .then(users => { setUsers(users) })
+  }, [])
+  console.log("users: ", users)
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -72,10 +80,11 @@ function App() {
 
 
 
-  // function deleteVoter(id){
-  //   const updatedList = voters.filter((voter) => voter.id !== id);
-  //   setVoters(updatedList);
-  // }
+  function deleteVoterRecord(user_id){
+    console.log("I am code from the App component")
+    const newVotersList = voters.filter((voter) => voter.user_id !== user_id);
+    setVoters(newVotersList);
+  }
 
   return (
     <div>
@@ -85,13 +94,13 @@ function App() {
           <Route className="hidden" path="/home" element={<Home />} />
           <Route path="/login" element={<LogIn setUser={setUser} user={user} />} />
           {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}
-          <Route path="/voters" element={<VoterPage date={date} /> } />
+          <Route path="/voters" element={<VoterPage deleteVoterRecord={deleteVoterRecord} date={date} /> } />
           <Route path="/signup" element={<UserSignUp user={user} setUser={setUser} />} />
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
-          <Route path={`myvote/${user.firstname}${user.lastname}`} element={<SearchVoterList user={user} setUser={setUser} voters={voters} setVoters={setVoters} />} />
+          <Route path={`myvote/${user.firstname}${user.lastname}`} element={<SearchVoterList deleteVoterRecord={deleteVoterRecord} user={user} setUser={setUser} voters={voters} setVoters={setVoters} />} />
           {/* showVoterInfo={showVoterInfo} setShowVoterInfo={setShowVoterInfo} voters={voters} setVoters={setVoters}  */}
-          <Route path="/register" element={<NewForm user={user} voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
+          <Route path="/register" element={<NewForm setUser={setUser} user={user} voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
           {/* <Route path="/modalsignin" element={<ModalSignIn />} /> */}
           {/* <Route path="*">
             <React.Fragment>404 not found</React.Fragment>

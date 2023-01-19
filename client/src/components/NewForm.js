@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
 
-function NewForm({ user, addNewVoter, voters, setVoters }) {
+function NewForm({ user, addNewVoter, setUser, voters, setVoters }) {
     const [revealText, setRevealText] = useState(false);
     const [party, setParty] = useState("default")
     const [first, setFirst] = useState("");
@@ -21,6 +21,23 @@ function NewForm({ user, addNewVoter, voters, setVoters }) {
     // const [filter, setFilter] = useState("Choose one");
     const [inputColor, setInputColor] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        fetch("/me").then((r) => {
+            if (r.ok) {
+                r.json().then((user) => setUser(user));
+            }
+        })
+    }, [])
+    console.log(user);
+
+
+    useEffect(() => {
+        fetch("/voters")
+            .then(res => res.json())
+            .then(voters => { setVoters(voters) })
+    }, [])
+    console.log("voters: ", voters)
     // const [formData, setFormData] = useState(
     //     {
     //         first: "",

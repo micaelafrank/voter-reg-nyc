@@ -5,9 +5,9 @@ import VoterList2 from "./VoterList2";
 import Button from 'react-bootstrap/Button';
 import EditSearchedV from "./EditSearchedV";
 import EditParty from "./ignore/EditParty";
+import DeleteModal from "./DeleteModal";
 
-
-function SearchVoterList({ setUser, voters, setVoters, user }) {
+function SearchVoterList({ deleteVoterRecord, setUser, voters, setVoters, user }) {
     const { firstname, username, lastname, id, voter, password } = user;
     const [editInfo, setEditInfo] = useState(false);
     const [editPartyInfo, setEditPartyInfo] = useState(false);
@@ -30,6 +30,10 @@ function SearchVoterList({ setUser, voters, setVoters, user }) {
     const [postalCodeState, setPostalCodeState] = useState(voter.postalCode);
     const [editPostalCodeState, setEditPostalCodeState] = useState(false);
     const [initialPostalCodeValue, setInitialPostalCodeValue] = useState(voter.postalCode);
+
+    const [openDelete, setOpenDelete] = useState(false);
+    const handleOpenDelete = () => setOpenDelete(true);
+    const handleCloseDelete = () => setOpenDelete(false);
 
     useEffect(() => {
         fetch(`/myvote/${voter.user_id}`)
@@ -136,13 +140,16 @@ function SearchVoterList({ setUser, voters, setVoters, user }) {
                 <div style={{display:"flex", flexDirection:"row", lineHeight:"2", alignItems:"center", justifyContent:"center" ,fontSize:"13px"}}>
                     <div style={{ width: "1090px", flexDirection:"column"}}>
                         <p id="editFullName">{upperFN} {upperLN}</p>
-                        <p style={{ alignItems: "center", fontSize: "16px", lineHeight: "1.6", color: user.isActive ? "green" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{user.isActive ? "ACTIVE" : "INACTIVE"}</p>
+                        <p style={{ alignItems: "center", fontSize: "16px", lineHeight: "1.6", color: voter.isActive ? "green" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{voter.isActive ? "ACTIVE" : "INACTIVE"}</p>
                     </div>
                     <div style={{width:"500px", display:"flex", flexDirection:"column", justifyContent:"right", alignItems:"center"}}>
                         <p style={{ color: "navy", letterSpacing: "1.5px" }}><a style={{ cursor: "pointer", borderBottom: "2px solid navy", paddingLeft: "15px", justifyContent: "center", paddingRight:"15px", textDecoration: "none", }} href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">FIND MY POLLSITE</a></p>
-                        <p onClick={handleDelete} style={{ color: "navy", letterSpacing: "1.5px"}}><a style={{ cursor: "pointer", borderBottom: "2px solid navy", textDecoration: "none", paddingLeft: "15px", paddingRight: "15px", }}>DEACTIVATE REGISTRATION</a></p>
+                        <p onClick={handleOpenDelete} style={{ color: "navy", letterSpacing: "1.5px"}}><a style={{ cursor: "pointer", borderBottom: "2px solid navy", textDecoration: "none", paddingLeft: "15px", paddingRight: "15px", }}>DEACTIVATE REGISTRATION</a></p>
                     </div>
                 </div>
+                {openDelete ?
+                <DeleteModal deleteVoterRecord={deleteVoterRecord} voter={voter} vId={voter.user_id} handleOpenDelete={handleOpenDelete} handleCloseDelete={handleCloseDelete} openDelete={openDelete} setOpenDelete={setOpenDelete} />
+                : null}
                 <div style={{ marginTop:"0", borderBottom:"2px solid black", width:"350px"}}>&nbsp;</div>
                 {/* <p style={{ alignItems: "center", fontSize: "16px", lineHeight:"1.6", color: user.isActive ? "green" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{user.isActive ? "ACTIVE" : "INACTIVE"}</p> */}
                 <div style={{marginTop:"30px", display:"flex", fontSize:"16px", alignItems:"center", lineHeight:"1.6", alignItems:"center", flexDirection: "row"}}>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: :create
+    before_action :authorize, only: :show
 
     #POST method for '/signup'
     #This saves a new user and their info in the backend:
@@ -11,6 +11,11 @@ class UsersController < ApplicationController
         else
             render json: { error: "Invalid user" }, status: :unprocessable_entity
         end
+    end
+
+    def index
+        users = User.all 
+        render json: users
     end
 
 

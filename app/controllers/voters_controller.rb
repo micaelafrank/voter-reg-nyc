@@ -22,9 +22,9 @@ rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
     def update
         voter = find_voter
 
-        # if params.has_key?(:party) then
-        #     voter.update!(party: params[:party])
-        # end
+        if params.has_key?(:party) then
+            voter.update!(party: params[:party])
+        end
 
         if params.has_key?(:address1) then
             voter.update(address1: params[:address1])
@@ -48,8 +48,8 @@ rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
     # end
 
     def destroy
-        voter = find_voter
-        voter.destroy 
+        voter = find_voterId
+        voter.destroy
         head :no_content
     end
 
@@ -71,11 +71,15 @@ rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
     # end
 
     def update_voter_params
-        params.permit(:isActive, :address1, :address2, :postalCode)
+        params.permit(:isActive, :party, :party_id, :address1, :address2, :postalCode)
     end
 
     def find_voter
         Voter.find_by(id: params[:user_id])
+    end
+
+    def find_voterId
+        Voter.find(params[:id])
     end
 
     def cant_show_voter

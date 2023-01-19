@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Voter from './Voter';
 
-function EditSearchedV({ findVoter, setFindVoter, postalCodeState, setPostalCodeState, handleCloseEdit, editPostalCodeState, setEditPostalCodeState, initialPostalCodeValue, postalCode, address1, address2, setInitialPostalCodeValue, voter, upperFN, upperLN, address1State, editInfo, setEditInfo, setAddress1State, user, handleClose, setChange, change, handleShow, show, editAddress1State, editAddress2State, setAddress2State, setEditAddress2State, address2State, initialAddress2Value, setInitialAddress2Value, setEditAddress1State, initialAddress1Value, setInitialAddress1Value }){
+function EditSearchedV({ deleteVoterRecord, findVoter, setFindVoter, postalCodeState, setPostalCodeState, handleCloseEdit, editPostalCodeState, setEditPostalCodeState, initialPostalCodeValue, postalCode, address1, address2, setInitialPostalCodeValue, voter, upperFN, upperLN, address1State, editInfo, setEditInfo, setAddress1State, user, handleClose, setChange, change, handleShow, show, editAddress1State, editAddress2State, setAddress2State, setEditAddress2State, address2State, initialAddress2Value, setInitialAddress2Value, setEditAddress1State, initialAddress1Value, setInitialAddress1Value }){
     // const [address2State, setAddress2State] = useState(myVoter.address2);
     // const [editAddress2State, setEditAddress2State] = useState(false);
     // const [initialAddress2Value, setInitialAddress2Value] = useState(myVoter.address2);
