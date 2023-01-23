@@ -21,7 +21,7 @@ import VoterList2 from './VoterList2';
 function App() {
   const [voters, setVoters] = useState({});
   const [user, setUser] = useState({});
-  const [parties, setParties] = useState([]);
+  const [parties, setParties] = useState({});
   const [users, setUsers] = useState([])
   const [change, setChange] = useState(false);
   const [showVoterInfo, setShowVoterInfo] = useState(false);
@@ -98,7 +98,7 @@ function App() {
           <Route path="/signup" element={<UserSignUp user={user} setUser={setUser} />} />
           {/* <Route path="/candidates" element={<CandidateList />} /> */}
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
-          <Route path={`myvote/${user.firstname}${user.lastname}`} element={<SearchVoterList deleteVoterRecord={deleteVoterRecord} user={user} setUser={setUser} voters={voters} setVoters={setVoters} />} />
+          <Route path={`myvote/${user.firstname}${user.lastname}`} element={<SearchVoterList parties={parties} setParties={setParties} deleteVoterRecord={deleteVoterRecord} user={user} setUser={setUser} voters={voters} setVoters={setVoters} />} />
           {/* showVoterInfo={showVoterInfo} setShowVoterInfo={setShowVoterInfo} voters={voters} setVoters={setVoters}  */}
           <Route path="/register" element={<NewForm setUser={setUser} user={user} voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
           {/* <Route path="/modalsignin" element={<ModalSignIn />} /> */}

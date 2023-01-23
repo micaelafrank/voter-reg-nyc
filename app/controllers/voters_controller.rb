@@ -22,8 +22,12 @@ rescue_from ActiveRecord::RecordInvalid, with: :voter_invalid
     def update
         voter = find_voter
 
-        if params.has_key?(:party) then
-            voter.update!(party: params[:party])
+        # if params.has_key?(:party) then
+        #     voter.update(party: params[:party])
+        # end
+
+        if params.has_key?(:party_id) then
+            voter.update(party_id: params[:party_id])
         end
 
         if params.has_key?(:address1) then
