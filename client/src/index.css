@@ -731,6 +731,7 @@ label {
 .navBarContainer {
   background-image: url('images/tiedye.jpg');
   opacity: .8;
+  display: flex;
   height: 9.2em;
   width: 100%;
   margin-bottom: 30px;
@@ -744,7 +745,7 @@ label {
 #nav3,
 #nav4, #nav7,
 #nav5, #nav6 {
-  padding: 0 1.5rem;
+  padding: 0 2.2rem;
   border: none;
   color: black;
   font-family: monospace;

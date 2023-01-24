@@ -2,10 +2,10 @@ import React from 'react';
 import NavBar from './NavBar';
 import { Outlet } from 'react-router';
 
-export default ({ user }) => {
+export default ({ setUser, user }) => {
     return (
         <>
-            <NavBar user={user} />
+            <NavBar setUser={setUser} user={user} />
             <Outlet />
         </>
     );

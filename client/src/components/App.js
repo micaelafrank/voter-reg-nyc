@@ -89,8 +89,8 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home user={user} />} />
-        <Route element={<WithNav user={user} />}>
+        <Route path="/" element={<Home setUser={setUser} user={user} />} />
+        <Route element={<WithNav setUser={setUser} user={user} />}>
           <Route className="hidden" path="/home" element={<Home />} />
           <Route path="/login" element={<LogIn setUser={setUser} user={user} />} />
           {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}

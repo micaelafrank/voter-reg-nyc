@@ -1,7 +1,23 @@
 import React from "react"
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-function Home({ user }) {
+
+function Home({ user, setUser }) {
+    const navigate = useNavigate();
+
+    function handleLogout() {
+        fetch("/logout", {
+            method: "DELETE"
+        })
+            .then((r) => {
+                if (r.ok) {
+                    setUser({});
+                    navigate('/')
+                }
+            });
+    }
+
     return (
         <React.Fragment>
             <section className="homePageContainer">
@@ -28,8 +44,8 @@ function Home({ user }) {
                             <button id="button2home" className="homeButton">ON THE BALLOT</button>
                         </Link>
                         {user.username ? 
-                        <Link className="homeNavItem" to="/logout">
-                            <button id="button3home" className="homeButton">LOG OUT</button>
+                        <Link className="homeNavItem">
+                            <button id="button3home" onClick={handleLogout} className="homeButton">LOG OUT</button>
                         </Link>
                         : 
                         <Link className="homeNavItem" to="/login">

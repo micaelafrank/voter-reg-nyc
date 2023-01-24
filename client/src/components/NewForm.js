@@ -119,7 +119,7 @@ function NewForm({ user, addNewVoter, setUser, voters, setVoters }) {
 
     return (
         <React.Fragment>
-            {user.voter.party ? null :
+            {user.voter ? null :
                 <div style={{marginTop:"0", paddingTop:"0", width:"100%", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center"}}>
                     <p style={{ fontSize: "20px", paddingBottom: "3px", fontWeight: "bold", color: "navy", textShadow: "1px 1px lightblue", fontFamily: "monospace" }}>TO REGISTER, YOU MUST HAVE AN ACCOUNT WITH BIG APPLE BALLOTS.</p>
                     <div style={{display:"flex", flexDirection:"row"}}>
