@@ -1,6 +1,8 @@
 puts "Deleting VoterRecord registration data..."
 Voter.destroy_all
 Party.destroy_all
+Candidate.destroy_all
+User.destroy_all
 # Candidate.destroy_all
 
 puts "🌱 Seeding parties..."
@@ -11,13 +13,24 @@ independent = Party.create(party_name: "Independent")
 working_families = Party.create(party_name: "Working Families")
 green = Party.create(party_name: "Green")
 
-# puts "🌱 Seeding candidates..."
-# #name, seat, party_id, party, issue1, issue1description
-# ted = Candidate.create(name: "Ted Cruz", seat: "President", votingParty: "Republican", party_id: republican.id, issue1: "Banning Critical Race Theory", issue1Description: "Cruz produced a free e-book that promises to teach conservatives how to spot and fight it in classrooms and communities. 'Critical Race Theory: A Lecture by Senator Ted Cruz' is a free, 10-page book published in collaboration with the conservative nonprofit Leadership Institute.", img: "https://i.ibb.co/1qfTBBm/0x0.jpg")
-# mitch = Candidate.create(name: "Mitch McConnell", seat: "President", votingParty: "Republican", party_id: republican.id, issue1: "Protecting the 2nd amendment at all costs", issue1Description: "McConnell ranks in at #14 in total donations received from NRA over political career. A whopping $1,283,515!", img: "https://i.ibb.co/PD1ZpDC/mcconnell-wide-bd00e7fd30c4f0e3bfc4492ac96323497e6c9ef0-s1600-c85.webp")
-# ron = Candidate.create(name: "Ron De Santis", seat: "President", votingParty: "Republican", party_id: republican.id, issue1: "Forced birth and banning abortions", issue1Description: "Gov. Ron DeSantis has signed a bill that bans most abortions after 15 weeks, which does not make exceptions for cases of incest, rape or human trafficking.", img: "https://i.ibb.co/qJwbTHb/t-bc57df79c12b453e90339998e83a5e71-name-image.jpg")
-# julia = Candidate.create(name: "Selina Meyer", seat: "President", votingParty: "Democrat", party_id: democrat.id, issue1: "A more just immigration policy", issue1Description: "The three Rs: reaffirm, reform, renew", img: "https://i.ibb.co/mGrMV3T/thumb-1920-809744.jpg")
-# major = Candidate.create(name: "Major Biden", seat: "First Dog Elect", votingParty: "Democrat", party_id: democrat.id, issue1: "Adoption!", issue1Description: "I am a very good boy, and the first shelter dog to take up residence in the White House.", img: "https://i.ibb.co/j5nf1z2/Major-Biden.webp")
+puts "🌱 Seeding candidates..."
+# #firstName, lastName, party_id, voting_party, headshot, position 
+chuck = Candidate.create(firstName: "Chuck", lastName: "Schumer", party_id: democrat.id, voting_party: "Democratic Party", position: "Senator", headshot: "https://media.cnn.com/api/v1/images/stellar/prod/221208093825-01-chuck-schumer-1207.jpg", raceNameYear: "Midterm Election 2022")
+kathy = Candidate.create(firstName: "Kathy", lastName: "Hochul", party_id: democrat.id, voting_party: "Democratic Party", position: "Governor", headshot: "https://tbrnewsmedia.com/wp-content/uploads/2021/08/Kathy-Hochul-Headshot-scaled.jpg", raceNameYear: "Midterm Election 2022")
+thomas = Candidate.create(firstName: "Thomas", lastName: "DiNapoli", party_id: democrat.id, voting_party: "Democratic Party", position: "State Comptroller", headshot: "https://www.osc.state.ny.us/files/about/image/tpd-high-res-2100x1500px.jpg", raceNameYear: "Midterm Election 2022")
+paul = Candidate.create(firstName: "Paul", lastName: "Rodriguez", party_id: republican.id, voting_party: "Republican Party", position: "State Comptroller", headshot: "https://static.wixstatic.com/media/489927_86c8af5bf12f40ce89c5d54576e64ed4~mv2.jpg/v1/fill/w_628,h_622,al_t,q_85,enc_auto/489927_86c8af5bf12f40ce89c5d54576e64ed4~mv2.jpg", raceNameYear: "Midterm Election 2022")
+lee = Candidate.create(firstName: "Lee", lastName: "Zeldin", party_id: republican.id, voting_party: "Republican Party", position: "Governor", headshot: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Lee_Zeldin_new_official_portrait.jpg/1200px-Lee_Zeldin_new_official_portrait.jpg", raceNameYear: "Midterm Election 2022")
+letitia = Candidate.create(firstName: "Letitia", lastName: "James", party_id: democrat.id, voting_party: "Democratic Party", position: "Attorney General", headshot: "https://ag.ny.gov/sites/default/files/styles/large/public/agjames.png", raceNameYear: "Midterm Election 2022")
+michael = Candidate.create(firstName: "Michael", lastName: "Henry", party_id: republican.id, voting_party:"Republican Party", position: "Attorney General", headshot: "https://s.hdnux.com/photos/01/25/32/63/22392019/4/1200x0.jpg", raceNameYear: "Midterm Election 2022")
+joe = Candidate.create(firstName: "Joe", lastName: "Pinion", party_id: republican.id, voting_party: "Republican Party", position: "Senator", headshot: "https://wp.nysun.com/wp-content/uploads/2022/08/Joe.pinion.nygop_.jpg", raceNameYear: "Midterm Election 2022")
+jumaane = Candidate.create(firstName: "Jumaane", lastName: "Williams", party_id: democrat.id, voting_party: "Democratic Party", position: "Governor", raceNameYear: "Primary Election 2022", headshot: "https://brownpoliticalreview.org/wp-content/uploads/2017/04/jumaane.jpg")
+thomasS = Candidate.create(firstName: "Thomas", lastName: "Suozzi", party_id: democrat.id, voting_party: "Democratic Party", position: "Governor", raceNameYear: "Primary Election 2022", headshot: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Thomas_Suozzi_official_photo.jpg/1200px-Thomas_Suozzi_official_photo.jpg")
+andrew = Candidate.create(firstName: "Andrew", lastName: "Giuliani", party_id: republican.id, voting_party:"Republican Party", position: "Governor", headshot: "https://d1e00ek4ebabms.cloudfront.net/production/d06d5b62-d3b7-482a-9957-ac0960bfd4a7.jpg", raceNameYear: "Primary Election 2022")
+rob = Candidate.create(firstName: "Rob", lastName: "Astorino", party_id: republican.id, voting_party:"Republican Party", position: "Governor", headshot: "https://s.wsj.net/public/resources/images/BN-BU099_nyasto_ER_20140305095028.jpg", raceNameYear: "Primary Election 2022")
+antonio = Candidate.create(firstName: "Antonio", lastName: "Delgado", party_id: democrat.id, voting_party: "Democratic Party", position: "Lieutenant Governor", raceNameYear: "Primary Election 2022", headshot: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Antonio_Delgado%2C_official_portrait%2C_116th_Congress.jpg/1200px-Antonio_Delgado%2C_official_portrait%2C_116th_Congress.jpg")
+anamaria = Candidate.create(firstName: "Ana Maria", lastName:"Archila", party_id: democrat.id, voting_party: "Democratic Party", position: "Lieutenant Governor", raceNameYear: "Primary Election 2022", headshot: "https://www.apbspeakers.com/media/6211/archila_ana_112018.jpg")
+diana = Candidate.create(firstName: "Diana", lastName: "Reyna", party_id: democrat.id, voting_party: "Democratic Party", position: "Lieutenant Governor", raceNameYear: "Primary Election 2022", headshot: "https://s3-prod.crainsnewyork.com/styles/width_765/s3/2021-10/Diana%20Reyna_0_0.jpg")
+alison = Candidate.create(firstName: "Alison", lastName: "Esposito", party_id: republican.id, voting_party: "Republican Party", position: "Lieutenant Governor", raceNameYear: "Primary Election 2022", headshot: "https://www.50-a.org/images/officer/65812-alison-a-esposito.jpg")
 # bernie = Candidate.create(name: "Bernie Sanders", seat: "President", votingParty: "Democrat", party_id: democrat.id, issue1: "Making healthcare accessible", issue1Description: "`It is not utopian thinking to say that every man, woman and child should have access to health care as a right.'", img: "https://i.ibb.co/3YPpW07/26xp-photog-video-Sixteen-By-Nine-Jumbo1600.jpg")
 
 puts "🌱 Seeding Users..."

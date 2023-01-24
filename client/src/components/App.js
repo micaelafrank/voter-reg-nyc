@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 // import RegistrationForm from './RegistrationForm'
 import VoterPage from './VoterPage'
 // import { Switch, Route } from 'react-router-dom'
-// import CandidateList from './CandidateList'
 import Home from './Home'
 import { Route, Routes } from 'react-router-dom';
 import WithNav from './WithNav'
+import CandidatesList from './CandidatesList';
 import NewForm from './NewForm'
 // import ModalSignIn from './ModalSignIn'
 // import EditVoterCard from './EditVoterCard'
@@ -96,7 +96,7 @@ function App() {
           {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}
           <Route path="/voters" element={<VoterPage deleteVoterRecord={deleteVoterRecord} date={date} /> } />
           <Route path="/signup" element={<UserSignUp user={user} setUser={setUser} />} />
-          {/* <Route path="/candidates" element={<CandidateList />} /> */}
+          <Route path="/candidates" element={<CandidatesList parties={parties} setParties={setParties} />} />
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
           <Route path={`myvote/${user.firstname}${user.lastname}`} element={<SearchVoterList parties={parties} setParties={setParties} deleteVoterRecord={deleteVoterRecord} user={user} setUser={setUser} voters={voters} setVoters={setVoters} />} />
           {/* showVoterInfo={showVoterInfo} setShowVoterInfo={setShowVoterInfo} voters={voters} setVoters={setVoters}  */}
