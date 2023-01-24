@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_23_231432) do
     t.integer "party_id"
     t.string "position"
     t.string "raceNameYear"
+    t.boolean "isWinner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

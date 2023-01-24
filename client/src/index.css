@@ -1314,6 +1314,37 @@ textarea.form-controlFN {
   /* width: 20%; */
 }
 
+.candidatePortraitGray{
+  flex-shrink: 0;
+  border-radius: 75%;
+  object-fit: cover;
+  object-position: center;
+  height: 250px;
+  width: 250px;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  border: 6px solid black;
+}
+
+.overtint{
+  background-color: blue;
+}
+
+.candidatePortrait{
+  -webkit-filter: brightness(50%);
+  -moz-filter: brightness(50%);  
+  flex-shrink: 0;
+  border-radius: 75%;
+  object-fit: cover;
+  object-position: center;
+  height: 250px;
+  width: 250px;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(0%);
+  border: 6px solid rgb(2, 90, 124);
+}
+
+
 #registerForm #checkboxRow {
   padding-top: 15px;
 }

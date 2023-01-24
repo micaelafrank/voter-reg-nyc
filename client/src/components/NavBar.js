@@ -14,7 +14,7 @@ function NavBar({ user }) {
                 <NavLink id="nav1" to="voters">ABOUT</NavLink>
                 <NavLink id="nav2" to="voters">VOTER LIST</NavLink>
                 <NavLink id="nav3" to="register">REGISTER</NavLink>
-                <NavLink id="nav4" to="candidates">CANDIDATES</NavLink>
+                <NavLink id="nav4" to="candidates">ON THE BALLOT</NavLink>
                 {user.username ? <NavLink to={`myvote/${user.firstname}${user.lastname}`} id="nav7">{capName}'S VOTING INFO</NavLink> : null}
                 {/* <NavLink id="nav2" to="voters">SIGN UP</NavLink>
                 <NavLink id="nav2" to="voters">LOG IN</NavLink> */}

@@ -7,17 +7,17 @@ class CandidatesController < ApplicationController
         render json: candidates
     end
 
-    # def showPrimaryLG
-    #     findRace = Candidate.where("raceNameYear=? OR position= ?", "Primary Election 2022", "Lieutenant Governor")
-    #     candidatesPrimLG = findRace.order(lastName: :desc)
-    #     render json: candidatesPrimLG
-    # end
+    def showMidtermGov
+        findRace = Candidate.where(position: "Governor", raceNameYear: "Midterm Election 2022")
+        candidatesPrimLG = findRace.order(lastName: :asc)
+        render json: candidatesPrimLG
+    end
 
-    # def showPrimaryGov
-    #     findRace = Candidate.where("raceNameYear=? OR position= ?", "Primary Election 2022", "Governor")
-    #     candidatesPrimGov = findRace.order(lastName: :desc)
-    #     render json: candidatesPrimGov
-    # end
+    def showPrimaryLG
+        findRace = Candidate.where(position: "Lieutenant Governor")
+        candidatesPrimGov = findRace.order(lastName: :asc)
+        render json: candidatesPrimGov
+    end
 
     def showPrimaryGovDem
         findRace = Candidate.where(position: "Governor", raceNameYear: "Primary Election 2022", voting_party: "Democratic Party")
@@ -36,19 +36,24 @@ class CandidatesController < ApplicationController
 
     def showSenator
         findRace = Candidate.where(position: "Senator")
-        candidatesSen = findRace.order(lastName: :asc)
+        candidatesSen = findRace.order(voting_party: :asc)
         render json: candidatesSen
     end
 
     def showAG 
         findRace = Candidate.where(position: "Attorney General")
-        candidatesAG = findRace.order(lastName: :asc)
+        candidatesAG = findRace.order(voting_party: :asc)
         render json: candidatesAG
+    end
+
+    def findWinners
+        winningCans = Candidate.where(isWinner: "true")
+        render json: winningCans
     end
 
     def showComptroller
         findRace = Candidate.where(position: "State Comptroller")
-        candidatesComp = findRace.order(lastName: :asc)
+        candidatesComp = findRace.order(voting_party: :asc)
         render json: candidatesComp
     end
 end

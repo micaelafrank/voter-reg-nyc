@@ -8,6 +8,7 @@ class CreateCandidates < ActiveRecord::Migration[7.0]
       t.integer :party_id
       t.string :position 
       t.string :raceNameYear
+      t.boolean :isWinner
       t.timestamps
     end
   end

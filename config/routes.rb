@@ -30,7 +30,8 @@ Rails.application.routes.draw do
     get "/candidates/GovMidterm", to: "candidates#showMidtermGov"
     get "/candidates/SenatorPrimary", to: "candidates#showSenator"
     get "/candidates/AGMidterm", to: "candidates#showAG"
-    get "/candidates/Comptroller", to: "candidates#showComptroller"
+    get "/candidates/comptroller", to: "candidates#showComptroller"
+    get "/candidates/winners", to: "candidates#findWinners"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
