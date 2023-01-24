@@ -19,28 +19,36 @@ class CandidatesController < ApplicationController
     #     render json: candidatesPrimGov
     # end
 
-    def showMidtermGov
-        findRace = Candidate.where('position = ? and raceNameYear = ?', "Governor", "Primary Election 2022")
+    def showPrimaryGovDem
+        findRace = Candidate.where(position: "Governor", raceNameYear: "Primary Election 2022", voting_party: "Democratic Party")
         # findGovRace = findRace.where(raceNameYear: "Primary Election 2022")
-        candidatesMidGov = findRace.order(lastName: :desc)
+        candidatesMidGov = findRace.order(lastName: :asc)
         render json: candidatesMidGov
     end
 
+    def showPrimaryGovRepub
+        findRace = Candidate.where(position: "Governor", raceNameYear: "Primary Election 2022", voting_party: "Republican Party")
+        # findGovRace = findRace.where(raceNameYear: "Primary Election 2022")
+        candidatesMidGov = findRace.order(lastName: :asc)
+        render json: candidatesMidGov
+    end
+
+
     def showSenator
         findRace = Candidate.where(position: "Senator")
-        candidatesSen = findRace.order(lastName: :desc)
+        candidatesSen = findRace.order(lastName: :asc)
         render json: candidatesSen
     end
 
     def showAG 
         findRace = Candidate.where(position: "Attorney General")
-        candidatesAG = findRace.order(lastName: :desc)
+        candidatesAG = findRace.order(lastName: :asc)
         render json: candidatesAG
     end
 
     def showComptroller
         findRace = Candidate.where(position: "State Comptroller")
-        candidatesComp = findRace.order(lastName: :desc)
+        candidatesComp = findRace.order(lastName: :asc)
         render json: candidatesComp
     end
 end
