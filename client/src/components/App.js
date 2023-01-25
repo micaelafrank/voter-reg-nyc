@@ -89,18 +89,18 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home setUser={setUser} user={user} />} />
-        <Route element={<WithNav setUser={setUser} user={user} />}>
-          <Route className="hidden" path="/home" element={<Home />} />
-          <Route path="/login" element={<LogIn setUser={setUser} user={user} />} />
+        <Route path={`${process.env.PUBLIC_URL}/`} element={<Home setUser={setUser} user={user} />} />
+        <Route path={`${process.env.PUBLIC_URL}/`} element={<WithNav setUser={setUser} user={user} />}>
+          <Route className="hidden" path={`${process.env.PUBLIC_URL}/home`} element={<Home />} />
+          <Route path={`${process.env.PUBLIC_URL}/login`} element={<LogIn setUser={setUser} user={user} />} />
           {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}
-          <Route path="/voters" element={<VoterPage deleteVoterRecord={deleteVoterRecord} date={date} /> } />
-          <Route path="/signup" element={<UserSignUp user={user} setUser={setUser} />} />
-          <Route path="/candidates" element={<CandidatesList parties={parties} setParties={setParties} />} />
+          <Route path={`${process.env.PUBLIC_URL}/voters`} element={<VoterPage deleteVoterRecord={deleteVoterRecord} date={date} /> } />
+          <Route path={`${process.env.PUBLIC_URL}/signup`} element={<UserSignUp user={user} setUser={setUser} />} />
+          <Route path={`${process.env.PUBLIC_URL}/candidates`} element={<CandidatesList parties={parties} setParties={setParties} />} />
           {/* <Route path="/register" element={<RegistrationForm addNewVoter={addNewVoter} />} /> */}
-          <Route path={`myvote/${user.firstname}${user.lastname}`} element={<SearchVoterList parties={parties} setParties={setParties} deleteVoterRecord={deleteVoterRecord} user={user} setUser={setUser} voters={voters} setVoters={setVoters} />} />
+          <Route path={`${process.env.PUBLIC_URL}/myvote/${user.firstname}${user.lastname}`} element={<SearchVoterList parties={parties} setParties={setParties} deleteVoterRecord={deleteVoterRecord} user={user} setUser={setUser} voters={voters} setVoters={setVoters} />} />
           {/* showVoterInfo={showVoterInfo} setShowVoterInfo={setShowVoterInfo} voters={voters} setVoters={setVoters}  */}
-          <Route path="/register" element={<NewForm setUser={setUser} user={user} voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
+          <Route path={`${process.env.PUBLIC_URL}/register`} element={<NewForm setUser={setUser} user={user} voters={voters} setVoters={setVoters} addNewVoter={addNewVoter} />} />
           {/* <Route path="/modalsignin" element={<ModalSignIn />} /> */}
           {/* <Route path="*">
             <React.Fragment>404 not found</React.Fragment>

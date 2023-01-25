@@ -36,8 +36,8 @@ function NavBar({ user, setUser }) {
                 {user.username ? <NavLink to={`myvote/${user.firstname}${user.lastname}`} id="nav7">MY VOTING INFO</NavLink> : null}
                 {/* <NavLink id="nav2" to="voters">SIGN UP</NavLink>
                 <NavLink id="nav2" to="voters">LOG IN</NavLink> */}
-                {user.username ? <NavLink onClick={handleLogout} id="nav5">LOG OUT</NavLink> : 
-                <NavLink id="nav6" to="login">LOG IN / SIGN UP </NavLink>}
+                {user.username ? <NavLink onClick={handleLogout} id="nav5">LOG OUT</NavLink> : null}
+                {user.username ? null : <NavLink id="nav6" to="login">LOG IN / SIGN UP </NavLink> }
             </nav>
         </div>
     )
