@@ -6,8 +6,20 @@ import { useNavigate } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 
 
-function DeleteModal({ vId, handleOpenDelete, deleteVoterRecord, handleCloseDelete, openDelete, setOpenDelete, voter }){
+function DeleteModal({ user, setUser, vId, handleOpenDelete, deleteVoterRecord, handleCloseDelete, openDelete, setOpenDelete, voter }){
     const navigate = useNavigate();
+
+    function handleLogout() {
+        fetch("/logout", {
+            method: "DELETE"
+        })
+            .then((r) => {
+                if (r.ok) {
+                    setUser({});
+                    navigate('/')
+                }
+            });
+    }
 
     function handleDelete(){
         console.log(voter.id)
@@ -17,8 +29,7 @@ function DeleteModal({ vId, handleOpenDelete, deleteVoterRecord, handleCloseDele
         .then((r) => {
             if (r.ok) {
                 deleteVoterRecord(voter.id);
-                <Alert>Your Big Apple Ballots voting record was successfully deleted. 
-                </Alert>
+                handleLogout();
                 handleCloseDelete();
                 navigate("/voters")
             }
@@ -35,9 +46,11 @@ function DeleteModal({ vId, handleOpenDelete, deleteVoterRecord, handleCloseDele
                             <h1 style={{ fontFamily: "KGThankYouStamp", textAlign: "center", alignItems: "center", marginLeft: "auto", marginRight: "auto", letterSpacing: "3px", textShadow: "1.6px 1.6px rgb(126, 171, 211)", fontSize: "40px" }}>ARE YOU SURE?</h1>
                     </Modal.Header>
                     <Modal.Body className="modal-content">
-                        <div>Deleting is permanent.</div>
-                        <Button onClick={handleDelete}>I'M SURE</Button>
-                        <Button onClick={handleCloseDelete}>CANCEL</Button>
+                        <div style={{textAlign:"center", fontFamily:"monospace", fontSize:"15px"}}>Deleting is permanent.</div>
+                        <div style={{ alignItems:"center", justifyContent:"center", alignItems:"center", fontFamily:"monospace", display:"flex", marginBottom:"15px", marginTop:"30px", flexDirection:"row"}}>
+                            <Button style={{marginRight:"30px", fontWeight:"bold", fontFamily:"monospace", padding:"10px 18px", fontSize:"13px", backgroundColor:"white", cursor:"pointer", color:"black", border:"2px solid black"}} onClick={handleDelete}>I'M SURE</Button>
+                            <Button style={{ marginLeft: "30px", fontWeight:"bold", fontFamily: "monospace", padding: "10px 18px", fontSize: "13px", backgroundColor: "white", cursor:"pointer", color: "black", border: "2px solid black"}} onClick={handleCloseDelete}>CANCEL</Button>
+                        </div>
                     </Modal.Body>
                 </Modal>
             </section>

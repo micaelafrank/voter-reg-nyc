@@ -125,7 +125,7 @@ function SearchVoterList({ deleteVoterRecord, parties, setParties, setUser, vote
                     </div>
                 </div>
                 {openDelete ?
-                <DeleteModal deleteVoterRecord={deleteVoterRecord} voter={voter} vId={voter.user_id} handleOpenDelete={handleOpenDelete} handleCloseDelete={handleCloseDelete} openDelete={openDelete} setOpenDelete={setOpenDelete} />
+                <DeleteModal user={user} setUser={setUser} deleteVoterRecord={deleteVoterRecord} voter={voter} vId={voter.user_id} handleOpenDelete={handleOpenDelete} handleCloseDelete={handleCloseDelete} openDelete={openDelete} setOpenDelete={setOpenDelete} />
                 : null}
                 <div style={{ marginTop:"0", borderBottom:"2px solid black", width:"350px"}}>&nbsp;</div>
                 {/* <p style={{ alignItems: "center", fontSize: "16px", lineHeight:"1.6", color: user.isActive ? "green" : "red" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{user.isActive ? "ACTIVE" : "INACTIVE"}</p> */}

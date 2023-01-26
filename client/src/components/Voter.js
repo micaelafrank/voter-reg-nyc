@@ -46,7 +46,6 @@ function Voter({ canEdit, setCanEdit, isActive, handleModal, change, vsn, setCha
     //     return ("" + number).substring(add);
     // }
 
-    const capName = party.party_name.toUpperCase();
     let count = 1;
 
     function resetCount() {
@@ -63,19 +62,19 @@ function Voter({ canEdit, setCanEdit, isActive, handleModal, change, vsn, setCha
                     {isFiltering ?
                     <div style={{display:"flex", flexDirection:"row", alignItems:"start", justifyContent:"space-around"}}>
                         <div style={{flexDirection:"column"}}>
-                            <p style={{ alignItems: "left", lineHeight: "2", fontSize: "16px", }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? capName : 'Neutral'}</p>
+                            <p style={{ alignItems: "left", lineHeight: "2", fontSize: "16px", }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
                             {/* <div className={isFiltering ? `searchMargins` : null}> */}
                             <p style={{ lineHeight: "2", fontSize: "16px" }}><span style={{ fontWeight: "bold" }}>RESIDENTIAL ADDRESS:</span> {address1}, {address2}</p>
                             <p style={{ lineHeight: "2", fontSize: "16px", }}><span style={{ fontWeight: "bold" }}>REGISTERED IN:</span> {postalCode}</p>
                         </div>
                         <div style={{ flexDirection: "column", marginLeft: "10px" }}>
                             <p style={{ lineHeight: "2", fontSize: "16px" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>11349{vsn}</p>
-                            <p style={{ lineHeight: "2", fontSize: "16px", color: isActive ? "black" : "rgb(121, 15, 15)" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "Active" : "Inactive"}</p>
+                            <p style={{ lineHeight: "2", fontSize: "16px", color: isActive ? "black" : "rgb(121, 15, 15)" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
                         </div>
                     </div>
                         : 
                     <div style={{alignItems:"center", justifyContent:"center", textAlign:"center"}}>
-                        <p style={{ fontSize: "15px", color: isActive ? "black" : "rgb(121, 15, 15)" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "Active" : "Inactive"}</p>
+                        <p style={{ fontSize: "15px", color: isActive ? "black" : "rgb(121, 15, 15)" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
                     </div>
                     }
                     {/* </div> */}
