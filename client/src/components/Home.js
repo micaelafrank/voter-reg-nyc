@@ -34,12 +34,21 @@ function Home({ user, setUser }) {
                         </div>
                     </div>
                     <div className="buttonContainerHome">
+                        <Link className="homeNavItem" to="/about">
+                            <button id="button1home" className="homeButton">ABOUT</button>
+                        </Link>
                         <Link className="homeNavItem" to="/voters">
                             <button id="button1home" className="homeButton">CHECK VOTER STATUS</button>
                         </Link>
+                        {user.username ? null : 
                         <Link className="homeNavItem" to="/register">
                             <button id="button2home" className="homeButton">REGISTER TO VOTE</button>
+                        </Link>}
+                        {user.username ? 
+                        <Link className="homeNavItem" to={`/myvote/${user.firstname}${user.lastname}`}>
+                                <button id="button2home" className="homeButton">MY VOTING INFO</button>
                         </Link>
+                         : null}
                         <Link className="homeNavItem" to="/candidates">
                             <button id="button2home" className="homeButton">ON THE BALLOT</button>
                         </Link>

@@ -365,7 +365,7 @@ button.login100-form-btn{
   /* background-size: contain; */
   align-items: center;
   justify-content: center;
-  height: 600px;
+  height: 650px;
   width: 530px;
   margin-right: 30px;
   /* padding: 0; */
@@ -728,11 +728,17 @@ label {
   margin-right: auto;
 }
 
+.aboutImage{
+  background-image: url("./images/vote-about.png");
+  background-size: cover;
+}
+
+
 .navBarContainer {
   background-image: url('images/tiedye.jpg');
   opacity: .8;
   display: flex;
-  height: 9.2em;
+  height: 9.7em;
   width: 100%;
   margin-bottom: 30px;
   position: relative;

@@ -163,7 +163,7 @@ function NewForm({ user, addNewVoter, setUser, voters, setVoters }) {
                     </ul>
                 </div>
             </div>
-            {user.username ? 
+            {user.username ? null : 
             <div id="form-container-new">
                     <h2 className="voterListHeader" style={{ fontSize: "40px", fontFamily: "monospace", alignItems: "center", paddingTop: "20px", textAlign: "center" }}>REGISTER TO VOTE</h2>                <Form id="registerForm" onSubmit={handleSubmit}>
                     <Row style={{ display: "flex", flexDirection: "row" }}>
@@ -307,8 +307,7 @@ function NewForm({ user, addNewVoter, setUser, voters, setVoters }) {
                     </Row>
                     <Button style={{ marginTop: "35px", marginLeft: "10px", fontFamily: "KGThankYouStamp", borderRadius:"2px" }} variant="primary" id="newVoterSubmit" type="submit">SUBMIT</Button>
                 </Form>
-            </div> : 
-            null}
+            </div> }
         </React.Fragment>
     );
 }

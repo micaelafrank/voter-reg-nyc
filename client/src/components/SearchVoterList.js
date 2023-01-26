@@ -121,7 +121,7 @@ function SearchVoterList({ deleteVoterRecord, parties, setParties, setUser, vote
                     </div>
                     <div style={{width:"500px", display:"flex", flexDirection:"column", justifyContent:"right", alignItems:"center"}}>
                         <p style={{ color: "navy", letterSpacing: "1.5px" }}><a style={{ cursor: "pointer", borderBottom: "2px solid navy", paddingLeft: "15px", justifyContent: "center", paddingRight:"15px", textDecoration: "none", }} href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=" target="_blank">FIND MY POLLSITE</a></p>
-                        <p onClick={handleOpenDelete} style={{ color: "navy", letterSpacing: "1.5px"}}><a style={{ cursor: "pointer", borderBottom: "2px solid navy", textDecoration: "none", paddingLeft: "15px", paddingRight: "15px", }}>DEACTIVATE REGISTRATION</a></p>
+                        <p onClick={handleOpenDelete} style={{ color: "navy", letterSpacing: "1.5px"}}><a style={{ cursor: "pointer", borderBottom: "2px solid navy", textDecoration: "none", paddingLeft: "15px", paddingRight: "15px", }}>DELETE VOTER RECORD</a></p>
                     </div>
                 </div>
                 {openDelete ?

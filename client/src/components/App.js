@@ -8,7 +8,7 @@ import WithNav from './WithNav'
 import CandidatesList from './CandidatesList';
 import NewForm from './NewForm'
 // import ModalSignIn from './ModalSignIn'
-// import EditVoterCard from './EditVoterCard'
+import About from './About'; 
 import SearchedVoter from './SearchedVoter';
 import SearchVoterList from './SearchVoterList';
 import EditVoterInfo from './EditVoterInfo';
@@ -94,7 +94,7 @@ function App() {
         <Route path={`${process.env.PUBLIC_URL}/`} element={<WithNav setUser={setUser} user={user} />}>
           <Route className="hidden" path={`${process.env.PUBLIC_URL}/home`} element={<Home />} />
           <Route path={`${process.env.PUBLIC_URL}/login`} element={<LogIn setUser={setUser} user={user} />} />
-          {/* <Route path="/voters" element={<VoterList voters={voters} setVoters={setVoters} change={change} setChange={setChange} />} /> */}
+          <Route path="/about" element={<About />} />
           <Route path={`${process.env.PUBLIC_URL}/voters`} element={<VoterPage deleteVoterRecord={deleteVoterRecord} date={date} /> } />
           <Route path={`${process.env.PUBLIC_URL}/signup`} element={<UserSignUp user={user} setUser={setUser} />} />
           <Route path={`${process.env.PUBLIC_URL}/candidates`} element={<CandidatesList parties={parties} setParties={setParties} />} />
