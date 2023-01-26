@@ -96,11 +96,13 @@ function EditSearchedV({ deleteVoterRecord, findVoter, setFindVoter, postalCodeS
                     </Modal.Header>
                     <Modal.Body className="modal-content">
                         <div className='modal-item-description-box'>
-                            <p style={{fontWeight:"bold", textAlign:"center", marginBottom:"40px", fontFamily:"monospace", fontSize:"18px"}}>{upperFN} {upperLN}</p>
-                            <div style={{ display: "flex", flexDirection: "row", rowGap:"20px", justifyContent:"center", alignItems: "center" }}>
-                            <div>
-                                {editAddress1State ? (
-                                    <div className='field1' style={{ justifyContent: "center", marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}>
+                            <p style={{fontWeight:"bold", textAlign:"center", marginBottom:"20px", fontFamily:"monospace", fontSize:"18px"}}>{upperFN} {upperLN}</p>
+                            <div style={{ display: "flex", flexDirection: "column", justifyContent:"flex-start", textAlign:"left", alignItems: "left" }}>
+                                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", marginLeft: "auto", marginRight: "auto", padding:"10px"}}>
+                                    {editAddress1State ? (
+                                    <div className='field1' 
+                                    // style={{ justifyContent: "center", marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}
+                                    >
                                         <input
                                             defaultValue={address1State}
                                             className="editItemInput"
@@ -108,7 +110,7 @@ function EditSearchedV({ deleteVoterRecord, findVoter, setFindVoter, postalCodeS
                                             aria-describedby='my-helper-text'
                                             onChange={(e) => setAddress1State(e.target.value)}
                                         />
-                                        <p style={{marginBottom:"10px", fontFamily:"monospace", fontSize:"13px"}} id='my-helper-text'>
+                                        <p style={{marginBottom:"10px", fontFamily:"monospace", fontSize:"14px"}} id='my-helper-text'>
                                             EDIT STREET ADDRESS
                                         </p>
                                     </div>
@@ -116,7 +118,7 @@ function EditSearchedV({ deleteVoterRecord, findVoter, setFindVoter, postalCodeS
                                     (
                                     // <div style={{display: "flex", flexDirection: "row"}}>
                                     <div style={{ marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}
-                                    ><span><span style={{ fontFamily: "monospace", fontSize: "14px" }}>
+                                    ><span><span style={{ fontFamily: "monospace", fontSize: "15px" }}>
                                         STREET ADDRESS:</span> {address1State}</span>
                                         {/* </div> */}
                                         {/* {editAddress1State ? 
@@ -125,16 +127,18 @@ function EditSearchedV({ deleteVoterRecord, findVoter, setFindVoter, postalCodeS
                                         } */}
                                     </div>
                                     )}
-                            </div>
                                 {editAddress1State ?
-                                    <Button onClick={handleEditAddress1}>SAVE</Button> :
-                                    <Button onClick={handleEditAddress1}>EDIT</Button>
+                                <Button style={{ marginLeft: "20px", padding: "5px 12px" }} onClick={handleEditAddress1}>SAVE</Button> :
+                                <Button style={{ marginLeft: "20px", padding: "5px 12px" }} onClick={handleEditAddress1}>EDIT</Button>
                                 }
+                                </div>
                                 {/* </div>
                                 <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignItems: "center" }}> */}
-                                <div>
+                                <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", marginLeft: "auto", marginRight: "auto", padding: "10px" }}>
                                     {editAddress2State ? (
-                                    <div className='field1' style={{ justifyContent: "center", marginLeft: "auto",   marginRight: "auto", alignItems: "center", textAlign: "center" }}>
+                                    <div className='field1' 
+                                    // style={{ justifyContent: "center", marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}
+                                    >
                                         <input
                                             defaultValue={address2State}
                                             className="editItemInput"
@@ -142,25 +146,27 @@ function EditSearchedV({ deleteVoterRecord, findVoter, setFindVoter, postalCodeS
                                             aria-describedby='my-helper-text'
                                             onChange={(e) => setAddress2State(e.target.value)}
                                         />
-                                        <p style={{ marginBottom: "10px", fontFamily: "monospace", fontSize: "13px" }} id='my-helper-text'>
+                                        <p style={{ marginBottom: "10px", fontFamily: "monospace", fontSize: "14px" }} id='my-helper-text'>
                                         EDIT APT/SUITE/FLOOR NUMBER
                                         </p>
                                     </div>
                                     ) : 
                                         (
                                     <div style={{ marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}
-                                        ><span><span style={{ fontFamily: "monospace", fontSize: "14px" }}>
+                                        ><span><span style={{ fontFamily: "monospace", fontSize: "15px" }}>
                                             APT/SUITE/FLOOR NUMBER:</span> {address2State}</span>
                                     </div>
                                     )}
-                                </div>
                                     {editAddress2State ?
-                                        <Button onClick={handleEditAddress2}>SAVE</Button> :
-                                        <Button onClick={handleEditAddress2}>EDIT</Button>
+                                    <Button style={{ marginLeft: "20px", padding: "5px 12px" }} onClick={handleEditAddress2}>SAVE</Button> :
+                                    <Button style={{ marginLeft: "20px", padding: "5px 12px" }} onClick={handleEditAddress2}>EDIT</Button>
                                     }
-                                <div>
+                                </div>
+                                <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", marginLeft: "auto", marginRight: "auto", padding: "10px" }}>
                                     {editPostalCodeState ? (
-                                        <div className='field1' style={{ justifyContent: "center", marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}>
+                                        <div className='field1' 
+                                        // style={{ justifyContent: "center", marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}
+                                        >
                                             <input
                                                 defaultValue={postalCodeState}
                                                 className="editItemInput"
@@ -171,7 +177,7 @@ function EditSearchedV({ deleteVoterRecord, findVoter, setFindVoter, postalCodeS
                                                     console.log("new postal code state in code: ", postalCodeState)
                                                 }}
                                             />
-                                            <p style={{ marginBottom: "10px", fontFamily: "monospace", fontSize: "13px" }} id='my-helper-text'>
+                                            <p style={{ marginBottom: "10px", fontFamily: "monospace", fontSize: "14px" }} id='my-helper-text'>
                                                 EDIT POSTAL CODE
                                             </p>
                                         </div>
@@ -179,16 +185,17 @@ function EditSearchedV({ deleteVoterRecord, findVoter, setFindVoter, postalCodeS
                                         // <div style={{display: "flex", flexDirection: "row"}}>
                                         <div style={{ marginLeft: "auto", marginRight: "auto", alignItems: "center", textAlign: "center" }}
                                         >
-                                            <span><span style={{ fontFamily: "monospace", fontSize: "14px" }}>
+                                            <span><span style={{ fontFamily: "monospace", fontSize: "15px" }}>
                                             POSTAL CODE:</span> {postalCodeState}</span>
                                         </div>
                                         // </div>
                                     )}
-                                </div>
                                 {editPostalCodeState ?
-                                    <Button onClick={handleEditPostalCode}>SAVE</Button> :
-                                    <Button onClick={handleEditPostalCode}>EDIT</Button>
+                                    <Button style={{ marginLeft: "20px", padding: "5px 12px" }} onClick={handleEditPostalCode}>SAVE</Button> :
+                                    <Button style={{ marginLeft: "20px", padding: "5px 12px" }} onClick={handleEditPostalCode}>EDIT</Button>
                                 }
+                                </div>
+
                                 {/* { editAddress1State ?
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"
                                         onClick={handleEditAddress1}
@@ -202,8 +209,8 @@ function EditSearchedV({ deleteVoterRecord, findVoter, setFindVoter, postalCodeS
                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                         <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
                                     </svg>} */}
-                        </div>
-                            <Button onClick={handleExitModal}>SAVE & EXIT</Button>
+                            </div>
+                            <Button style={{ padding: "6px 15px", fontFamily:"monospace", backgroundColor:"white", color:"navy", cursor:"pointer", marginTop:"20px", fontWeight:"bold", border:"2px solid navy", fontSize:"16px", marginBottom:"15px" }} onClick={handleExitModal}>SAVE & EXIT</Button>
                         </div>
                     </Modal.Body>
                 </Modal>

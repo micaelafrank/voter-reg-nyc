@@ -455,7 +455,7 @@ select {
 
 
 #signUpForm .row {
-  padding-top: 30px;
+  padding-top: 20px;
   margin-left: 5px;
   margin-right: 5px;
   width: auto;
@@ -893,9 +893,9 @@ input#my-input.editItemInput{
 }
 
 .searchContainerRed {
-  padding: 20px 0px 20px 30px;
+  padding: 20px 0px 20px 0px;
   border: 2px solid rgb(121, 15, 15);
-  width: 60%;
+  width: 70%;
   height: auto;
   text-align: left;
   align-content: left;
@@ -1216,7 +1216,7 @@ margin-bottom: 10px;
 #error-message {
   font-family: monospace;
   font-size: 20px;
-  margin: 50px;
+  /* margin: 50px; */
   text-align: center;
 }
 
@@ -1325,10 +1325,6 @@ textarea.form-controlFN {
   filter: grayscale(100%);
   -webkit-filter: grayscale(100%);
   border: 6px solid black;
-}
-
-.overtint{
-  background-color: blue;
 }
 
 .candidatePortrait{

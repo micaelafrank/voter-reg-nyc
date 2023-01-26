@@ -70,6 +70,7 @@ function App() {
 
   function addNewVoter(newVoter) {
     setVoters(...voters, newVoter);
+    console.log("new voters: ", voters)
   }
 
   const current = new Date();

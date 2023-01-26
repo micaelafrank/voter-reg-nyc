@@ -56,6 +56,7 @@ function VoterList({ canEdit, setCanEdit, handleModal, change, setChange, handle
             key={voter.id}
             handleModal={handleModal}
             id={voter.id}
+            vsn={voter.user_id}
             voter={voter.voter}
             // setValidated={setValidated}
             voters={voters}

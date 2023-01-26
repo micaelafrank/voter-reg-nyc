@@ -194,7 +194,7 @@ function CandidatesList({ parties, setParties }) {
                 {listOfCandidates}
             </div> */}
             <h2 className="voterListHeader" style={{ fontSize: "40px", fontFamily: "monospace", alignItems: "center", paddingTop: "20px", textAlign: "center" }}>ON THE BALLOT</h2>
-            <p style={{ textAlign: "center", fontSize: "18px", letterSpacing:"1.2px", lineHeight:"1.3", paddingBottom: "13px", marginLeft:"15%", marginRight:"15%", fontFamily: "monospace" }}>THE NEW YORK GENERAL ELECTION TOOK PLACE ON NOVEMBER 8, 2022. YOU CAN VIEW ALL NEW YORK STATE CONGRESS ELECTION RESULTS BY DISTRICT <a href="https://ballotpedia.org/United_States_House_of_Representatives_elections_in_New_York,_2022#Candidates">HERE</a>. RESULTS OF STATEWIDE RACES ARE BELOW.</p>
+            <p style={{ textAlign: "center", fontSize: "18px", letterSpacing:"1.2px", lineHeight:"1.3", paddingBottom: "13px", marginLeft:"25%", marginRight:"25%", fontFamily: "monospace" }}>THE NEW YORK GENERAL ELECTION TOOK PLACE ON NOVEMBER 8, 2022. YOU CAN VIEW ALL NEW YORK STATE CONGRESS ELECTION RESULTS BY DISTRICT <a href="https://ballotpedia.org/United_States_House_of_Representatives_elections_in_New_York,_2022#Candidates">HERE</a>.<br></br>RESULTS OF STATEWIDE RACES ARE BELOW.</p>
             <h1 className="formHeading4" style={{ textAlign: "center", fontSize: "44px", fontFamily: "KGThankYouStamp", marginTop:"80px", marginBottom: "30px", paddingBottom: "0" }}>MIDTERM ELECTION RESULTS 2022</h1>
             {/* <h1 style={{ textAlign: "center", fontSize: "30px", fontFamily: "monospace", marginBottom: "40px", paddingBottom: "0" }}>MIDTERM ELECTION 2022</h1> */}
             <div style={{ marginTop: "50px" }}>

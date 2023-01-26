@@ -10,7 +10,7 @@ import SearchedVoter from "./SearchedVoter";
 import { useNavigate } from 'react-router-dom';
 
 
-function Voter({ canEdit, setCanEdit, isActive, handleModal, change, setChange, setVoters, voter, validated, handleValidation, id, handleSearchSubmit, address1, address2, isFiltering, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
+function Voter({ canEdit, setCanEdit, isActive, handleModal, change, vsn, setChange, setVoters, voter, validated, handleValidation, id, handleSearchSubmit, address1, address2, isFiltering, age, search, firstName, isSearching, lastName, party, postalCode, password, deleteVoter }) {
     //  const [formName, setName] = useState("")
     //  const [formPassword, setPassword] = useState("")
     const [editCard, setEditCard] = useState(false);
@@ -46,6 +46,7 @@ function Voter({ canEdit, setCanEdit, isActive, handleModal, change, setChange, 
     //     return ("" + number).substring(add);
     // }
 
+    const capName = party.party_name.toUpperCase();
     let count = 1;
 
     function resetCount() {
@@ -56,14 +57,28 @@ function Voter({ canEdit, setCanEdit, isActive, handleModal, change, setChange, 
         <>
             <div className={isFiltering ? `searchItem` : `gridItem`}>
                 <div className={isActive ? (isFiltering ? `searchContainerBlack` : `voterContainerBlack`) : (isFiltering ? `searchContainerRed` : `voterContainerRed`)}>
-                    <p style={{ fontSize: "20px", fontWeight: "bold" }}>{isFiltering ? fullName : shortName}</p>
+                    <p style={{ textAlign:"center", fontSize: "20px", fontWeight: "bold" }}>{isFiltering ? fullName : shortName}</p>
                     {/* {isFiltering ? <p style={{ lineHeight: "2" }}>{age} years old</p> : null} */}
                     {/* {isFiltering ? <p style={{ lineHeight: "2", alignItems: "center" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>{generate(6)}</p> : null} */}
-                    <p style={{ alignItems: "left", lineHeight: "2", fontSize: "15px", }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? party.party_name : 'Neutral'}</p>
-                    {/* <div className={isFiltering ? `searchMargins` : null}> */}
-                    <p style={{ lineHeight: "2", fontSize: "15px", color: isActive ? "black" : "rgb(121, 15, 15)" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "ACTIVE" : "INACTIVE"}</p>
-                    {/* {isFiltering ? <p style={{ lineHeight: "2" }}>RESIDENTIAL ADDRESS: {address1}, {address2} {postalCode}</p> : null} */}
-                    {isFiltering ? <p style={{ lineHeight: "2", fontSize: "15px", }}><span style={{ fontWeight: "bold" }}>REGISTERED IN:</span> {postalCode}</p> : null}
+                    {isFiltering ?
+                    <div style={{display:"flex", flexDirection:"row", alignItems:"start", justifyContent:"space-around"}}>
+                        <div style={{flexDirection:"column"}}>
+                            <p style={{ alignItems: "left", lineHeight: "2", fontSize: "16px", }}><span style={{ fontWeight: "bold" }}>PARTY: </span>{party ? capName : 'Neutral'}</p>
+                            {/* <div className={isFiltering ? `searchMargins` : null}> */}
+                            <p style={{ lineHeight: "2", fontSize: "16px" }}><span style={{ fontWeight: "bold" }}>RESIDENTIAL ADDRESS:</span> {address1}, {address2}</p>
+                            <p style={{ lineHeight: "2", fontSize: "16px", }}><span style={{ fontWeight: "bold" }}>REGISTERED IN:</span> {postalCode}</p>
+                        </div>
+                        <div style={{ flexDirection: "column", marginLeft: "10px" }}>
+                            <p style={{ lineHeight: "2", fontSize: "16px" }}><span style={{ fontWeight: "bold" }}>VOTER SERIAL NUMBER (VSN): </span>11349{vsn}</p>
+                            <p style={{ lineHeight: "2", fontSize: "16px", color: isActive ? "black" : "rgb(121, 15, 15)" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "Active" : "Inactive"}</p>
+                        </div>
+                    </div>
+                        : 
+                    <div style={{alignItems:"center", justifyContent:"center", textAlign:"center"}}>
+                        <p style={{ fontSize: "15px", color: isActive ? "black" : "rgb(121, 15, 15)" }}><span style={{ fontWeight: "bold" }}>VOTER STATUS: </span>{isActive ? "Active" : "Inactive"}</p>
+                    </div>
+                    }
+                    {/* </div> */}
                     {/* {isFiltering ?  */}
                     {/* {isFiltering ? <p style={{ lineHeight: "2", fontSize: "15px" }}><a href="https://findmypollsite.vote.nyc/?hn=&sn=&zip=">Find My Pollsite</a></p> : null} */}
                     {/* <div className={isFiltering ? "flexVoterButtonsRow" : "flexVoterButtonsCol" }>
