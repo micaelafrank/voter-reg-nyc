@@ -69,7 +69,7 @@ function App() {
   // console.log(candidates)
 
   function addNewVoter(newVoter) {
-    setVoters(...voters, newVoter);
+    setVoters([...voters], newVoter);
     console.log("new voters: ", voters)
   }
 

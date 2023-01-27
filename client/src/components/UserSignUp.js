@@ -127,10 +127,10 @@ function UserSignUp({ setUser, user }) {
                     {/* </Col> */}
                 </Row>
             </div>
-            </Form>
             <div style={{marginTop:"10px"}} className="login-btn-container">
                 <button className="login100-form-btn" style={{ fontFamily: "monospace", textAlign: "center", borderRadius: "3px", margin: "auto", marginTop: "15px", textAlign: "center", justifyContent: "center" }} type="submit">SIGN UP</button>
             </div>
+            </Form>
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
             <p style={{ marginTop: "50px", marginBottom: "50px", fontFamily: "monospace", fontSize: "16px", fontWeight: "bold", textShadow: "0.5px 0.5px rgb(81, 114, 210)" }}>ALREADY HAVE AN ACCOUNT? <a href="/login">LOG IN!</a></p>

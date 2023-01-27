@@ -165,7 +165,7 @@ function NewForm({ user, addNewVoter, setUser, voters, setVoters }) {
             </div>
             {user.username ? null : 
             <div id="form-container-new">
-                    <h2 className="voterListHeader" style={{ fontSize: "40px", fontFamily: "monospace", alignItems: "center", paddingTop: "20px", textAlign: "center" }}>REGISTER TO VOTE</h2>                <Form id="registerForm" onSubmit={handleSubmit}>
+                    <h2 className="voterListHeader" style={{ fontSize: "40px", fontFamily: "monospace", alignItems: "center", paddingTop: "10px", marginBottom:"10px", textAlign: "center" }}>REGISTER TO VOTE</h2>                <Form id="registerForm" onSubmit={handleSubmit}>
                     <Row style={{ display: "flex", flexDirection: "row" }}>
                         <Col xs={7}>
                             <label style={{ paddingRight: "10px" }}>FIRST NAME:</label>
